@@ -7,3 +7,15 @@ __pycache__/
 *.3dheat
 *.parquet
 out/
+
+# Levels, unpacked game data and libraries from a user's own install never belong here.
+*.glb
+*.gltf
+*.forge
+*.bin
+*.dll
+*.depgraphbin
+unpacked/
+levels/
+.claude/
+*.jsonl

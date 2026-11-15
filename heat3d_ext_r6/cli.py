@@ -2,11 +2,18 @@
 heat3d-r6-replay: Rainbow Six Siege Match Replays into 3DHeat matches.
 
     heat3d-r6-replay <file.rec | match folder | folder of matches | bundle.zip>... -o <out> [--loose]
+    heat3d-r6-replay --game <your game folder> -o <out>
     heat3d-r6-replay info <file.rec>
+
+With `--game` (or `HEAT3D_R6_GAME`), the `MatchReplay` folder inside the game
+folder you name is read: the game keeps your last matches there.
 
 A match is the folder of its rounds (`Match-<date>-<id>/...-R01.rec`); each
 becomes one `<match>.3dheat`. Zip bundles (the esports downloads) are read in
 place, without unpacking them to disk.
+
+The maps as 3D levels come from the separate tool heat3d-r6-maps
+(github.com/Holdi601/3DHeat-Ext-R6-Maps).
 """
 
 from __future__ import annotations
@@ -55,6 +62,12 @@ def convert(files: list[Path], out: Path, loose: bool = False) -> Path | None:
 
 def main(argv: list[str] | None = None) -> int:
     argv = sys.argv[1:] if argv is None else argv
+    try:
+        from . import update
+
+        update.startup("heat3d_ext_r6")
+    except Exception:  # an update check never stops a conversion
+        pass
     if argv[:1] == ["info"]:
         for a in argv[1:]:
             r = read_round(read(a))
@@ -66,11 +79,22 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     ap = argparse.ArgumentParser(prog="heat3d-r6-replay", description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("paths", nargs="+")
+    ap.add_argument("paths", nargs="*", help="replays (files, match folders, folders of matches, zips)")
+    ap.add_argument("--game", help="your game folder: read its MatchReplay folder (or set HEAT3D_R6_GAME)")
     ap.add_argument("-o", "--out", required=True)
     ap.add_argument("--loose", action="store_true", help="keep the separate files instead of a .3dheat")
     ap.add_argument("--version", action="version", version=__version__)
     args = ap.parse_args(argv)
+    if not args.paths:
+        from .install import replay_folder
+
+        found = replay_folder(args.game)
+        if found is None:
+            print("name the replays, or your game folder with --game <folder> (its MatchReplay folder is read)",
+                  file=sys.stderr)
+            return 1
+        print(f"reading {found}", file=sys.stderr)
+        args.paths = [str(found)]
     out = Path(args.out)
     plain = [p for p in args.paths if not p.lower().endswith(".zip")]
     groups = _matches(plain)

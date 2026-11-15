@@ -1,0 +1,6 @@
+# The English pages' hashes; written by tools/docs_i18n.py hashes. Do not edit.
+before-you-start.md: "9b5c0175ecc5"
+index.md: "835cb0db677c"
+maintaining.md: "89dfbbf59570"
+replays.md: "cfc39d089a5d"
+terms.md: "e4d9d09f1875"

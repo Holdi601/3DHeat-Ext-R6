@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- The maps as 3D levels moved to their own tool and repository, [3DHeat-Ext-R6-Maps](https://github.com/Holdi601/3DHeat-Ext-R6-Maps) (`heat3d-r6-maps`), with their history; this reader keeps the replays.
+- With no replays named, the game's `MatchReplay` folder is found and read.
+- World ids of the current map versions (read from the game's map archives).
+- The updater lives in this tool's package (`heat3d_ext_r6.update`), checking Holdi601/3DHeat-Ext-R6.
+- Docs: a documentation site (`docs/`: before you start, replays, terms, command reference), `LICENSES.md`.
+
 ## 0.3.0
 
 - Room callouts (`callouts.py`): `callout` on every body sample, on the events at a player's position and, the one said most nearby, on the marks.

@@ -44,6 +44,22 @@ MAPS = {
     # Named by their site callouts (Commander's Office and Dormitory; Aviator Room and Statuary Room).
     398899676157: "Fortress",
     409325881472: "Villa",
+    # The current versions of the others, as the map archives' world resources number them (`map --list`).
+    419965653950: "Private Casino",
+    423767322185: "Skyscraper",
+    430788891316: "Theme Park",
+    434715462383: "Oregon",
+    436375283234: "Coastline",
+    439976373310: "Presidential Plane",
+    441408792952: "Kanal",
+    441825219764: "Outback",
+    441842102525: "Emerald Plains",
+    446546313105: "House",
+    447442858240: "Stadium Bravo",
+    447445273533: "Stadium Alpha",
+    453996545976: "Favela",
+    454245490351: "Tower",
+    454336658645: "Yacht",
 }
 
 OPERATORS = {

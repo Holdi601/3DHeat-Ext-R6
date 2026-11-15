@@ -1,4 +1,4 @@
-﻿# heat3d-r6-replay
+# heat3d-r6-replay
 
 Rainbow Six Siege **Match Replays** (`.rec`, the game's "dissect" files, one a
 round) into the tables the [3DHeat](https://github.com/Holdi601/3DHeat) viewer
@@ -12,6 +12,13 @@ objectives and each round's result.
 Files only: the reader opens replay files on disk. It never touches the game,
 its memory or its anti-cheat.
 
+## Notice
+
+Not affiliated with or endorsed by Ubisoft; Rainbow Six Siege and all other
+trademarks belong to their owners. Meant for non-commercial, personal
+analysis. Rights holders: open an issue or get in touch through the GitHub
+profile; we respond within 48 hours and remove on request.
+
 ## Use
 
 ```
@@ -24,8 +31,13 @@ A match is the folder of its rounds (`Match-<date>-<id>/Match-...-R01.rec`).
 The esports bundles (zips) are read in place. `--loose` keeps the separate
 files instead of the `.3dheat` container.
 
-Where replays are: the game writes them to `MatchReplay\` in its install folder
-(Ubisoft Connect or Steam), the last 12 matches.
+Where replays are: the game writes them to `MatchReplay\` in its game folder,
+the last 12 matches. `--game <your game folder>` reads that folder (or name
+the replays yourself).
+
+**Load in the viewer:** open the `.3dheat` in 3DHeat (One file... -> Load). With
+the map's level built (see Maps below) and loaded once, the viewer puts it
+under the match by itself.
 
 ## What is read
 
@@ -198,6 +210,21 @@ player records and item objects, the kill feed's item field and the mark
 records were worked out here from the files. See `heat3d_ext_r6/rec.py`,
 `round.py`, `loadout.py` and `impacts.py`.
 
+## Maps
+
+The maps as 3D levels, for these matches to stand on, come from the separate
+tool [3DHeat-Ext-R6-Maps](https://github.com/Holdi601/3DHeat-Ext-R6-Maps)
+(`heat3d-r6-maps`), which builds them from your own installed game. Its levels
+name each breakable object by the same level-object id this reader gives a
+mark's `surface`, and the map version by the same world id.
+
+Documentation: `docs/` (published as the project's site): before you start,
+replays, terms, command reference.
+
+The Watcher (3DHeat-Watcher) can later call this tool for new MatchReplay
+files as an optional step; not wired yet.
+
 ## Licence
 
-MIT. Replays are not included and never committed.
+MIT. Replays and game files are not included and never committed; see
+`LICENSES.md`.

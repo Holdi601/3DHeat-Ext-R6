@@ -54,8 +54,9 @@ def test_synthetic(tmp_path):
     assert [t[1] for t in rd.tracks[0xF0190001]] == [1.0, 2.0]
 
 
-LOCAL = sorted(glob.glob(os.path.join(os.environ.get("R6_REPLAYS", ""), "**", "*.rec"),
-                         recursive=True))
+# Real replays only where R6_REPLAYS names a folder of them (never part of the repository).
+_REPLAYS = os.environ.get("R6_REPLAYS")
+LOCAL = sorted(glob.glob(os.path.join(_REPLAYS, "**", "*.rec"), recursive=True)) if _REPLAYS else []
 
 
 @pytest.mark.local
