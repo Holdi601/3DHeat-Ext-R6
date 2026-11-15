@@ -1,7 +1,7 @@
-﻿"""
+"""
 Build `heat3d_ext_r6/catalog.json` from a loadout survey and Ubisoft's operator loadouts.
 
-    python tools/catalog_build.py survey.jsonl loadouts.json heat3d_ext_r6/catalog.json
+    python tools/catalog_build.py survey.jsonl loadouts.json heat3d_ext_r6/catalog.json [previous catalog.json]
 
 The survey (`tools/catalog_survey.py`) lists, per round and player, the
 operator and the item ids carried, in the file's order. Each player's items
@@ -15,7 +15,11 @@ An id is named by the operators carrying it in that slot: the name their
 loadouts (Ubisoft's operator pages) share. Where several names fit (a weapon
 only one operator carries), names already given to other ids are taken out,
 and that repeats until nothing changes. What is left ambiguous keeps every
-candidate (`candidates`) and `sure: false`.
+candidate (`candidates`) and `sure: false`. Ids the rules leave open but other
+facts settle are named from `RESOLVE`, each with its reason (`by`). With a
+previous catalogue, an id it named keeps that name (a bigger survey
+names an id differently where loadouts changed between seasons; such
+disagreements are listed, not taken).
 """
 
 from __future__ import annotations
@@ -30,6 +34,26 @@ ALIAS = {"9x19svn": "9x19vsn", "m249saw": "m249"}
 #: Operators a survey wrote by id (named in game.py since).
 OP_ALIAS = {"operator444310693746": "solidsnake"}
 
+#: Ids the slot and headshot rules leave open, named by what else is known (survey of 734 rounds, 2024-2026).
+#: Weapon ids are the weapon's asset: a weapon from the game's launch keeps its launch-era id (1366019xxx) for
+#: every operator carrying it (UMP45: Castle and Pulse; M870: Bandit and Thorn); a weapon added with an
+#: operator gets an id of that season's range (Lion's V308 next to Finka's Spear .308).
+RESOLVE: dict[int, tuple[str, str]] = {
+    53995319813: ("T-95 LSW", "Flores carries it too"),
+    53995319846: ("SIX12", "Ying's other primary is the T-95 LSW"),
+    68967567391: ("LMG-E", "Ram carries it too"),
+    68967567352: ("M762", "Zofia's other primary is the LMG-E"),
+    1366019640: ("UMP45", "headshot share of its kills (64% of 121: not the M1014 shotgun)"),
+    1366019520: ("M1014", "Pulse's other primary is the UMP45; 0 headshots in 4 kills"),
+    1366019628: ("P90", "headshot share of its kills (73% of 74: not the ITA12L shotgun)"),
+    44316587774: ("ITA12L", "Solis's other primary is the P90; 2 headshots in 7 kills"),
+    1366019208: ("416-C Carbine", "headshot share (74% of 34: not the M870) and a launch-era id (not the MBZ-19)"),
+    1366019556: ("SG-CQB", "a launch-era id; Lion's other primary has an id of his season"),
+    55586802030: ("V308", "an id of Lion's season, next to Finka's; 60% headshots"),
+    13333481726: ("CAMRS", "Buck's other primary (the C8-SFW has its own id), an id of Buck's season"),
+    350658628377: ("Gonne-6", "the one secondary five of its six carriers list"),
+}
+
 
 def norm(s):
     s = unicodedata.normalize("NFKD", s or "").encode("ascii", "ignore").decode().lower()
@@ -37,7 +61,7 @@ def norm(s):
     return OP_ALIAS.get(s, s)
 
 
-def main(survey: str, loadouts: str, out: str) -> None:
+def main(survey: str, loadouts: str, out: str, previous: str | None = None) -> None:
     rows = [json.loads(line) for line in open(survey, encoding="utf-8")]
     raw = json.load(open(loadouts, encoding="utf-8"))
     ops = {}
@@ -185,6 +209,26 @@ def main(survey: str, loadouts: str, out: str) -> None:
         items[str(iid)] = {"name": name, "kind": slot, "sure": sure, "rounds": n, "kills": kills.get(iid, 0),
                            "fit": cover, "operators": op_names, **({"candidates": cand} if cand else {}),
                            **({"by": "headshot share of its kills"} if iid in likely and not sure else {})}
+    # Facts beyond the rules (`RESOLVE`), then what a previous catalogue named for sure.
+    for iid, (name, why) in RESOLVE.items():
+        v = items.get(str(iid))
+        if v and not v["sure"]:
+            v.pop("candidates", None)
+            v.update({"name": name, "by": why})
+    if previous:
+        old = json.load(open(previous, encoding="utf-8")).get("items", {})
+        for iid, v in items.items():
+            o = old.get(iid)
+            if not o or not o.get("name") or o["name"] == v.get("name"):
+                continue
+            # A name the previous catalogue gave stays: where the bigger survey's slot vote disagrees, the
+            # disagreement is reported, not taken.
+            print(f"  kept {iid} {o['name']!r} (this survey: {v.get('name')!r})", file=sys.stderr)
+            v.pop("candidates", None)
+            v.pop("by", None)
+            v.update({"name": o["name"], "sure": bool(o.get("sure")), "kind": o.get("kind", v["kind"]),
+                      **({"by": o["by"]} if o.get("by") else {}),
+                      **({"candidates": o["candidates"]} if o.get("candidates") else {})})
     weapons = {}
     for d in ops.values():
         for w, t in d["types"].items():
@@ -219,4 +263,4 @@ def main(survey: str, loadouts: str, out: str) -> None:
 
 
 if __name__ == "__main__":
-    main(*sys.argv[1:4])
+    main(*sys.argv[1:5])

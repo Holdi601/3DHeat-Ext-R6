@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.0
+
+- Room callouts (`callouts.py`): `callout` on every body sample, on the events at a player's position and, the one said most nearby, on the marks.
+- Plant and defuse attempts from the defuser timer's runs: `plant_start`, `plant`, `plant_interrupted`, `defuse_start`, `defuse`, `defuse_interrupted`, with the timer as it started and stopped in `detail`. Y11 files did not name the player in these packets, so 0.2.0 found no plants there at all (and called those rounds' ends wrong); the player is now the one of the side who stood still through the attempt (`inferred` = 1).
+- Reinforcements: a `reinforce` row each time the defending team's count of reinforcements left drops, at the defender who stood still through the next seconds (`inferred` = 1 / the number who did).
+- Bomb sites as the match document's `objectives` (`sites.py`): each played site's rooms as floor outlines from where players stood in them, the map's other sites from `sites.json` (derived from the converted esports matches by `tools/sites_build.py`; 20 map versions, 79 sites), with the rounds and times each site was played.
+- Marks: who most likely made each one (`byPlayer`, `byOperator`, `inferred` the confidence; `byItem`, `byItemClass` where that player's kill names the weapon), from the player facing the mark as it appeared. Marks no longer carry a direction: the rotation the 0.2.0 docs called the surface's normal is in the surface object's own frame.
+- `track` (each body, drone and gadget its own track) and `gadgetType` (a drone; a gadget named from its owner's two deployables by whether it flew or stayed) columns.
+- Positions: updates holding the object's own frame (0, 0, height) are no longer read as places (they put players at the map's origin for a tick).
+- Catalogue: 205 item ids, 181 sure, 14 named by a stated fact (`RESOLVE` in `tools/catalog_build.py`), 5 weapon ids still open; a rebuild keeps the names the previous catalogue gave.
+- Map names for two world ids (Fortress, Villa), told by their sites' callouts.
 ## 0.2.0
 
 - Operators as picked: the operator and loadout each player has as the action phase starts, followed through the preparation phase (`loadout.py`). Before, an attacker who picked again in the preparation phase kept the operator of the recording's start.

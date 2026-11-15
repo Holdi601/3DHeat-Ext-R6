@@ -1,4 +1,4 @@
-﻿"""
+"""
 Rainbow Six Siege's identifiers: maps (`worldid`), operators, game modes and
 match types. Facts of the game, gathered from the values r6-dissect
 (github.com/redraskal/r6-dissect, MIT) lists; a value not listed is kept as
@@ -41,6 +41,9 @@ MAPS = {
     417890697769: "Lair",
     418119057546: "Nighthaven Labs",
     418126004176: "Consulate",
+    # Named by their site callouts (Commander's Office and Dormitory; Aviator Room and Statuary Room).
+    398899676157: "Fortress",
+    409325881472: "Villa",
 }
 
 OPERATORS = {

@@ -2,10 +2,12 @@
 
 Rainbow Six Siege **Match Replays** (`.rec`, the game's "dissect" files, one a
 round) into the tables the [3DHeat](https://github.com/Holdi601/3DHeat) viewer
-reads: one `.3dheat` per match with every player's position tick by tick,
-their operator and loadout, their drones and gadgets, the kill feed with the
-weapon or gadget of each kill, the defuser, the marks left on the level and
-each round's result.
+reads: one `.3dheat` per match with every player's position tick by tick and
+the room they are in, their operator and loadout, their drones and gadgets,
+the kill feed with the weapon or gadget of each kill, every plant and defuse
+attempt (interrupted ones too), the reinforcements, the marks left on the
+level with who most likely made them, the bomb sites as the match's
+objectives and each round's result.
 
 Files only: the reader opens replay files on disk. It never touches the game,
 its memory or its anti-cheat.
@@ -34,11 +36,14 @@ Where replays are: the game writes them to `MatchReplay\` in its install folder
 | operator and loadout as the action phase starts | player records and item objects, followed through the preparation phase (`loadout.py`) | primary, secondary, secondary gadget, ability, drone: item ids named by the catalogue |
 | positions, x y z in metres, Z up, facing | object stream, every tick (~30-40 a second) | operator body, attackers' drones, gadgets (owner known, type not) |
 | kills, deaths, headshots, the weapon or gadget of each kill | kill feed in the event section | with the tick, so at the killer's and victim's positions |
-| defuser plant / disable (start and done) | defuser timer packets | at the planter's or defuser's position |
+| defuser plant / disable: start, done, interrupted | the defuser timer's runs of packets (`round._attempts`) | at the planter's or defuser's position; an attempt that stops before the timer runs out is `plant_interrupted` / `defuse_interrupted`, with the time it had left. The player is named by the packet in older seasons; in Y11 files it is not, and the player is the one of the side who stood still through the attempt, on the site (`inferred` = 1) |
+| room callouts ("2F CCTV Room") | the location field of small per-player objects in the event section (`callouts.py`) | `callout` on every body sample and on the events at a player's position; marks get the callout said most near them |
+| reinforcements | the defending team's count of reinforcements left (`round._reinforcements`) | a `reinforce` row when the count drops, at the defender who stood still through the next seconds (`inferred` = 1 / the number of defenders who did); none where nobody did |
 | round clock (preparation, action) | clock packets | gives every tick its time; pauses squeeze out |
 | winner, how, match result | header scores and the events | `won`, `roundEndReason`, `matchWon` on every row |
 | site | site packets | on every row of the round |
-| marks on the level (bullet holes and the like) | a tick-indexed section of records (`impacts.py`) | exact position, the surface's normal, the level object it sits on, the mark's kind |
+| bomb sites | the rooms' callouts and where players stood in them (`sites.py`), the table `sites.json` | the match document's `objectives`: each played site's two rooms as floor outlines, the map's other sites from the table, with the rounds and times each was played |
+| marks on the level (bullet holes and the like) | a tick-indexed section of records (`impacts.py`) | exact position, the level object it sits on, the mark's kind; the shooter where one player faced the mark as it appeared (`byPlayer`, with a confidence) |
 
 Every other moving object (doors, debris...) goes to the `entities` sidecar
 with its id, tick and position.
@@ -51,7 +56,20 @@ Every row: `time`, `x`, `y`, `z`, `yaw` (degrees from +X, counter-clockwise),
 row's side won the round), `roundEndReason` (elimination, defuser disabled,
 defuser detonated, elimination after plant, time), `matchWon` (1 won, 0 lost,
 0.5 drawn), `teamAlive`, `enemyAlive`, `state_planted`, `event`, `pawn`
-(operator/drone/gadget/mark), `detail`, `entity`.
+(operator/drone/gadget/mark), `callout` (the room, as the game names it;
+empty outside named rooms), `track` (each object its own track: the body is
+the player's name, a drone or gadget `<player> drone|gadget <round>.<n>` in
+the order they appear), `inferred`, `detail`, `entity`.
+
+`inferred` says how sure a worked-out value is, 0 to 1, empty where nothing
+was worked out: on attempts and reinforcements the player, on marks the
+shooter, on gadget rows the gadget's type.
+
+Drone and gadget rows: `gadgetType`, what the object is. A drone is the
+drone (sure). A gadget is one of its owner's two deployables (secondary
+gadget and ability), told by how it moved: one that flew is the thrown one,
+one that stayed the placed one (`inferred` 0.6-0.7); where both are placed
+the two names are joined with ` / `.
 
 What the player plays and carries in the round, on all of their rows:
 `operator`, `operatorRole`, `primary`, `primaryClass`, `secondary`,
@@ -65,15 +83,49 @@ or gadget / ability), `weaponSlot` (primary, secondary, gadget, ability),
 `other` (the victim or killer), `otherOperator`, `headshot`.
 
 Mark rows (`event` = `impact`, `pawn` = `mark`, no player): `surface` (the
-level object's id; `entity` holds it too), `markKind`, and `dirX/Y/Z` = the
-surface's normal at the mark.
+level object's id; `entity` holds it too), `markKind`, `callout`, and who
+most likely made it: `byPlayer`, `byOperator`, `inferred` (the confidence),
+and `byItem` / `byItemClass` where that player's kill within 1.5 s names the
+weapon. The shooter is the player facing the mark as it appeared (heading
+within 2 degrees, or 0.4 m to the side at the mark's distance). Checked on a
+pro match: 89% of the marks have such a player, but with the marks' times
+moved by 7 s 22% still do, so about one attribution in four is a player who
+merely faced that way; two players facing it halve the confidence. Marks
+have no direction: their rotation is in the surface object's own frame,
+which the file does not place (`impacts.py`).
+
+Attempt rows (`plant_start`, `plant`, `plant_interrupted`, `defuse_start`,
+`defuse`, `defuse_interrupted`): `detail` holds the timer as it started and
+as it stopped (`{"of": 7.0, "left": 2.05}`). Reinforcement rows (`reinforce`):
+`detail` holds the team's reinforcements left.
 
 Events: `position`, `drone`, `gadget`, `kill`, `death`, `plant_start`,
-`plant`, `defuse_start`, `defuse`, `round_end`, `impact`.
+`plant`, `plant_interrupted`, `defuse_start`, `defuse`, `defuse_interrupted`,
+`reinforce`, `round_end`, `impact`.
+
+## Bomb sites
+
+The match document (`<match>.match.json`) lists the bomb sites as
+`objectives`, the way the viewer reads War Thunder's capture zones: per room
+`{"type": "bomb_site", "name": "B Church", "site": "B Church, B Arsenal Room",
+"shape": "outline", "points": [[x, y, z]...], "position", "radius", "rounds",
+"active": [[from, to]...]}` (`active`: the table's seconds of the rounds it was
+played). A room's outline is the hull of where players stood while their
+callout named it (the outermost 3% dropped), on its floor. A site of the map
+that nobody walked into in the match is drawn from `heat3d_ext_r6/sites.json`
+as a circle (`shape` `cylinder`, `from` `table`).
+
+`sites.json` is derived from the converted esports matches
+(`tools/sites_build.py survey <folder> <survey.jsonl>`, then `build`): per map
+version (`worldid`) each site with English callouts, the median of the plants
+made there (else of the defenders late in the preparation phase), floor
+height and spread. Derived coordinates only, no game asset. 20 map versions,
+79 sites; the converted matches it was built from were mostly written by 0.1.0,
+which missed Y11 plants, so most sites come from the defenders.
 
 ## The catalogue
 
-`heat3d_ext_r6/catalog.json` names the item ids the replays use (199 ids:
+`heat3d_ext_r6/catalog.json` names the item ids the replays use (205 ids:
 weapons, secondary gadgets, abilities, the drone), with each operator's
 loadout from Ubisoft's operator pages and weapon classes; `catalog.py` adds
 roles (an operator's usual job, a gadget's or ability's purpose: this
@@ -82,12 +134,25 @@ id is the weapon or gadget that the loadouts of all operators carrying it
 share (`tools/catalog_survey.py` lists who carries what over many rounds,
 `tools/catalog_build.py` names them). Each id says how sure that is:
 
-- `sure`: one name fits the operators carrying it (165 ids).
-- `by: headshot share of its kills`: a weapon only one operator carries, one
-  of two candidates a shotgun, told apart by the headshot share of its kills
-  (11 ids).
+- `sure`: one name fits the operators carrying it (181 ids, from 734 rounds
+  of 2024-2026 esports replays).
+- `by`: named by a further fact, which `by` states (14 ids): the headshot
+  share of its kills (a shotgun against a rifle), another operator carrying
+  the same id (Flores's T-95 LSW is Ying's too), the operator's other weapon
+  being named already, or the id's range (a weapon from the game's launch
+  keeps its launch-era id, 1366019xxx, for everyone carrying it; a weapon
+  added with an operator gets an id of that season). These facts and their
+  reasons are `RESOLVE` in `tools/catalog_build.py`.
 - otherwise `candidates`: the names that fit; the table shows them joined
-  with ` / ` (for instance `AUG A2 / MP5K`).
+  with ` / `. Still open: Gridlock's two primaries (F90 / M249 SAW: both
+  rifles, the headshot share does not tell), two of Jackal's (C7E / ITA12L /
+  PDW9) and one of Caveira's (M12 / SPAS-15), each seen in a few rounds; one
+  ability id seen in 3 rounds with no carrier named.
+
+A rebuild keeps the names the previous catalogue gave and lists where the
+bigger survey's slot vote disagrees (four ids: a breach charge or claymore,
+Jäger's ADS or an observation blocker, a bulletproof camera or nitro cell,
+Frost's Super 90 or 9mm C1, whose headshot share is 39% of 33 kills).
 
 Loadouts change with seasons; the operator pages are those of 2026-11. Not in
 the catalogue: weapon damage, fire rate and magazine size, operator speed and
@@ -98,11 +163,18 @@ shipped.
 ## Not read (yet)
 
 Attachments (the weapon's record holds small numbers, not named ids), health
-and damage, shots, what each placed gadget object is, who made a mark on the
-level and the size of the opening, walls and floors opened, reinforcements,
-barricades and hatches (a section of level objects with health values and
-positions holds them, not decoded yet), camera use. Online profile ids are
-read but kept out of the output on purpose.
+and damage, the size of a hole's opening, walls and floors opened, which wall
+or hatch a reinforcement went on and whether it was breached later,
+barricades on doors and windows (a section of level objects with health
+values and positions holds them, not decoded yet), stance (standing,
+crouching, prone: not found in the body's updates), camera use. Online
+profile ids are read but kept out of the output on purpose.
+
+Found but not used yet: the event section counts each item's charges and
+ammunition (fields `66 6b 18 44`, `34 bc 4b aa`: deployables left;
+`77 ca 96 de`: rounds in the magazine; `40 0a c8 29`: rounds in reserve) on
+the item objects; tying those objects to their players would give every
+deployment and every shot fired.
 
 The marks' `surface` ids are the map's own: they keep their value across the
 matches of one version of a map (a rework gives the map a new `worldid` and

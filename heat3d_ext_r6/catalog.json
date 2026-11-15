@@ -3,7 +3,7 @@
  "version": 1,
  "sources": {
   "loadouts": "ubisoft.com operator pages, fetched 2026-11-15",
-  "items": "item ids named from 193 rounds of official esports replays (2024-2026) by the operators carrying them; see tools/catalog_build.py"
+  "items": "item ids named from 740 rounds of official esports replays (2024-2026) by the operators carrying them; see tools/catalog_build.py"
  },
  "drone": "249219679725",
  "operators": {
@@ -1733,27 +1733,23 @@
  },
  "items": {
   "1366019208": {
-   "name": null,
+   "name": "416-C Carbine",
    "kind": "primary",
    "sure": false,
-   "rounds": 13,
-   "kills": 12,
+   "rounds": 53,
+   "kills": 44,
    "fit": 1.0,
    "operators": [
     "Jäger"
    ],
-   "candidates": [
-    "416-C Carbine",
-    "M870",
-    "MBZ-19"
-   ]
+   "by": "headshot share (74% of 34: not the M870) and a launch-era id (not the MBZ-19)"
   },
   "1366019220": {
    "name": "AK-12",
    "kind": "primary",
    "sure": true,
-   "rounds": 73,
-   "kills": 188,
+   "rounds": 295,
+   "kills": 347,
    "fit": 1.0,
    "operators": [
     "Ace",
@@ -1761,26 +1757,22 @@
    ]
   },
   "1366019232": {
-   "name": null,
+   "name": "AUG A2",
    "kind": "primary",
-   "sure": false,
-   "rounds": 5,
-   "kills": 9,
+   "sure": true,
+   "rounds": 11,
+   "kills": 14,
    "fit": 1.0,
    "operators": [
     "Wamai"
-   ],
-   "candidates": [
-    "AUG A2",
-    "MP5K"
    ]
   },
   "1366019244": {
    "name": "F2",
    "kind": "primary",
    "sure": true,
-   "rounds": 40,
-   "kills": 111,
+   "rounds": 169,
+   "kills": 201,
    "fit": 1.0,
    "operators": [
     "Solid Snake",
@@ -1791,10 +1783,11 @@
    "name": "G36C",
    "kind": "primary",
    "sure": true,
-   "rounds": 1,
-   "kills": 1,
+   "rounds": 10,
+   "kills": 9,
    "fit": 1.0,
    "operators": [
+    "Ash",
     "Iana"
    ]
   },
@@ -1802,8 +1795,8 @@
    "name": "AR33",
    "kind": "primary",
    "sure": true,
-   "rounds": 25,
-   "kills": 59,
+   "rounds": 118,
+   "kills": 101,
    "fit": 1.0,
    "operators": [
     "Flores",
@@ -1814,8 +1807,8 @@
    "name": "417",
    "kind": "primary",
    "sure": true,
-   "rounds": 89,
-   "kills": 185,
+   "rounds": 323,
+   "kills": 323,
    "fit": 1.0,
    "operators": [
     "Lion",
@@ -1828,8 +1821,8 @@
    "name": "L85A2",
    "kind": "primary",
    "sure": true,
-   "rounds": 23,
-   "kills": 53,
+   "rounds": 89,
+   "kills": 106,
    "fit": 1.0,
    "operators": [
     "Sledge",
@@ -1840,8 +1833,8 @@
    "name": "R4-C",
    "kind": "primary",
    "sure": true,
-   "rounds": 65,
-   "kills": 124,
+   "rounds": 249,
+   "kills": 238,
    "fit": 1.0,
    "operators": [
     "Ash",
@@ -1852,8 +1845,8 @@
    "name": "552 Commando",
    "kind": "primary",
    "sure": true,
-   "rounds": 84,
-   "kills": 139,
+   "rounds": 306,
+   "kills": 274,
    "fit": 1.0,
    "operators": [
     "Grim",
@@ -1864,8 +1857,8 @@
    "name": "556xi",
    "kind": "primary",
    "sure": true,
-   "rounds": 30,
-   "kills": 50,
+   "rounds": 140,
+   "kills": 114,
    "fit": 1.0,
    "operators": [
     "Osa",
@@ -1876,19 +1869,20 @@
    "name": "G8A1",
    "kind": "primary",
    "sure": true,
-   "rounds": 2,
-   "kills": 1,
+   "rounds": 8,
+   "kills": 4,
    "fit": 1.0,
    "operators": [
-    "Amaru"
+    "Amaru",
+    "Iq"
    ]
   },
   "1366019364": {
    "name": "6P41",
    "kind": "primary",
    "sure": true,
-   "rounds": 7,
-   "kills": 29,
+   "rounds": 40,
+   "kills": 56,
    "fit": 1.0,
    "operators": [
     "Finka",
@@ -1899,8 +1893,8 @@
    "name": "SMG-11",
    "kind": "secondary",
    "sure": true,
-   "rounds": 192,
-   "kills": 292,
+   "rounds": 764,
+   "kills": 546,
    "fit": 1.0,
    "operators": [
     "Amaru",
@@ -1913,7 +1907,7 @@
    "name": "5.7 USG",
    "kind": "secondary",
    "sure": true,
-   "rounds": 28,
+   "rounds": 148,
    "kills": 4,
    "fit": 1.0,
    "operators": [
@@ -1929,21 +1923,22 @@
    "name": "LFP586",
    "kind": "secondary",
    "sure": true,
-   "rounds": 18,
-   "kills": 2,
+   "rounds": 107,
+   "kills": 6,
    "fit": 1.0,
    "operators": [
     "Kaid",
     "Lion",
-    "Montagne"
+    "Montagne",
+    "Twitch"
    ]
   },
   "1366019436": {
    "name": "GSh-18",
    "kind": "secondary",
    "sure": true,
-   "rounds": 27,
-   "kills": 0,
+   "rounds": 121,
+   "kills": 3,
    "fit": 1.0,
    "operators": [
     "Finka",
@@ -1956,7 +1951,7 @@
    "name": "M45 MEUSOC",
    "kind": "secondary",
    "sure": true,
-   "rounds": 52,
+   "rounds": 188,
    "kills": 1,
    "fit": 1.0,
    "operators": [
@@ -1969,8 +1964,8 @@
    "name": "PMM",
    "kind": "secondary",
    "sure": true,
-   "rounds": 28,
-   "kills": 0,
+   "rounds": 103,
+   "kills": 3,
    "fit": 1.0,
    "operators": [
     "Finka",
@@ -1984,8 +1979,8 @@
    "name": "P9",
    "kind": "secondary",
    "sure": true,
-   "rounds": 187,
-   "kills": 36,
+   "rounds": 688,
+   "kills": 68,
    "fit": 1.0,
    "operators": [
     "Ace",
@@ -1998,8 +1993,8 @@
    "name": "P226 Mk 25",
    "kind": "secondary",
    "sure": true,
-   "rounds": 47,
-   "kills": 2,
+   "rounds": 185,
+   "kills": 3,
    "fit": 1.0,
    "operators": [
     "Sledge",
@@ -2011,8 +2006,8 @@
    "name": "P12",
    "kind": "secondary",
    "sure": true,
-   "rounds": 90,
-   "kills": 40,
+   "rounds": 315,
+   "kills": 66,
    "fit": 1.0,
    "operators": [
     "Bandit",
@@ -2026,8 +2021,8 @@
    "name": "M590A1",
    "kind": "primary",
    "sure": true,
-   "rounds": 192,
-   "kills": 106,
+   "rounds": 712,
+   "kills": 190,
    "fit": 1.0,
    "operators": [
     "Deimos",
@@ -2041,55 +2036,56 @@
    "name": "M1014",
    "kind": "primary",
    "sure": false,
-   "rounds": 4,
-   "kills": 0,
+   "rounds": 18,
+   "kills": 4,
    "fit": 1.0,
    "operators": [
     "Pulse"
    ],
-   "candidates": [
-    "M1014",
-    "UMP45"
-   ],
-   "by": "headshot share of its kills"
+   "by": "Pulse's other primary is the UMP45; 0 headshots in 4 kills"
   },
   "1366019532": {
    "name": "M870",
    "kind": "primary",
+   "sure": true,
+   "rounds": 24,
+   "kills": 7,
+   "fit": 1.0,
+   "operators": [
+    "Bandit",
+    "Thorn"
+   ]
+  },
+  "1366019556": {
+   "name": "SG-CQB",
+   "kind": "primary",
    "sure": false,
-   "rounds": 5,
+   "rounds": 1,
    "kills": 0,
    "fit": 1.0,
    "operators": [
-    "Thorn"
+    "Lion"
    ],
-   "candidates": [
-    "M870",
-    "UZK50Gi"
-   ],
-   "by": "headshot share of its kills"
+   "by": "a launch-era id; Lion's other primary has an id of his season"
   },
   "1366019592": {
-   "name": null,
+   "name": "MP5K",
    "kind": "primary",
-   "sure": false,
-   "rounds": 37,
-   "kills": 64,
+   "sure": true,
+   "rounds": 159,
+   "kills": 130,
    "fit": 1.0,
    "operators": [
+    "Mute",
     "Wamai"
-   ],
-   "candidates": [
-    "AUG A2",
-    "MP5K"
    ]
   },
   "1366019604": {
    "name": "MP5",
    "kind": "primary",
    "sure": true,
-   "rounds": 44,
-   "kills": 69,
+   "rounds": 132,
+   "kills": 123,
    "fit": 1.0,
    "operators": [
     "Doc",
@@ -2100,8 +2096,8 @@
    "name": "MP7",
    "kind": "primary",
    "sure": true,
-   "rounds": 63,
-   "kills": 132,
+   "rounds": 253,
+   "kills": 267,
    "fit": 1.0,
    "operators": [
     "Bandit",
@@ -2113,41 +2109,33 @@
    "name": "P90",
    "kind": "primary",
    "sure": false,
-   "rounds": 17,
-   "kills": 26,
+   "rounds": 91,
+   "kills": 87,
    "fit": 1.0,
    "operators": [
     "Solis"
    ],
-   "candidates": [
-    "ITA12L",
-    "P90"
-   ],
-   "by": "headshot share of its kills"
+   "by": "headshot share of its kills (73% of 74: not the ITA12L shotgun)"
   },
   "1366019640": {
    "name": "UMP45",
    "kind": "primary",
    "sure": false,
-   "rounds": 34,
-   "kills": 93,
+   "rounds": 151,
+   "kills": 165,
    "fit": 1.0,
    "operators": [
     "Castle",
     "Pulse"
    ],
-   "candidates": [
-    "M1014",
-    "UMP45"
-   ],
-   "by": "headshot share of its kills"
+   "by": "headshot share of its kills (64% of 121: not the M1014 shotgun)"
   },
   "1366019652": {
    "name": "9X19SVN",
    "kind": "primary",
    "sure": true,
-   "rounds": 91,
-   "kills": 198,
+   "rounds": 325,
+   "kills": 377,
    "fit": 0.99,
    "operators": [
     "Azami",
@@ -2159,8 +2147,8 @@
    "name": "FMG-9",
    "kind": "primary",
    "sure": true,
-   "rounds": 7,
-   "kills": 7,
+   "rounds": 18,
+   "kills": 16,
    "fit": 1.0,
    "operators": [
     "Denari",
@@ -2172,34 +2160,30 @@
    "name": "OTs-03",
    "kind": "primary",
    "sure": true,
-   "rounds": 14,
-   "kills": 33,
+   "rounds": 62,
+   "kills": 57,
    "fit": 1.0,
    "operators": [
     "Glaz"
    ]
   },
   "10929932395": {
-   "name": null,
+   "name": "Mk17 CQB",
    "kind": "primary",
-   "sure": false,
-   "rounds": 32,
-   "kills": 65,
+   "sure": true,
+   "rounds": 118,
+   "kills": 113,
    "fit": 1.0,
    "operators": [
     "Blackbeard"
-   ],
-   "candidates": [
-    "Mk17 CQB",
-    "SR-25"
    ]
   },
   "13333480638": {
    "name": "C8-SFW",
    "kind": "primary",
    "sure": true,
-   "rounds": 3,
-   "kills": 4,
+   "rounds": 5,
+   "kills": 6,
    "fit": 1.0,
    "operators": [
     "Buck"
@@ -2209,35 +2193,49 @@
    "name": "Super 90",
    "kind": "primary",
    "sure": false,
-   "rounds": 13,
-   "kills": 21,
+   "rounds": 48,
+   "kills": 42,
    "fit": 1.0,
    "operators": [
     "Frost"
    ],
+   "by": "headshot share of its kills",
    "candidates": [
     "9mm C1",
     "Super 90"
-   ],
-   "by": "headshot share of its kills"
+   ]
   },
   "13333481726": {
-   "name": null,
+   "name": "CAMRS",
    "kind": "primary",
    "sure": false,
-   "rounds": 34,
-   "kills": 56,
+   "rounds": 158,
+   "kills": 128,
    "fit": 1.0,
    "operators": [
     "Buck"
+   ],
+   "by": "Buck's other primary (the C8-SFW has its own id), an id of Buck's season"
+  },
+  "13333481762": {
+   "name": "SR-25",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 4,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Blackbeard",
+    "Flores",
+    "Striker"
    ]
   },
   "13333481774": {
    "name": "Mk1 9mm",
    "kind": "secondary",
    "sure": true,
-   "rounds": 43,
-   "kills": 4,
+   "rounds": 110,
+   "kills": 6,
    "fit": 1.0,
    "operators": [
     "Buck",
@@ -2248,11 +2246,12 @@
    "name": "D-50",
    "kind": "secondary",
    "sure": true,
-   "rounds": 112,
-   "kills": 8,
-   "fit": 1.0,
+   "rounds": 429,
+   "kills": 22,
+   "fit": 0.99,
    "operators": [
     "Azami",
+    "Blackbeard",
     "Nøkk",
     "Valkyrie"
    ]
@@ -2261,8 +2260,8 @@
    "name": "MPX",
    "kind": "primary",
    "sure": true,
-   "rounds": 74,
-   "kills": 170,
+   "rounds": 303,
+   "kills": 314,
    "fit": 1.0,
    "operators": [
     "Tubarão",
@@ -2274,8 +2273,8 @@
    "name": "PARA-308",
    "kind": "primary",
    "sure": true,
-   "rounds": 30,
-   "kills": 67,
+   "rounds": 120,
+   "kills": 121,
    "fit": 1.0,
    "operators": [
     "Brava",
@@ -2286,8 +2285,8 @@
    "name": "M249",
    "kind": "primary",
    "sure": true,
-   "rounds": 4,
-   "kills": 3,
+   "rounds": 9,
+   "kills": 7,
    "fit": 1.0,
    "operators": [
     "Capitão",
@@ -2298,8 +2297,8 @@
    "name": "PRB92",
    "kind": "secondary",
    "sure": true,
-   "rounds": 88,
-   "kills": 4,
+   "rounds": 283,
+   "kills": 8,
    "fit": 1.0,
    "operators": [
     "Aruni",
@@ -2311,7 +2310,7 @@
    "name": null,
    "kind": "primary",
    "sure": false,
-   "rounds": 2,
+   "rounds": 3,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2326,8 +2325,8 @@
    "name": "MP5SD",
    "kind": "primary",
    "sure": true,
-   "rounds": 8,
-   "kills": 18,
+   "rounds": 36,
+   "kills": 40,
    "fit": 1.0,
    "operators": [
     "Echo"
@@ -2337,22 +2336,23 @@
    "name": "Bearing 9",
    "kind": "secondary",
    "sure": true,
-   "rounds": 79,
-   "kills": 25,
+   "rounds": 321,
+   "kills": 71,
    "fit": 1.0,
    "operators": [
     "Echo",
     "Glaz",
     "Hibana",
-    "Tachanka"
+    "Tachanka",
+    "Thunderbird"
    ]
   },
   "39149214686": {
    "name": "SuperNova",
    "kind": "primary",
    "sure": true,
-   "rounds": 8,
-   "kills": 7,
+   "rounds": 33,
+   "kills": 12,
    "fit": 1.0,
    "operators": [
     "Amaru",
@@ -2363,8 +2363,8 @@
    "name": "Type-89",
    "kind": "primary",
    "sure": true,
-   "rounds": 29,
-   "kills": 18,
+   "rounds": 107,
+   "kills": 58,
    "fit": 1.0,
    "operators": [
     "Hibana"
@@ -2374,8 +2374,8 @@
    "name": "P229",
    "kind": "secondary",
    "sure": true,
-   "rounds": 63,
-   "kills": 3,
+   "rounds": 214,
+   "kills": 10,
    "fit": 1.0,
    "operators": [
     "Goyo",
@@ -2387,9 +2387,9 @@
    "name": "ITA12S",
    "kind": "secondary",
    "sure": true,
-   "rounds": 132,
-   "kills": 4,
-   "fit": 0.97,
+   "rounds": 462,
+   "kills": 8,
+   "fit": 0.94,
    "operators": [
     "Frost",
     "Jackal",
@@ -2404,8 +2404,8 @@
    "name": null,
    "kind": "primary",
    "sure": false,
-   "rounds": 2,
-   "kills": 0,
+   "rounds": 6,
+   "kills": 7,
    "fit": 1.0,
    "operators": [
     "Jackal"
@@ -2420,7 +2420,7 @@
    "name": "Luison",
    "kind": "secondary",
    "sure": true,
-   "rounds": 2,
+   "rounds": 3,
    "kills": 1,
    "fit": 1.0,
    "operators": [
@@ -2431,24 +2431,20 @@
    "name": "ITA12L",
    "kind": "primary",
    "sure": false,
-   "rounds": 14,
-   "kills": 1,
+   "rounds": 62,
+   "kills": 8,
    "fit": 1.0,
    "operators": [
     "Solis"
    ],
-   "candidates": [
-    "ITA12L",
-    "P90"
-   ],
-   "by": "headshot share of its kills"
+   "by": "Solis's other primary is the P90; 2 headshots in 7 kills"
   },
   "44316587819": {
    "name": "Vector .45 ACP",
    "kind": "primary",
    "sure": true,
-   "rounds": 82,
-   "kills": 160,
+   "rounds": 283,
+   "kills": 293,
    "fit": 1.0,
    "operators": [
     "Goyo",
@@ -2459,8 +2455,8 @@
    "name": null,
    "kind": "primary",
    "sure": false,
-   "rounds": 1,
-   "kills": 0,
+   "rounds": 2,
+   "kills": 2,
    "fit": 1.0,
    "operators": [
     "Jackal"
@@ -2472,41 +2468,36 @@
    ]
   },
   "53995319813": {
-   "name": null,
+   "name": "T-95 LSW",
    "kind": "primary",
    "sure": false,
-   "rounds": 9,
-   "kills": 23,
+   "rounds": 49,
+   "kills": 49,
    "fit": 1.0,
    "operators": [
+    "Flores",
     "Ying"
    ],
-   "candidates": [
-    "SIX12",
-    "T-95 LSW"
-   ]
+   "by": "Flores carries it too"
   },
   "53995319846": {
-   "name": null,
+   "name": "SIX12",
    "kind": "primary",
    "sure": false,
-   "rounds": 10,
-   "kills": 12,
+   "rounds": 33,
+   "kills": 18,
    "fit": 1.0,
    "operators": [
     "Ying"
    ],
-   "candidates": [
-    "SIX12",
-    "T-95 LSW"
-   ]
+   "by": "Ying's other primary is the T-95 LSW"
   },
   "53995319912": {
    "name": "T-5 SMG",
    "kind": "primary",
    "sure": true,
-   "rounds": 36,
-   "kills": 78,
+   "rounds": 151,
+   "kills": 149,
    "fit": 1.0,
    "operators": [
     "Lesion",
@@ -2517,7 +2508,7 @@
    "name": "Q-929",
    "kind": "secondary",
    "sure": true,
-   "rounds": 13,
+   "rounds": 45,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2526,88 +2517,73 @@
    ]
   },
   "55586802030": {
-   "name": null,
+   "name": "V308",
    "kind": "primary",
    "sure": false,
-   "rounds": 3,
-   "kills": 11,
+   "rounds": 14,
+   "kills": 18,
    "fit": 1.0,
    "operators": [
     "Lion"
    ],
-   "candidates": [
-    "SG-CQB",
-    "V308"
-   ]
+   "by": "an id of Lion's season, next to Finka's; 60% headshots"
   },
   "55586802095": {
    "name": "ACS12",
    "kind": "primary",
-   "sure": false,
-   "rounds": 1,
-   "kills": 1,
+   "sure": true,
+   "rounds": 14,
+   "kills": 7,
    "fit": 1.0,
    "operators": [
+    "Alibi",
+    "Azami",
     "Maestro"
-   ],
-   "candidates": [
-    "ACS12",
-    "ALDA 5.56"
-   ],
-   "by": "headshot share of its kills"
+   ]
   },
   "55586802503": {
    "name": "Spear .308",
    "kind": "primary",
-   "sure": false,
-   "rounds": 8,
-   "kills": 16,
+   "sure": true,
+   "rounds": 17,
+   "kills": 24,
    "fit": 1.0,
    "operators": [
-    "Finka"
-   ],
-   "candidates": [
-    "SASG-12",
-    "Spear .308"
-   ],
-   "by": "headshot share of its kills"
+    "Finka",
+    "Thunderbird"
+   ]
   },
   "68967567352": {
-   "name": null,
+   "name": "M762",
    "kind": "primary",
    "sure": false,
-   "rounds": 18,
-   "kills": 21,
+   "rounds": 77,
+   "kills": 57,
    "fit": 1.0,
    "operators": [
     "Zofia"
    ],
-   "candidates": [
-    "LMG-E",
-    "M762"
-   ]
+   "by": "Zofia's other primary is the LMG-E"
   },
   "68967567391": {
-   "name": null,
+   "name": "LMG-E",
    "kind": "primary",
    "sure": false,
-   "rounds": 1,
-   "kills": 1,
+   "rounds": 3,
+   "kills": 3,
    "fit": 1.0,
    "operators": [
+    "Ram",
     "Zofia"
    ],
-   "candidates": [
-    "LMG-E",
-    "M762"
-   ]
+   "by": "Ram carries it too"
   },
   "68967567430": {
    "name": "RG15",
    "kind": "secondary",
    "sure": true,
-   "rounds": 53,
-   "kills": 3,
+   "rounds": 224,
+   "kills": 6,
    "fit": 1.0,
    "operators": [
     "Ela",
@@ -2619,7 +2595,7 @@
    "name": "FO-12",
    "kind": "primary",
    "sure": true,
-   "rounds": 2,
+   "rounds": 3,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2630,8 +2606,8 @@
    "name": "Scorpion EVO 3 A1",
    "kind": "primary",
    "sure": true,
-   "rounds": 42,
-   "kills": 69,
+   "rounds": 156,
+   "kills": 150,
    "fit": 1.0,
    "operators": [
     "Denari",
@@ -2642,8 +2618,8 @@
    "name": "Mk 14 EBR",
    "kind": "primary",
    "sure": true,
-   "rounds": 64,
-   "kills": 71,
+   "rounds": 257,
+   "kills": 161,
    "fit": 1.0,
    "operators": [
     "Aruni",
@@ -2654,8 +2630,8 @@
    "name": "SMG-12",
    "kind": "secondary",
    "sure": true,
-   "rounds": 115,
-   "kills": 139,
+   "rounds": 472,
+   "kills": 261,
    "fit": 1.0,
    "operators": [
     "Dokkaebi",
@@ -2664,74 +2640,60 @@
    ]
   },
   "78526932169": {
-   "name": null,
+   "name": "C75 Auto",
    "kind": "secondary",
-   "sure": false,
-   "rounds": 39,
-   "kills": 5,
+   "sure": true,
+   "rounds": 162,
+   "kills": 19,
    "fit": 1.0,
    "operators": [
+    "Dokkaebi",
     "Sentry",
-    "Thorn"
-   ],
-   "candidates": [
-    "1911 TACOPS",
-    "C75 Auto"
+    "Thorn",
+    "Vigil"
    ]
   },
   "78526932208": {
-   "name": null,
+   "name": "BOSG.12.2",
    "kind": "primary",
-   "sure": false,
-   "rounds": 4,
-   "kills": 8,
+   "sure": true,
+   "rounds": 17,
+   "kills": 13,
    "fit": 1.0,
    "operators": [
+    "Dokkaebi",
     "Vigil"
-   ],
-   "candidates": [
-    "BOSG.12.2",
-    "K1A"
    ]
   },
   "78526932247": {
-   "name": null,
+   "name": "K1A",
    "kind": "primary",
-   "sure": false,
-   "rounds": 3,
-   "kills": 0,
+   "sure": true,
+   "rounds": 18,
+   "kills": 11,
    "fit": 1.0,
    "operators": [
     "Vigil"
-   ],
-   "candidates": [
-    "BOSG.12.2",
-    "K1A"
    ]
   },
   "127174503954": {
    "name": "ALDA 5.56",
    "kind": "primary",
-   "sure": false,
-   "rounds": 3,
-   "kills": 15,
-   "fit": 1.0,
+   "sure": true,
+   "rounds": 17,
+   "kills": 21,
+   "fit": 0.94,
    "operators": [
     "Maestro"
-   ],
-   "candidates": [
-    "ACS12",
-    "ALDA 5.56"
-   ],
-   "by": "headshot share of its kills"
+   ]
   },
   "127174503972": {
    "name": "Bailiff 410",
    "kind": "secondary",
    "sure": false,
-   "rounds": 98,
-   "kills": 4,
-   "fit": 0.64,
+   "rounds": 366,
+   "kills": 6,
+   "fit": 0.67,
    "operators": [
     "Alibi",
     "Doc",
@@ -2748,8 +2710,8 @@
    "name": "Keratos .357",
    "kind": "secondary",
    "sure": true,
-   "rounds": 28,
-   "kills": 0,
+   "rounds": 114,
+   "kills": 5,
    "fit": 1.0,
    "operators": [
     "Bandit",
@@ -2760,31 +2722,33 @@
   "127174504008": {
    "name": "Mx4 Storm",
    "kind": "primary",
-   "sure": false,
-   "rounds": 1,
-   "kills": 3,
+   "sure": true,
+   "rounds": 6,
+   "kills": 8,
    "fit": 1.0,
    "operators": [
     "Alibi"
-   ],
-   "candidates": [
-    "ACS12",
-    "Mx4 Storm"
-   ],
-   "by": "headshot share of its kills"
+   ]
   },
   "127363389074": {
    "name": "Proximity Alarm",
    "kind": "gadget",
    "sure": true,
-   "rounds": 33,
-   "kills": 0,
+   "rounds": 126,
+   "kills": 1,
    "fit": 1.0,
    "operators": [
     "Alibi",
     "Castle",
+    "Caveira",
     "Goyo",
+    "Mira",
+    "Oryx",
+    "Sentry",
+    "Skopós",
+    "Smoke",
     "Solis",
+    "Tubarão",
     "Wamai"
    ]
   },
@@ -2792,7 +2756,7 @@
    "name": "Prisma",
    "kind": "ability",
    "sure": true,
-   "rounds": 1,
+   "rounds": 7,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2803,7 +2767,7 @@
    "name": "Breaching Round",
    "kind": "ability",
    "sure": true,
-   "rounds": 43,
+   "rounds": 171,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2814,18 +2778,29 @@
    "name": "Shock Wire",
    "kind": "ability",
    "sure": true,
-   "rounds": 19,
+   "rounds": 82,
    "kills": 0,
    "fit": 1.0,
    "operators": [
     "Bandit"
    ]
   },
+  "133651069192": {
+   "name": "H.U.L.L. Adaptable Shield",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 3,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Blackbeard"
+   ]
+  },
   "133651069198": {
    "name": "G52-Tactical Shield",
    "kind": "ability",
    "sure": true,
-   "rounds": 30,
+   "rounds": 104,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2836,7 +2811,7 @@
    "name": "Skeleton Key",
    "kind": "ability",
    "sure": true,
-   "rounds": 37,
+   "rounds": 163,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2847,8 +2822,8 @@
    "name": "Tactical Crossbow",
    "kind": "ability",
    "sure": true,
-   "rounds": 34,
-   "kills": 1,
+   "rounds": 140,
+   "kills": 6,
    "fit": 1.0,
    "operators": [
     "Capitão"
@@ -2858,7 +2833,7 @@
    "name": "Armor Panel",
    "kind": "ability",
    "sure": true,
-   "rounds": 29,
+   "rounds": 137,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2869,7 +2844,7 @@
    "name": "Silent Step",
    "kind": "ability",
    "sure": true,
-   "rounds": 2,
+   "rounds": 3,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2880,7 +2855,7 @@
    "name": "E-Heal Monitor",
    "kind": "ability",
    "sure": true,
-   "rounds": 7,
+   "rounds": 15,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2891,7 +2866,7 @@
    "name": "Jegeo Payload",
    "kind": "ability",
    "sure": true,
-   "rounds": 32,
+   "rounds": 136,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2902,7 +2877,7 @@
    "name": "Yokai",
    "kind": "ability",
    "sure": true,
-   "rounds": 14,
+   "rounds": 56,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2913,7 +2888,7 @@
    "name": "Adrenal Surge",
    "kind": "ability",
    "sure": true,
-   "rounds": 14,
+   "rounds": 53,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2924,7 +2899,7 @@
    "name": "Welcome Mat",
    "kind": "ability",
    "sure": true,
-   "rounds": 13,
+   "rounds": 48,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2935,7 +2910,7 @@
    "name": "Cluster Charge",
    "kind": "ability",
    "sure": true,
-   "rounds": 5,
+   "rounds": 15,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2946,7 +2921,7 @@
    "name": "Flip Sight",
    "kind": "ability",
    "sure": true,
-   "rounds": 14,
+   "rounds": 62,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2957,7 +2932,7 @@
    "name": "X-Kairos",
    "kind": "ability",
    "sure": true,
-   "rounds": 38,
+   "rounds": 177,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2968,7 +2943,7 @@
    "name": "Electronics Detector",
    "kind": "ability",
    "sure": true,
-   "rounds": 31,
+   "rounds": 117,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2979,7 +2954,7 @@
    "name": "Eyenox Model III",
    "kind": "ability",
    "sure": true,
-   "rounds": 3,
+   "rounds": 8,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -2990,7 +2965,7 @@
    "name": "Active Defense System (ADS)",
    "kind": "ability",
    "sure": true,
-   "rounds": 13,
+   "rounds": 53,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3001,8 +2976,8 @@
    "name": "Entry Denial Device (EDD-MK II)",
    "kind": "ability",
    "sure": true,
-   "rounds": 11,
-   "kills": 0,
+   "rounds": 31,
+   "kills": 1,
    "fit": 1.0,
    "operators": [
     "Kapkan"
@@ -3012,7 +2987,7 @@
    "name": "Gu Mine",
    "kind": "ability",
    "sure": true,
-   "rounds": 35,
+   "rounds": 128,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3023,7 +2998,7 @@
    "name": "EE-ONE-D",
    "kind": "ability",
    "sure": true,
-   "rounds": 40,
+   "rounds": 156,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3034,7 +3009,7 @@
    "name": "Evil Eye",
    "kind": "ability",
    "sure": true,
-   "rounds": 4,
+   "rounds": 25,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3045,7 +3020,7 @@
    "name": "Black Mirror",
    "kind": "ability",
    "sure": true,
-   "rounds": 48,
+   "rounds": 167,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3056,7 +3031,7 @@
    "name": "Le Roc Shield",
    "kind": "ability",
    "sure": true,
-   "rounds": 30,
+   "rounds": 91,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3067,7 +3042,7 @@
    "name": "Signal Disruptor",
    "kind": "ability",
    "sure": true,
-   "rounds": 78,
+   "rounds": 295,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3078,7 +3053,7 @@
    "name": "Cardiac Sensor",
    "kind": "ability",
    "sure": true,
-   "rounds": 9,
+   "rounds": 32,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3089,7 +3064,7 @@
    "name": "Breaching Hammer",
    "kind": "ability",
    "sure": true,
-   "rounds": 24,
+   "rounds": 65,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3100,8 +3075,8 @@
    "name": "Remote Gas Grenade",
    "kind": "ability",
    "sure": true,
-   "rounds": 79,
-   "kills": 7,
+   "rounds": 296,
+   "kills": 13,
    "fit": 1.0,
    "operators": [
     "Smoke"
@@ -3111,7 +3086,7 @@
    "name": "E.G.S. Disruptor",
    "kind": "ability",
    "sure": true,
-   "rounds": 7,
+   "rounds": 34,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3122,7 +3097,7 @@
    "name": "Exothermic Charge",
    "kind": "ability",
    "sure": true,
-   "rounds": 28,
+   "rounds": 134,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3133,7 +3108,7 @@
    "name": "Shock Drone",
    "kind": "ability",
    "sure": true,
-   "rounds": 49,
+   "rounds": 178,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3144,7 +3119,7 @@
    "name": "Black Eye",
    "kind": "ability",
    "sure": true,
-   "rounds": 29,
+   "rounds": 118,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3155,7 +3130,7 @@
    "name": "ERC-7",
    "kind": "ability",
    "sure": true,
-   "rounds": 7,
+   "rounds": 33,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3166,7 +3141,7 @@
    "name": "Candela",
    "kind": "ability",
    "sure": true,
-   "rounds": 19,
+   "rounds": 81,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3177,7 +3152,7 @@
    "name": "KS79 Lifeline",
    "kind": "ability",
    "sure": true,
-   "rounds": 19,
+   "rounds": 79,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3188,12 +3163,13 @@
    "name": "Claymore",
    "kind": "gadget",
    "sure": true,
-   "rounds": 155,
-   "kills": 3,
+   "rounds": 549,
+   "kills": 9,
    "fit": 1.0,
    "operators": [
     "Ace",
     "Ash",
+    "Blackbeard",
     "Brava",
     "Capitão",
     "Flores",
@@ -3201,10 +3177,12 @@
     "Iq",
     "Jackal",
     "Kali",
+    "Lion",
     "Maverick",
     "Striker",
     "Thatcher",
     "Twitch",
+    "Zero",
     "Zofia"
    ]
   },
@@ -3212,7 +3190,7 @@
    "name": "Grzmot Mine",
    "kind": "ability",
    "sure": true,
-   "rounds": 26,
+   "rounds": 108,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3223,9 +3201,9 @@
    "name": "Barbed Wire",
    "kind": "gadget",
    "sure": true,
-   "rounds": 224,
-   "kills": 0,
-   "fit": 0.98,
+   "rounds": 887,
+   "kills": 1,
+   "fit": 0.95,
    "operators": [
     "Aruni",
     "Azami",
@@ -3234,20 +3212,23 @@
     "Doc",
     "Ela",
     "Fenrir",
+    "Kaid",
     "Kapkan",
     "Maestro",
+    "Mozzie",
     "Oryx",
     "Sentry",
     "Smoke",
     "Tachanka",
-    "Thorn"
+    "Thorn",
+    "Thunderbird"
    ]
   },
   "133651070282": {
    "name": "Deployable Shield",
    "kind": "gadget",
    "sure": true,
-   "rounds": 83,
+   "rounds": 322,
    "kills": 0,
    "fit": 0.98,
    "operators": [
@@ -3260,6 +3241,7 @@
     "Smoke",
     "Tachanka",
     "Thorn",
+    "Wamai",
     "Warden"
    ]
   },
@@ -3267,9 +3249,9 @@
    "name": "Stun Grenade",
    "kind": "gadget",
    "sure": true,
-   "rounds": 204,
+   "rounds": 879,
    "kills": 0,
-   "fit": 0.89,
+   "fit": 0.88,
    "operators": [
     "Ace",
     "Amaru",
@@ -3291,8 +3273,8 @@
    "name": "Nitro Cell",
    "kind": "gadget",
    "sure": true,
-   "rounds": 299,
-   "kills": 104,
+   "rounds": 1134,
+   "kills": 188,
    "fit": 0.98,
    "operators": [
     "Bandit",
@@ -3313,15 +3295,20 @@
    "name": "Bulletproof Camera",
    "kind": "gadget",
    "sure": false,
-   "rounds": 200,
+   "rounds": 1175,
    "kills": 0,
-   "fit": 0.47,
+   "fit": 0.43,
    "operators": [
     "Alibi",
     "Aruni",
     "Azami",
+    "Bandit",
     "Castle",
+    "Caveira",
+    "Clash",
     "Doc",
+    "Echo",
+    "Ela",
     "Fenrir",
     "Frost",
     "Goyo",
@@ -3334,10 +3321,13 @@
     "Mira",
     "Mozzie",
     "Mute",
+    "Oryx",
     "Pulse",
     "Smoke",
     "Solis",
+    "Tachanka",
     "Thorn",
+    "Thunderbird",
     "Tubarão",
     "Valkyrie",
     "Vigil",
@@ -3352,9 +3342,9 @@
    "name": "Breach Charge",
    "kind": "gadget",
    "sure": true,
-   "rounds": 105,
+   "rounds": 366,
    "kills": 0,
-   "fit": 0.81,
+   "fit": 0.82,
    "operators": [
     "Ace",
     "Ash",
@@ -3371,19 +3361,22 @@
    "name": "Smoke Grenade",
    "kind": "gadget",
    "sure": true,
-   "rounds": 144,
+   "rounds": 552,
    "kills": 0,
-   "fit": 0.99,
+   "fit": 1.0,
    "operators": [
     "Blitz",
     "Brava",
     "Dokkaebi",
     "Finka",
+    "Fuze",
     "Glaz",
     "Gridlock",
+    "Iana",
     "Jackal",
     "Kali",
     "Montagne",
+    "Ram",
     "Rauora",
     "Sens",
     "Striker",
@@ -3395,10 +3388,10 @@
   "133651070318": {
    "name": "Impact Grenade",
    "kind": "gadget",
-   "sure": true,
-   "rounds": 208,
-   "kills": 3,
-   "fit": 0.79,
+   "sure": false,
+   "rounds": 815,
+   "kills": 11,
+   "fit": 0.78,
    "operators": [
     "Azami",
     "Caveira",
@@ -3409,24 +3402,30 @@
     "Lesion",
     "Maestro",
     "Melusi",
+    "Mozzie",
+    "Sentry",
     "Skopós",
     "Solis",
     "Valkyrie",
     "Vigil",
     "Wamai"
+   ],
+   "candidates": [
+    "Impact Grenade"
    ]
   },
   "133651070436": {
    "name": "Frag Grenade",
    "kind": "gadget",
    "sure": true,
-   "rounds": 241,
-   "kills": 13,
+   "rounds": 851,
+   "kills": 25,
    "fit": 1.0,
    "operators": [
     "Blackbeard",
     "Deimos",
     "Finka",
+    "Glaz",
     "Gridlock",
     "Iq",
     "Lion",
@@ -3443,8 +3442,8 @@
    "name": "AR-15.50",
    "kind": "primary",
    "sure": true,
-   "rounds": 23,
-   "kills": 66,
+   "rounds": 81,
+   "kills": 104,
    "fit": 1.0,
    "operators": [
     "Maverick",
@@ -3455,8 +3454,8 @@
    "name": "M4",
    "kind": "primary",
    "sure": true,
-   "rounds": 40,
-   "kills": 133,
+   "rounds": 135,
+   "kills": 183,
    "fit": 1.0,
    "operators": [
     "Maverick",
@@ -3467,38 +3466,37 @@
    "name": "P-10C",
    "kind": "secondary",
    "sure": true,
-   "rounds": 3,
-   "kills": 0,
+   "rounds": 22,
+   "kills": 1,
    "fit": 1.0,
    "operators": [
-    "Jäger"
+    "Jäger",
+    "Warden"
    ]
   },
   "139558931707": {
-   "name": null,
+   "name": "1911 TACOPS",
    "kind": "secondary",
-   "sure": false,
-   "rounds": 6,
+   "sure": true,
+   "rounds": 34,
    "kills": 0,
    "fit": 1.0,
    "operators": [
-    "Maverick"
-   ],
-   "candidates": [
-    "1911 TACOPS",
-    "C75 Auto"
+    "Maverick",
+    "Thorn"
    ]
   },
   "139558931725": {
    "name": "Super Shorty",
    "kind": "secondary",
    "sure": true,
-   "rounds": 125,
-   "kills": 2,
-   "fit": 0.74,
+   "rounds": 502,
+   "kills": 12,
+   "fit": 0.75,
    "operators": [
     "Brava",
     "Castle",
+    "Clash",
     "Gridlock",
     "Lesion",
     "Mozzie",
@@ -3510,8 +3508,8 @@
    "name": "CCE Shield Mk2",
    "kind": "primary",
    "sure": true,
-   "rounds": 19,
-   "kills": 29,
+   "rounds": 63,
+   "kills": 44,
    "fit": 1.0,
    "operators": [
     "Clash",
@@ -3522,7 +3520,7 @@
    "name": "CCE Shield Mk2",
    "kind": "ability",
    "sure": true,
-   "rounds": 2,
+   "rounds": 9,
    "kills": 2,
    "fit": 1.0,
    "operators": [
@@ -3533,7 +3531,7 @@
    "name": "Breaching Torch",
    "kind": "ability",
    "sure": true,
-   "rounds": 9,
+   "rounds": 46,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3544,8 +3542,8 @@
    "name": "\"Rtila\" Electroclaw",
    "kind": "ability",
    "sure": true,
-   "rounds": 15,
-   "kills": 0,
+   "rounds": 83,
+   "kills": 1,
    "fit": 1.0,
    "operators": [
     "Kaid"
@@ -3555,7 +3553,7 @@
    "name": "Airjab Launcher",
    "kind": "ability",
    "sure": true,
-   "rounds": 55,
+   "rounds": 163,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3566,8 +3564,8 @@
    "name": "AK-74M",
    "kind": "primary",
    "sure": true,
-   "rounds": 62,
-   "kills": 82,
+   "rounds": 194,
+   "kills": 161,
    "fit": 1.0,
    "operators": [
     "Deimos",
@@ -3578,8 +3576,8 @@
    "name": "ARX200",
    "kind": "primary",
    "sure": true,
-   "rounds": 40,
-   "kills": 106,
+   "rounds": 130,
+   "kills": 158,
    "fit": 1.0,
    "operators": [
     "Iana",
@@ -3590,19 +3588,20 @@
    "name": ".44 Mag Semi-Auto",
    "kind": "secondary",
    "sure": true,
-   "rounds": 1,
+   "rounds": 5,
    "kills": 0,
-   "fit": 1.0,
+   "fit": 0.8,
    "operators": [
-    "Kaid"
+    "Kaid",
+    "Nomad"
    ]
   },
   "161289761794": {
    "name": "TCSG12",
    "kind": "primary",
    "sure": true,
-   "rounds": 46,
-   "kills": 66,
+   "rounds": 191,
+   "kills": 159,
    "fit": 1.0,
    "operators": [
     "Goyo",
@@ -3614,8 +3613,8 @@
    "name": "AUG A3",
    "kind": "primary",
    "sure": true,
-   "rounds": 1,
-   "kills": 0,
+   "rounds": 7,
+   "kills": 4,
    "fit": 1.0,
    "operators": [
     "Kaid"
@@ -3625,8 +3624,8 @@
    "name": null,
    "kind": "primary",
    "sure": false,
-   "rounds": 20,
-   "kills": 39,
+   "rounds": 68,
+   "kills": 79,
    "fit": 1.0,
    "operators": [
     "Gridlock"
@@ -3640,9 +3639,9 @@
    "name": "Commando 9",
    "kind": "primary",
    "sure": true,
-   "rounds": 8,
-   "kills": 17,
-   "fit": 1.0,
+   "rounds": 29,
+   "kills": 24,
+   "fit": 0.92,
    "operators": [
     "Mozzie",
     "Sentry"
@@ -3653,7 +3652,7 @@
    "kind": "primary",
    "sure": false,
    "rounds": 1,
-   "kills": 1,
+   "kills": 2,
    "fit": 1.0,
    "operators": [
     "Gridlock"
@@ -3667,7 +3666,7 @@
    "name": "SDP 9mm",
    "kind": "secondary",
    "sure": true,
-   "rounds": 22,
+   "rounds": 76,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3679,10 +3678,11 @@
    "name": "P10 RONI",
    "kind": "primary",
    "sure": true,
-   "rounds": 12,
-   "kills": 11,
+   "rounds": 35,
+   "kills": 30,
    "fit": 1.0,
    "operators": [
+    "Aruni",
     "Mozzie"
    ]
   },
@@ -3690,7 +3690,7 @@
    "name": "Pest Launcher",
    "kind": "ability",
    "sure": true,
-   "rounds": 15,
+   "rounds": 47,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3701,8 +3701,8 @@
    "name": "Trax Stingers",
    "kind": "ability",
    "sure": true,
-   "rounds": 21,
-   "kills": 3,
+   "rounds": 69,
+   "kills": 4,
    "fit": 1.0,
    "operators": [
     "Gridlock"
@@ -3712,7 +3712,7 @@
    "name": "HEL Presence Reduction",
    "kind": "ability",
    "sure": true,
-   "rounds": 5,
+   "rounds": 14,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3723,7 +3723,7 @@
    "name": "Glance Smart Glasses",
    "kind": "ability",
    "sure": true,
-   "rounds": 65,
+   "rounds": 266,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3734,8 +3734,8 @@
    "name": "Garra Hook",
    "kind": "ability",
    "sure": true,
-   "rounds": 4,
-   "kills": 6,
+   "rounds": 20,
+   "kills": 7,
    "fit": 1.0,
    "operators": [
     "Amaru"
@@ -3745,8 +3745,8 @@
    "name": "Volcán Canister",
    "kind": "ability",
    "sure": true,
-   "rounds": 58,
-   "kills": 4,
+   "rounds": 200,
+   "kills": 13,
    "fit": 1.0,
    "operators": [
     "Goyo"
@@ -3756,7 +3756,7 @@
    "name": "LV Explosive Lance",
    "kind": "ability",
    "sure": true,
-   "rounds": 7,
+   "rounds": 22,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3767,7 +3767,7 @@
    "name": "Mag-NET System",
    "kind": "ability",
    "sure": true,
-   "rounds": 42,
+   "rounds": 168,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3778,7 +3778,7 @@
    "name": "Gemini Replicator",
    "kind": "ability",
    "sure": true,
-   "rounds": 5,
+   "rounds": 29,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3789,7 +3789,7 @@
    "name": "Remah Dash",
    "kind": "ability",
    "sure": true,
-   "rounds": 1,
+   "rounds": 23,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3800,7 +3800,7 @@
    "name": "S.E.L.M.A. Aqua Breacher",
    "kind": "ability",
    "sure": true,
-   "rounds": 72,
+   "rounds": 291,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3811,7 +3811,7 @@
    "name": "Banshee Sonic Defense",
    "kind": "ability",
    "sure": true,
-   "rounds": 37,
+   "rounds": 117,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3822,7 +3822,7 @@
    "name": "Surya Gate",
    "kind": "ability",
    "sure": true,
-   "rounds": 23,
+   "rounds": 90,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3833,8 +3833,8 @@
    "name": "CSRX 300",
    "kind": "primary",
    "sure": true,
-   "rounds": 7,
-   "kills": 0,
+   "rounds": 22,
+   "kills": 6,
    "fit": 1.0,
    "operators": [
     "Kali"
@@ -3844,7 +3844,7 @@
    "name": "Bulletproof Camera",
    "kind": "gadget",
    "sure": true,
-   "rounds": 123,
+   "rounds": 440,
    "kills": 0,
    "fit": 0.99,
    "operators": [
@@ -3858,15 +3858,17 @@
     "Kapkan",
     "Lesion",
     "Melusi",
+    "Mute",
     "Sentry",
-    "Solis"
+    "Solis",
+    "Vigil"
    ]
   },
   "249219679725": {
    "name": "Drone",
    "kind": "drone",
    "sure": true,
-   "rounds": 960,
+   "rounds": 3695,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3915,13 +3917,14 @@
    "name": "Hard Breach Charge",
    "kind": "gadget",
    "sure": true,
-   "rounds": 99,
+   "rounds": 394,
    "kills": 0,
-   "fit": 0.98,
+   "fit": 0.92,
    "operators": [
     "Amaru",
     "Buck",
     "Capitão",
+    "Deimos",
     "Fuze",
     "Grim",
     "Montagne",
@@ -3936,7 +3939,7 @@
    "name": "Gonne-6",
    "kind": "secondary",
    "sure": true,
-   "rounds": 2,
+   "rounds": 4,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3947,8 +3950,8 @@
    "name": "DP27",
    "kind": "primary",
    "sure": true,
-   "rounds": 14,
-   "kills": 12,
+   "rounds": 41,
+   "kills": 21,
    "fit": 1.0,
    "operators": [
     "Tachanka"
@@ -3958,7 +3961,7 @@
    "name": "Kludge Drone",
    "kind": "ability",
    "sure": true,
-   "rounds": 9,
+   "rounds": 42,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3969,7 +3972,7 @@
    "name": "TALON-8 Clear Shield",
    "kind": "ability",
    "sure": true,
-   "rounds": 2,
+   "rounds": 6,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3980,7 +3983,7 @@
    "name": "Zoto Canister",
    "kind": "ability",
    "sure": true,
-   "rounds": 27,
+   "rounds": 98,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -3991,7 +3994,7 @@
    "name": "Argus Launcher",
    "kind": "ability",
    "sure": true,
-   "rounds": 4,
+   "rounds": 12,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -4002,8 +4005,8 @@
    "name": "SC3000K",
    "kind": "primary",
    "sure": true,
-   "rounds": 2,
-   "kills": 2,
+   "rounds": 7,
+   "kills": 3,
    "fit": 1.0,
    "operators": [
     "Zero"
@@ -4013,7 +4016,7 @@
    "name": "Shumikha Launcher",
    "kind": "ability",
    "sure": true,
-   "rounds": 15,
+   "rounds": 43,
    "kills": 7,
    "fit": 1.0,
    "operators": [
@@ -4024,7 +4027,7 @@
    "name": "RCE-Ratero Charge",
    "kind": "ability",
    "sure": true,
-   "rounds": 22,
+   "rounds": 109,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -4032,12 +4035,12 @@
    ]
   },
   "350658628377": {
-   "name": null,
+   "name": "Gonne-6",
    "kind": "secondary",
    "sure": false,
-   "rounds": 47,
+   "rounds": 286,
    "kills": 0,
-   "fit": 0.72,
+   "fit": 0.59,
    "operators": [
     "Buck",
     "Capitão",
@@ -4045,26 +4048,42 @@
     "Glaz",
     "Iana",
     "Zero"
-   ]
+   ],
+   "by": "the one secondary five of its six carriers list"
   },
   "359135665211": {
    "name": "Active Defense System (ADS)",
    "kind": "ability",
    "sure": true,
-   "rounds": 3,
+   "rounds": 16,
    "kills": 0,
-   "fit": 0.67,
+   "fit": 1.0,
    "operators": [
+    "Alibi",
+    "Fenrir",
     "Jäger",
+    "Lesion",
+    "Maestro",
     "Warden"
+   ]
+  },
+  "362035190801": {
+   "name": "Kóna Station",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 1,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Thunderbird"
    ]
   },
   "371820933471": {
    "name": "Razorbloom Shell",
    "kind": "ability",
    "sure": true,
-   "rounds": 38,
-   "kills": 5,
+   "rounds": 154,
+   "kills": 11,
    "fit": 1.0,
    "operators": [
     "Thorn"
@@ -4073,24 +4092,19 @@
   "372271879863": {
    "name": "UZK50Gi",
    "kind": "primary",
-   "sure": false,
-   "rounds": 33,
-   "kills": 58,
+   "sure": true,
+   "rounds": 131,
+   "kills": 114,
    "fit": 1.0,
    "operators": [
     "Thorn"
-   ],
-   "candidates": [
-    "M870",
-    "UZK50Gi"
-   ],
-   "by": "headshot share of its kills"
+   ]
   },
   "374667787924": {
    "name": "T.R.I.P. Connector",
    "kind": "ability",
    "sure": true,
-   "rounds": 19,
+   "rounds": 54,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -4101,7 +4115,7 @@
    "name": "Kawan Hive Launcher",
    "kind": "ability",
    "sure": true,
-   "rounds": 53,
+   "rounds": 190,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -4112,7 +4126,7 @@
    "name": "Cluster Charge",
    "kind": "ability",
    "sure": true,
-   "rounds": 3,
+   "rounds": 8,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -4123,7 +4137,7 @@
    "name": "Kiba Barrier",
    "kind": "ability",
    "sure": true,
-   "rounds": 79,
+   "rounds": 296,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -4134,8 +4148,19 @@
    "name": "R.O.U. Projector System",
    "kind": "ability",
    "sure": true,
-   "rounds": 16,
+   "rounds": 55,
    "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Sens"
+   ]
+  },
+  "385168104894": {
+   "name": "POF9",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 2,
+   "kills": 4,
    "fit": 1.0,
    "operators": [
     "Sens"
@@ -4145,7 +4170,7 @@
    "name": "V10 Pantheon Shells",
    "kind": "ability",
    "sure": true,
-   "rounds": 4,
+   "rounds": 10,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -4155,26 +4180,31 @@
   "387197346354": {
    "name": "Impact EMP Grenade",
    "kind": "gadget",
-   "sure": true,
-   "rounds": 45,
+   "sure": false,
+   "rounds": 200,
    "kills": 0,
-   "fit": 0.82,
+   "fit": 0.8,
    "operators": [
     "Capitão",
     "Dokkaebi",
+    "Gridlock",
     "Grim",
     "Iana",
     "Montagne",
     "Nøkk",
-    "Solid Snake"
+    "Solid Snake",
+    "Striker"
+   ],
+   "candidates": [
+    "Impact EMP Grenade"
    ]
   },
   "387336878940": {
    "name": "CAMRS",
    "kind": "primary",
    "sure": true,
-   "rounds": 1,
-   "kills": 2,
+   "rounds": 8,
+   "kills": 3,
    "fit": 1.0,
    "operators": [
     "Brava"
@@ -4184,7 +4214,7 @@
    "name": "Spec-IO Electro-Sensor",
    "kind": "ability",
    "sure": true,
-   "rounds": 31,
+   "rounds": 153,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -4195,7 +4225,7 @@
    "name": "BU-GI Auto Breacher",
    "kind": "ability",
    "sure": true,
-   "rounds": 22,
+   "rounds": 85,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -4206,7 +4236,7 @@
    "name": "H.U.L.L. Adaptable Shield",
    "kind": "ability",
    "sure": true,
-   "rounds": 32,
+   "rounds": 117,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -4217,7 +4247,7 @@
    "name": "F-NATT Dread Mine",
    "kind": "ability",
    "sure": true,
-   "rounds": 42,
+   "rounds": 167,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -4228,7 +4258,7 @@
    "name": "Deathmark Tracker",
    "kind": "ability",
    "sure": true,
-   "rounds": 50,
+   "rounds": 152,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -4239,8 +4269,8 @@
    "name": ".44 Vendetta",
    "kind": "secondary",
    "sure": true,
-   "rounds": 50,
-   "kills": 16,
+   "rounds": 152,
+   "kills": 54,
    "fit": 1.0,
    "operators": [
     "Deimos"
@@ -4250,8 +4280,8 @@
    "name": "PCX-33",
    "kind": "primary",
    "sure": true,
-   "rounds": 4,
-   "kills": 9,
+   "rounds": 10,
+   "kills": 17,
    "fit": 1.0,
    "operators": [
     "Skopós"
@@ -4261,8 +4291,8 @@
    "name": "Reaper MK2",
    "kind": "secondary",
    "sure": true,
-   "rounds": 36,
-   "kills": 14,
+   "rounds": 140,
+   "kills": 30,
    "fit": 1.0,
    "operators": [
     "Maverick",
@@ -4276,7 +4306,7 @@
    "name": "CCE Shield Mk2",
    "kind": "ability",
    "sure": true,
-   "rounds": 10,
+   "rounds": 34,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -4287,7 +4317,7 @@
    "name": "D.O.M. Panel Launcher",
    "kind": "ability",
    "sure": true,
-   "rounds": 5,
+   "rounds": 16,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -4298,8 +4328,8 @@
    "name": "Glaive-12",
    "kind": "secondary",
    "sure": true,
-   "rounds": 19,
-   "kills": 0,
+   "rounds": 54,
+   "kills": 1,
    "fit": 1.0,
    "operators": [
     "Denari"
@@ -4309,7 +4339,7 @@
    "name": "E.G.S. Disruptor",
    "kind": "ability",
    "sure": true,
-   "rounds": 1,
+   "rounds": 24,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -4320,8 +4350,8 @@
    "name": "PMR90A2",
    "kind": "primary",
    "sure": true,
-   "rounds": 21,
-   "kills": 38,
+   "rounds": 137,
+   "kills": 85,
    "fit": 1.0,
    "operators": [
     "Capitão",
@@ -4332,25 +4362,23 @@
    ]
   },
   "437464101745": {
-   "name": null,
+   "name": "XK23",
    "kind": "primary",
-   "sure": false,
-   "rounds": 4,
-   "kills": 0,
+   "sure": true,
+   "rounds": 29,
+   "kills": 16,
    "fit": 1.0,
    "operators": [
-    "Dokkaebi"
-   ],
-   "candidates": [
-    "BOSG.12.2",
-    "XK23"
+    "Dokkaebi",
+    "Rauora",
+    "Sens"
    ]
   },
   "440916839951": {
    "name": "Soliton Radar Mk. III",
    "kind": "ability",
    "sure": true,
-   "rounds": 24,
+   "rounds": 111,
    "kills": 0,
    "fit": 1.0,
    "operators": [
@@ -4361,7 +4389,7 @@
    "name": "TACIT .45",
    "kind": "secondary",
    "sure": true,
-   "rounds": 24,
+   "rounds": 111,
    "kills": 4,
    "fit": 1.0,
    "operators": [
@@ -4372,12 +4400,21 @@
    "name": "Jegeo Payload",
    "kind": "ability",
    "sure": true,
-   "rounds": 13,
-   "kills": 2,
+   "rounds": 60,
+   "kills": 3,
    "fit": 1.0,
    "operators": [
     "Dokkaebi"
    ]
+  },
+  "456757349435": {
+   "name": null,
+   "kind": "ability",
+   "sure": false,
+   "rounds": 3,
+   "kills": 0,
+   "fit": 0,
+   "operators": []
   }
  }
 }

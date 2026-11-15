@@ -28,7 +28,7 @@ import re
 import struct
 from dataclasses import dataclass, field
 
-from . import game, loadout
+from . import callouts as callout_mod, game, loadout
 from .rec import Rec, packets
 
 NAME = b"\x22\x07\x94\x9b\xdc"
@@ -73,6 +73,18 @@ class Event:
     headshot: bool | None = None
     text: str | None = None
     item: int | None = None  # a kill's weapon or gadget (the kill feed's item id)
+    inferred: bool = False  # the player is worked out (who stood still on the site), not written in the file
+    left: float | None = None  # a plant or defuse attempt: the defuser's timer when it stopped, seconds
+    of: float | None = None  # ... and when it started
+    confidence: float | None = None  # for an inferred player: 1 / the number of players who fit
+
+
+@dataclass
+class TimerPacket:
+    tick: int
+    left: float  # seconds left on the defuser's plant or disable timer
+    player: str | None  # where the packet names the player (older seasons)
+    clock: float | None
 
 
 @dataclass
@@ -93,6 +105,7 @@ class Round:
     action_tick: int | None
     tick_seconds: list[tuple[int, float]] = field(default_factory=list)
     phase_names: list[str] = field(default_factory=list)
+    callouts: dict = field(default_factory=dict)  # track object -> callouts.Timeline (`callouts.py`)
 
     def owner(self, obj: int) -> Player | None:
         for p in self.players:
@@ -260,6 +273,8 @@ def _tracks(rec: Rec) -> dict[int, list[tuple[int, float, float, float, float, i
             x, y, z = unpack("<3f", body, q + 6)
             if not (math.isfinite(x) and math.isfinite(y) and math.isfinite(z)) or max(abs(x), abs(y), abs(z)) > 5000:
                 continue
+            if x == 0.0 and y == 0.0:  # an update relative to the object itself (0, 0, height), not a place
+                continue
             yaw = float("nan")
             if size >= 38:
                 qz, qw = unpack("<2f", body, q + 30)
@@ -383,22 +398,21 @@ def _feed(rec: Rec, by_event_id: dict[bytes, Player]) -> tuple[list[Event], str 
                                     text=msg))
         p = body.find(FEED, p + 5)
 
-    planted = False
-    last: Player | None = None
+    # The defuser's timer while someone plants or disables it: a run of packets counting down.
+    timers: list[TimerPacket] = []
     p = body.find(DEFUSER, start)
     while p != -1:
         timer, q = _string(body, p + 5)
-        pid = body[q + 34 : q + 38]
-        pl = by_event_id.get(pid)
+        try:
+            left = float(timer)
+        except ValueError:
+            left = None
         tick = rec.tick_at(p)
-        if pl is not None:
-            events.append(Event("defuse_start" if planted else "plant_start", tick, clock_at(p), player=pl.name,
-                                text=timer))
-            last = pl
-        if timer.startswith("0.00") and last is not None:
-            events.append(Event("defuse" if planted else "plant", tick, clock_at(p), player=last.name))
-            planted = True
+        if left is not None and tick is not None and math.isfinite(left):
+            pl = by_event_id.get(body[q + 34 : q + 38])
+            timers.append(TimerPacket(tick, left, pl.name if pl is not None else None, clock_at(p)))
         p = body.find(DEFUSER, p + 5)
+    rec._timers = timers  # type: ignore[attr-defined]
 
     site = None
     p = body.find(SPAWN)
@@ -427,17 +441,6 @@ def read_round(rec: Rec) -> Round:
         first_left.setdefault(p, left)
         first_tick.setdefault(p, t)
     action = max(first_left, key=lambda p: first_left[p]) if first_left else None
-    plant_tick = next((e.tick for e in events if e.kind == "plant" and e.tick is not None), None)
-    names = []
-    for p in range(max(first_left, default=-1) + 1):
-        if p == action:
-            names.append("action")
-        elif action is not None and p < action:
-            names.append("prep")
-        elif plant_tick is not None and first_tick.get(p, 0) >= plant_tick - 60:
-            names.append("planted")
-        else:
-            names.append("end")
     action_tick = first_tick.get(action) if action is not None else None
 
     # The operators and items as the action phase starts. The snapshot's are those of the recording's
@@ -463,11 +466,29 @@ def read_round(rec: Rec) -> Round:
     if len(roles) == 1:
         (t, r), = roles.items()
         roles[1 - t] = "defense" if r == "attack" else "attack"
+
+    # Where everyone is, in callouts; then the plant and defuse attempts, with who made them.
+    timelines = callout_mod.read(rec, players, tracks)
+    events.extend(_attempts(getattr(rec, "_timers", []), players, tracks, roles, timelines, site, events))
+    events.extend(_reinforcements(rec, players, tracks, roles, events))
+    events.sort(key=lambda e: (e.tick if e.tick is not None else 1 << 40))
     if any(e.kind == "plant" for e in events) and not roles:
         planter = next(e.player for e in events if e.kind == "plant")
         t = next((p.team for p in players if p.name == planter), None)
         if t is not None:
             roles = {t: "attack", 1 - t: "defense"}
+
+    plant_tick = next((e.tick for e in events if e.kind == "plant" and e.tick is not None), None)
+    names = []
+    for p in range(max(first_left, default=-1) + 1):
+        if p == action:
+            names.append("action")
+        elif action is not None and p < action:
+            names.append("prep")
+        elif plant_tick is not None and first_tick.get(p, 0) >= plant_tick - 60:
+            names.append("planted")
+        else:
+            names.append("end")
 
     winner = None
     try:
@@ -518,4 +539,133 @@ def read_round(rec: Rec) -> Round:
               events, site, roles, winner, condition, action_tick)
     r.tick_seconds = _tick_seconds(anchors)
     r.phase_names = names
+    r.callouts = timelines
     return r
+
+
+#: A plant or a disable takes about 7 s; a timer that starts much higher is something else (the detonation).
+ATTEMPT_MAX = 12.0
+#: A timer this low has run out: the plant or disable is done.
+DONE_AT = 0.15
+
+
+def _attempts(timers: list[TimerPacket], players: list[Player], tracks: dict, roles: dict[int, str],
+              timelines: dict, site: str | None, events: list[Event]) -> list[Event]:
+    """
+    Plant and defuse attempts from the defuser's timer: each run of packets
+    counting down is one attempt; it is done when the timer runs out, else
+    interrupted (the player stopped, was stunned or killed, or the round
+    ended). Before a plant is done the attempts are plants, after it defuses.
+    The packet names the player in the seasons r6-dissect documents; where it
+    does not (Y11), the player is the one of the attempting side who stood
+    still through the attempt, on the site where the callouts say so (marked
+    `inferred`).
+    """
+    runs: list[list[TimerPacket]] = []
+    for tp in sorted(timers, key=lambda x: x.tick):
+        cur = runs[-1] if runs else None
+        if cur and tp.left <= cur[-1].left + 0.05 and tp.tick - cur[-1].tick <= 60:
+            if tp.left < cur[-1].left or tp.player:
+                cur.append(tp)
+            continue
+        runs.append([tp])
+    runs = [r for r in runs if r[0].left <= ATTEMPT_MAX and (len(r) >= 2 or r[-1].left <= DONE_AT)]
+    deaths: dict[str, int] = {}
+    for e in events:
+        victim = e.other if e.kind == "kill" else e.player if e.kind == "death" else None
+        if victim and e.tick is not None:
+            deaths.setdefault(victim, e.tick)
+    site_rooms = set(callout_mod.rooms(site))
+    out: list[Event] = []
+    planted = False
+    for run in runs:
+        t0, t1 = run[0].tick, run[-1].tick
+        kind = "defuse" if planted else "plant"
+        who = next((x.player for x in run if x.player), None)
+        inferred = False
+        if who is None:
+            side = "defense" if planted else "attack"
+            best = None
+            for p in players:
+                if roles.get(p.team) != side or (p.name in deaths and deaths[p.name] < t0):
+                    continue
+                body = next((o for o, k in p.objects.items() if k == "operator" and tracks.get(o)), None)
+                if body is None:
+                    continue
+                span = [s for s in tracks[body] if t0 - 2 <= s[0] <= t1]
+                if not span:
+                    continue
+                x0, y0, z0 = span[0][1:4]
+                moved = max(math.dist((x0, y0, z0), s[1:4]) for s in span)
+                on_site = callout_mod.at(timelines, body, t0) in site_rooms if site_rooms else False
+                if moved > 0.6:
+                    continue
+                key = (on_site, -moved)
+                if best is None or key > best[0]:
+                    best = (key, p.name)
+            if best is not None:
+                who, inferred = best[1], True
+        done = run[-1].left <= DONE_AT
+        out.append(Event(f"{kind}_start", t0, run[0].clock, player=who, inferred=inferred, of=run[0].left))
+        out.append(Event(kind if done else f"{kind}_interrupted", t1, run[-1].clock, player=who, inferred=inferred,
+                         left=0.0 if done else run[-1].left, of=run[0].left))
+        if done and kind == "plant":
+            planted = True
+    return out
+
+
+#: The defending team's reinforcements left (10 a round), on a team object: `23 <object> 0 67 de 20 f8 04 <u32>`.
+REINFORCEMENTS = re.compile(rb"\x23(....)\x00\x00\x00\x00\x67\xde\x20\xf8\x04", re.S)
+#: Ticks around the count's drop through which the reinforcing player stands still (reinforcing takes seconds).
+REINFORCE_BEFORE = 0
+REINFORCE_AFTER = 90
+
+
+def _reinforcements(rec: Rec, players: list[Player], tracks: dict, roles: dict[int, str],
+                    events: list[Event]) -> list[Event]:
+    """
+    A wall or hatch reinforced: the team's count of reinforcements left drops
+    by one at that tick. The count is the team's, not a player's, so the
+    player is the defender who stood still through the seconds after (marked
+    `inferred`, with 1 / the number of defenders who did as the confidence);
+    none where no defender did. Worked out here from the files.
+    """
+    b = rec.body
+    series: dict[bytes, list[tuple[int, int]]] = {}
+    for m in REINFORCEMENTS.finditer(b, rec.snapshot_end):
+        tick = rec.tick_at(m.start())
+        if tick is None or m.end() + 4 > len(b):
+            continue
+        series.setdefault(m.group(1), []).append((tick, struct.unpack_from("<I", b, m.end())[0]))
+    deaths: dict[str, int] = {}
+    for e in events:
+        victim = e.other if e.kind == "kill" else e.player if e.kind == "death" else None
+        if victim and e.tick is not None:
+            deaths.setdefault(victim, e.tick)
+    out: list[Event] = []
+    for s in series.values():
+        if not s or max(v for _, v in s) > 30:
+            continue
+        for (_t0, a), (tick, v) in zip(s, s[1:]):
+            if v != a - 1:
+                continue
+            still: list[tuple[float, str]] = []
+            for p in players:
+                if roles.get(p.team) != "defense" or (p.name in deaths and deaths[p.name] < tick):
+                    continue
+                body = next((o for o, k in p.objects.items() if k == "operator" and tracks.get(o)), None)
+                if body is None:
+                    continue
+                span = [x for x in tracks[body] if tick - REINFORCE_BEFORE <= x[0] <= tick + REINFORCE_AFTER]
+                before = [x for x in tracks[body] if x[0] < tick - REINFORCE_BEFORE]
+                if before:
+                    span = [before[-1]] + span
+                if not span:
+                    continue
+                moved = max(math.dist(span[0][1:4], x[1:4]) for x in span)
+                if moved <= 0.5:
+                    still.append((moved, p.name))
+            still.sort()
+            out.append(Event("reinforce", tick, None, player=still[0][1] if still else None, inferred=bool(still),
+                             text=str(v), confidence=round(1 / len(still), 3) if still else None))
+    return out

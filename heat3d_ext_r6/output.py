@@ -1,4 +1,4 @@
-﻿"""
+"""
 What a match is written as: one Parquet table (`<match>.parquet`) of every
 player's operator, drones and gadgets tick by tick with the round's events
 standing on the rows, a match document (`<match>.match.json`) and a sidecar
@@ -20,7 +20,7 @@ import numpy as np
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from . import __version__, catalog, game, impacts
+from . import __version__, callouts, catalog, game, impacts, sites
 from .round import Round
 
 #: Columns from the catalogue on every row of a player (what they play and carry in the round).
@@ -28,6 +28,8 @@ GEAR = ("operatorRole", "primary", "primaryClass", "secondary", "secondaryClass"
         "abilityRole", "loadout")
 #: Columns of a kill or death row: the weapon or gadget the kill was made with.
 WEAPON = ("weapon", "weaponClass", "weaponSlot")
+#: Who made a mark on the level, as worked out (`impacts.attribute`): player, operator, weapon, weapon class.
+BY = ("byPlayer", "byOperator", "byItem", "byItemClass")
 #: Round outcome words (`roundEndReason`) by the reader's win condition.
 REASONS = {"eliminated": "elimination", "defuser disabled": "defuser disabled",
            "defuser planted": "defuser detonated", "eliminated after plant": "elimination after plant",
@@ -45,16 +47,17 @@ HINTS = {
         "personId": "player", "teamId": "team", "sessionId": "match",
         "lookMode": "vector", "dirX": "dirX", "dirY": "dirY", "dirZ": "dirZ",
         "extra": ["event", "round", "roundTime", "clock", "phase", "side", "operator", *GEAR, *WEAPON, "pawn",
-                  "other", "otherOperator", "headshot", "won", "matchWon", "roundEndReason", "site", "teamAlive",
-                  "enemyAlive", "state_planted", "surface", "markKind", "detail", "entity"],
+                  "track", "gadgetType", "other", "otherOperator", "headshot", "won", "matchWon", "roundEndReason", "site", "callout",
+                  "teamAlive", "enemyAlive", "state_planted", "surface", "markKind", *BY, "inferred", "detail",
+                  "entity"],
     },
 }
 
 FLOAT32 = ("x", "y", "z", "yaw", "dirX", "dirY", "dirZ", "roundTime", "clock", "headshot", "won", "matchWon",
-           "teamAlive", "enemyAlive", "state_planted")
+           "teamAlive", "enemyAlive", "state_planted", "inferred")
 INT16 = ("team", "round")
-STRINGS = ("match", "player", "teamName", "side", "operator", *GEAR, *WEAPON, "event", "pawn", "other",
-           "otherOperator", "phase", "site", "roundEndReason", "surface", "markKind", "detail")
+STRINGS = ("match", "player", "track", "teamName", "side", "operator", *GEAR, *WEAPON, "event", "pawn", "gadgetType", "other",
+           "otherOperator", "phase", "site", "callout", "roundEndReason", "surface", "markKind", *BY, "detail")
 
 #: How a kind of object's samples are named in `event`: only the body is the player's position.
 EVENT_OF = {"operator": "position", "drone": "drone", "gadget": "gadget"}
@@ -62,9 +65,16 @@ EVENT_OF = {"operator": "position", "drone": "drone", "gadget": "gadget"}
 NOT_READ = [
     "attachments (sights, barrels, grips): the weapon's record holds small numbers, not named ids",
     "health, damage and the shots fired: not found in the object updates yet",
-    "what each placed or thrown gadget object is: told apart only by owner and update size (`pawn` = gadget)",
-    "who made a mark on the level and with what; the size of the opening a hole makes",
-    "walls and floors opened, reinforcements, barricades, hatches: a section with level objects, health "
+    "what each placed or thrown gadget object is: not written; `gadgetType` names it from the owner's loadout and "
+    "whether it flew (thrown) or stayed (placed), `inferred` the confidence, both names where that cannot tell",
+    "stance (standing, crouching, prone): not found in the body's updates",
+    "who made a mark on the level: worked out from who faced it as it appeared (`byPlayer`, `inferred` the "
+    "confidence); the weapon only where that player's kill in the same moment names it; the size of the opening",
+    "who planted or disabled the defuser in Y11 files: the player who stood still through it (`inferred` = 1)",
+    "reinforcements: when each was made is read (the team's count of reinforcements left, `reinforce` rows), who "
+    "made it is inferred (the defender who stood still through the next seconds; `inferred` = 1 / the number who "
+    "did); which wall or hatch, and whether it was later breached, is not read",
+    "barricades on doors and windows, walls and floors opened, hatches: a section with level objects, health "
     "values and positions holds them but is not decoded",
     "camera use and doors: kept whole only as other objects' positions (entities)",
     "online profile ids: read but kept out of the table and this document on purpose",
@@ -110,6 +120,29 @@ def gear(pl) -> dict[str, str]:
             out[slot + "Role"] = d.get("role") or ""
     out["loadout"] = "|".join(out[s] for s in ("primary", "secondary", "gadget", "ability") if out[s])
     return out
+
+
+#: Secondary gadgets that are thrown (they fly before they land); the rest are placed where the player stands.
+THROWN = {"Frag Grenade", "Stun Grenade", "Smoke Grenade", "Impact EMP Grenade", "Impact Grenade", "Nitro Cell"}
+
+
+def gadget_type(kit: dict[str, str], track: list) -> tuple[str, float]:
+    """
+    What a gadget object is, from its owner's loadout (secondary gadget and
+    ability) and how it moved: one that flew is the thrown one of the two, one
+    that stayed is the placed one. (name, confidence); both names joined with
+    ` / ` and no confidence where the two cannot be told apart.
+    """
+    g, a = kit.get("gadget", ""), kit.get("ability", "")
+    if not g or not a:
+        return (g or a), (0.5 if (g or a) else float("nan"))
+    first = track[:40]
+    flew = bool(first) and max(math.dist(first[0][1:4], s[1:4]) for s in first) > 1.5
+    if g in THROWN:
+        return (g, 0.7) if flew else (a, 0.6)
+    if flew:
+        return a, 0.6
+    return f"{g} / {a}", float("nan")
 
 
 def match_name(rounds: list[Round]) -> str:
@@ -158,7 +191,9 @@ def _rows(r: Round, number: int, offset: float, match: str,
 
     def add(tick: int, x: float, y: float, z: float, yaw: float, pl, event: str, pawn: str, entity: int,
             other: str = "", headshot: float = float("nan"), detail: str = "", weapon: int | None = None,
-            normal: tuple[float, float, float] | None = None, mark=None) -> None:
+            normal: tuple[float, float, float] | None = None, mark=None, callout: str = "",
+            inferred: float = float("nan"), by: tuple[str, str, str, str] | None = None, track: str = "",
+            gadget: str = "") -> None:
         sec = r.seconds(tick) or 0.0
         h = math.radians(yaw) if math.isfinite(yaw) else float("nan")
         cols["time"].append(offset + sec)
@@ -205,22 +240,68 @@ def _rows(r: Round, number: int, offset: float, match: str,
         cols["site"].append(r.site or "")
         cols["surface"].append(str(mark.surface) if mark is not None else "")
         cols["markKind"].append(str(mark.kind) if mark is not None else "")
+        cols["callout"].append(callout)
+        cols["inferred"].append(inferred)
+        cols["track"].append(track or (pl.name if pl is not None and pawn == "operator" else ""))
+        cols["gadgetType"].append(gadget)
+        for k, v in zip(BY, by or ("", "", "", "")):
+            cols[k].append(v)
         cols["detail"].append(detail)
         cols["entity"].append(entity)
 
     body: dict[str, tuple[int, list]] = {}
+    tl = r.callouts
+    # Where each callout's room is: the bodies' positions while their callout named it (`sites.py`), and per
+    # cell of a metre, the callouts said there (for the marks).
+    rooms: dict[str, list[tuple[float, float, float]]] = {}
+    cells: dict[tuple[int, int, int], dict[str, int]] = {}
+    shooters: list[impacts.Shooter] = []
+    drone_name = label(int(catalog.data().get("drone") or 0))[0] or "Drone"
     for pl in r.players:
-        for obj, kind in pl.objects.items():
+        count: dict[str, int] = {}
+        for obj, kind in sorted(pl.objects.items(), key=lambda kv: (r.tracks.get(kv[0]) or [(1 << 40,)])[0][0]):
             track = r.tracks.get(obj, [])
             yaw = float("nan")
+            line = tl.get(obj)
+            heads: list[tuple[int, float, float, float, float]] = []
+            # Each object its own track: the body is the player's; drones and gadgets are numbered in the order
+            # they appear, and named where the loadout and the way they move tell (`gadget_type`).
+            count[kind] = count.get(kind, 0) + 1
+            name = pl.name if kind == "operator" else f"{pl.name} {kind} {number}.{count[kind]}"
+            gtype, gconf = ("", float("nan")) if kind == "operator" else \
+                (drone_name, 1.0) if kind == "drone" else gadget_type(kit.get(pl.name, none_kit), track)
             for tick, x, y, z, raw, _flags, _size in track:
                 if math.isfinite(raw):
                     yaw = (raw + 90.0 + 180.0) % 360.0 - 180.0
                 if kind == "operator" and pl.name in deaths and tick > deaths[pl.name] + 5:
                     break  # the body after death (ragdoll)
-                add(tick, x, y, z, yaw, pl, EVENT_OF[kind], kind, obj)
+                where = line.at(tick) if line else ""
+                add(tick, x, y, z, yaw, pl, EVENT_OF[kind], kind, obj, callout=where, track=name, gadget=gtype,
+                    inferred=gconf if kind == "gadget" else float("nan"))
+                if kind == "operator":
+                    heads.append((tick, x, y, z, yaw))
+                    if where:
+                        rooms.setdefault(where, []).append((x, y, z))
+                        c = cells.setdefault((math.floor(x), math.floor(y), math.floor(z / 2.0)), {})
+                        c[where] = c.get(where, 0) + 1
             if kind == "operator" and track and (pl.name not in body or len(track) > len(body[pl.name][1])):
                 body[pl.name] = (obj, track)
+                shooters = [s for s in shooters if s.name != pl.name]
+                shooters.append(impacts.Shooter(pl.name, [h[0] for h in heads], heads, deaths.get(pl.name)))
+
+    def callout_of(name: str, tick: int) -> str:
+        return callouts.at(tl, body[name][0], tick) if name in body else ""
+
+    def callout_near(x: float, y: float, z: float) -> str:
+        """The callout most said within a metre or so of a point (a mark on a wall: either room's)."""
+        votes: dict[str, int] = {}
+        cx, cy, cz = math.floor(x), math.floor(y), math.floor(z / 2.0)
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                for dz in (-1, 0):
+                    for k, n in cells.get((cx + dx, cy + dy, cz + dz), {}).items():
+                        votes[k] = votes.get(k, 0) + n * (3 if dx == dy == dz == 0 else 1)
+        return max(votes, key=votes.get) if votes else ""
 
     by_name = {p.name: p for p in r.players}
 
@@ -247,18 +328,27 @@ def _rows(r: Round, number: int, offset: float, match: str,
                 s = at(e.player, e.tick)
                 if s:
                     add(e.tick, s[1], s[2], s[3], raw_yaw(s), by_name[e.player], "kill", "operator", body[e.player][0],
-                        other=e.other or "", headshot=hs, weapon=e.item)
+                        other=e.other or "", headshot=hs, weapon=e.item, callout=callout_of(e.player, e.tick))
             victim = e.other if e.kind == "kill" else e.player
             if victim in by_name:
                 s = at(victim, e.tick)
                 if s:  # the death row names what the victim was killed with, as the kill row does
                     add(e.tick, s[1], s[2], s[3], raw_yaw(s), by_name[victim], "death", "operator", body[victim][0],
-                        other=e.player if e.kind == "kill" else "", headshot=hs, weapon=e.item)
+                        other=e.player if e.kind == "kill" else "", headshot=hs, weapon=e.item,
+                        callout=callout_of(victim, e.tick))
         else:
             s = at(e.player, e.tick)
             if s:
+                detail = e.text or ""
+                if e.of is not None:  # a plant or defuse attempt: the timer as it started and stopped
+                    detail = json.dumps({"of": round(e.of, 3), **({"left": round(e.left, 3)} if e.left is not None
+                                                                     else {})})
+                elif e.kind == "reinforce":  # the team's reinforcements left after this one
+                    detail = json.dumps({"left": int(e.text)}) if (e.text or "").isdigit() else ""
                 add(e.tick, s[1], s[2], s[3], raw_yaw(s), by_name[e.player], e.kind, "operator", body[e.player][0],
-                    detail=e.text or "")
+                    detail=detail, callout=callout_of(e.player, e.tick),
+                    inferred=e.confidence if e.confidence is not None else
+                    (1.0 if e.inferred else 0.0) if e.of is not None else float("nan"))
 
     end_tick = max((b.tick for b in r.rec.blocks), default=0)
     # The round ends at its last kill, defuse or plant's detonation, else when the clock runs out.
@@ -271,12 +361,25 @@ def _rows(r: Round, number: int, offset: float, match: str,
         last = at(pl.name, deaths.get(pl.name, end_tick))  # where they last stood alive
         if last:
             add(round_end, last[1], last[2], last[3], raw_yaw(last), pl, "round_end",
-                "operator", body[pl.name][0], detail=detail)
+                "operator", body[pl.name][0], detail=detail, callout=callout_of(pl.name, last[0]))
 
-    # Marks on the level (bullet holes and the like), each where it was made, its surface's normal as direction.
-    for m in impacts.read(r.rec):
-        add(m.tick, m.x, m.y, m.z, float("nan"), None, "impact", "mark", m.surface, normal=(m.nx, m.ny, m.nz),
-            mark=m)
+    # Marks on the level (bullet holes and the like), each where it was made (no direction: `impacts.py`);
+    # who made it where one player faced it as it appeared, the weapon where their kill then names it.
+    marks = impacts.read(r.rec)
+    kills_by: dict[str, list[tuple[int, int | None]]] = {}
+    for e in r.events:
+        if e.kind == "kill" and e.player and e.tick is not None:
+            kills_by.setdefault(e.player, []).append((e.tick, e.item))
+    near_ticks = 60  # about 1.5 s
+    for m, (who, conf) in zip(marks, impacts.attribute(marks, shooters)):
+        by = None
+        if who:
+            item = next((it for t, it in kills_by.get(who, []) if abs(t - m.tick) <= near_ticks and it), None)
+            name, d = label(item)
+            kind = d.get("kind", "")
+            by = (who, op_of.get(who, ""), name, d.get("class") or (kind if kind in ("gadget", "ability") else ""))
+        add(m.tick, m.x, m.y, m.z, float("nan"), None, "impact", "mark", m.surface, mark=m,
+            callout=callout_near(m.x, m.y, m.z), inferred=conf, by=by)
 
     owned = {o for p in r.players for o in p.objects}
     ent: dict[str, list] = {c: [] for c in ("round", "tick", "time", "entity", "flags", "bytes", "x", "y", "z")}
@@ -287,7 +390,7 @@ def _rows(r: Round, number: int, offset: float, match: str,
             ent["round"].append(number), ent["tick"].append(tick), ent["time"].append(offset + (r.seconds(tick) or 0))
             ent["entity"].append(obj), ent["flags"].append(flags), ent["bytes"].append(nbytes)
             ent["x"].append(x), ent["y"].append(y), ent["z"].append(z)
-    return cols, ent
+    return cols, ent, rooms
 
 
 def table(cols: dict[str, list]) -> pa.Table:
@@ -340,7 +443,9 @@ def _round_doc(r: Round, number: int, offset: float) -> dict[str, Any]:
         } for p in r.players],
         "events": [{"kind": e.kind, "time_s": round(r.seconds(e.tick) or 0, 2) if e.tick is not None else None,
                     "clock": e.clock, "player": e.player, "other": e.other, "headshot": e.headshot, "text": e.text,
-                    **({"item": e.item, "weapon": label(e.item)[0]} if e.item else {})}
+                    **({"item": e.item, "weapon": label(e.item)[0]} if e.item else {}),
+                    **({"inferred": e.inferred, "timer_from": e.of, "timer_left": e.left} if e.of is not None else {}),
+                    **({"inferred": e.inferred, "confidence": e.confidence} if e.kind == "reinforce" else {})}
                    for e in r.events],
         "objects_moving": len(r.tracks),
         "sections": [{"id": s.id, "blocks": s.blocks, "ticks": [s.first_tick, s.last_tick], "bytes": s.end - s.start}
@@ -358,6 +463,8 @@ def write(rounds: list[Round], folder: str | Path) -> Path:
     alle: dict[str, list] = {}
     offset = 0.0
     docs = []
+    rooms: dict[str, list] = {}
+    played: list[tuple[str, int, float, float]] = []
     # The match's result by team name: the final score (the last round's header), 1 won, 0 lost, 0.5 drawn.
     last = rounds[-1].rec.header
     try:
@@ -368,13 +475,17 @@ def write(rounds: list[Round], folder: str | Path) -> Path:
         match_won = {}
     for i, r in enumerate(rounds):
         number = r.number or i + 1
-        cols, ent = _rows(r, number, offset, name, match_won)
+        cols, ent, seen = _rows(r, number, offset, name, match_won)
+        for k, v in seen.items():
+            rooms.setdefault(k, []).extend(sites.thin(v, sites.MAX_SAMPLES // 4))
         for k, v in cols.items():
             allc.setdefault(k, []).extend(v)
         for k, v in ent.items():
             alle.setdefault(k, []).extend(v)
         docs.append(_round_doc(r, number, offset))
         end_tick = max((b.tick for b in r.rec.blocks), default=0)
+        if r.site:
+            played.append((r.site, number, offset, offset + (r.seconds(end_tick) or 0.0)))
         offset += (r.seconds(end_tick) or 0.0) + 5.0
     data = folder / f"{name}.parquet"
     pq.write_table(table(allc), data, compression="snappy", row_group_size=256_000)  # the viewer reads snappy
@@ -422,6 +533,8 @@ def write(rounds: list[Round], folder: str | Path) -> Path:
         "units": "metres; Z up; yaw degrees from +X counter-clockwise",
         "time": "seconds from the first round's first tick; rounds follow each other with 5 s between; "
                 "roundTime from the round's first tick; clock is the round clock left (prep, then action)",
+        "objectives": sites.objectives(h.get("worldid"), played, {k: sites.thin(v) for k, v in rooms.items()}),
+        "callouts": sorted(rooms),
         "not_read": NOT_READ,
     }
     (folder / f"{name}.match.json").write_text(json.dumps(doc, indent=1, ensure_ascii=False), encoding="utf-8")

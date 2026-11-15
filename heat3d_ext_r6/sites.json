@@ -1,0 +1,920 @@
+{
+ "format": "heat3d-r6-sites",
+ "version": 1,
+ "about": "Bomb sites per map version (worldid), derived from converted esports matches: the median of the plants made on each site (else of the defenders late in the preparation phase), floor height z and spread r in metres, Z up. Derived coordinates only; no game asset.",
+ "maps": {
+  "1378191338": {
+   "map": "Kafe Dostoyevsky",
+   "versions": [
+    "Y9S1",
+    "Y9S3"
+   ],
+   "sites": {
+    "1F Kitchen Cooking, 1F Kitchen Service": {
+     "x": -9.66,
+     "y": -4.96,
+     "z": 0.0,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 435,
+     "rounds": 87
+    },
+    "2F Fireplace Hall, 2F Mining Room": {
+     "x": -6.32,
+     "y": -6.9,
+     "z": 8.8,
+     "r": 7.93,
+     "from": "defenders",
+     "points": 310,
+     "rounds": 62
+    },
+    "2F Fireplace Hall, 2F Reading Room": {
+     "x": -6.63,
+     "y": -5.76,
+     "z": 8.8,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 375,
+     "rounds": 75
+    },
+    "3F Cocktail Lounge, 3F Bar": {
+     "x": -7.04,
+     "y": -6.17,
+     "z": 8.8,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 260,
+     "rounds": 52
+    }
+   }
+  },
+  "231702797556": {
+   "map": "Oregon",
+   "versions": [
+    "Y9S1"
+   ],
+   "sites": {
+    "1F Kitchen, 1F Dining Hall": {
+     "x": -16.43,
+     "y": -37.19,
+     "z": 1.24,
+     "r": 6.76,
+     "from": "defenders",
+     "points": 10,
+     "rounds": 2
+    },
+    "1F Meeting Hall, 1F Kitchen": {
+     "x": -9.61,
+     "y": -34.83,
+     "z": 1.2,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 125,
+     "rounds": 25
+    },
+    "2F Kids' Dorms, 2F Dorms Main Hall": {
+     "x": -9.56,
+     "y": -35.89,
+     "z": 3.8,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 200,
+     "rounds": 40
+    },
+    "B Laundry Room, B Supply Room": {
+     "x": -5.25,
+     "y": -32.2,
+     "z": 0.4,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 285,
+     "rounds": 57
+    }
+   }
+  },
+  "259816839773": {
+   "map": "Chalet",
+   "versions": [
+    "Y9S1",
+    "Y9S3"
+   ],
+   "sites": {
+    "1F Bar, 1F Gaming Room": {
+     "x": -0.77,
+     "y": -12.58,
+     "z": 4.4,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 460,
+     "rounds": 92
+    },
+    "1F Kitchen, 1F Dining Room": {
+     "x": 6.78,
+     "y": -1.92,
+     "z": 4.4,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 375,
+     "rounds": 75
+    },
+    "2F Master Bedroom, 2F Office": {
+     "x": 2.88,
+     "y": -8.99,
+     "z": 4.4,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 235,
+     "rounds": 47
+    },
+    "B Wine Cellar, B Snowmobile Garage": {
+     "x": 4.66,
+     "y": -9.71,
+     "z": 0.0,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 360,
+     "rounds": 72
+    }
+   }
+  },
+  "276279025182": {
+   "map": "Skyscraper",
+   "versions": [
+    "Y9S1",
+    "Y9S3"
+   ],
+   "sites": {
+    "1F BBQ, 1F Kitchen": {
+     "x": 65.87,
+     "y": -27.2,
+     "z": 5.7,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 150,
+     "rounds": 30
+    },
+    "1F Bathroom, 1F Bedroom": {
+     "x": 89.33,
+     "y": -29.73,
+     "z": 4.3,
+     "r": 6.58,
+     "from": "defenders",
+     "points": 50,
+     "rounds": 10
+    },
+    "2F Exhibition Room, 2F Office": {
+     "x": 77.16,
+     "y": -27.05,
+     "z": 4.3,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 310,
+     "rounds": 62
+    },
+    "2F Karaoke, 2F Tea Room": {
+     "x": 73.75,
+     "y": -25.75,
+     "z": 4.3,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 345,
+     "rounds": 69
+    }
+   }
+  },
+  "305979357167": {
+   "map": "Border",
+   "versions": [
+    "Y9S1",
+    "Y9S3"
+   ],
+   "sites": {
+    "1F Bathroom, 1F Tellers": {
+     "x": 92.53,
+     "y": -77.11,
+     "z": 4.2,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 225,
+     "rounds": 45
+    },
+    "1F Customs Inspections, 1F Supply Room": {
+     "x": 89.5,
+     "y": -83.12,
+     "z": 4.2,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 40,
+     "rounds": 8
+    },
+    "1F Ventilation Room, 1F Workshop": {
+     "x": 92.79,
+     "y": -75.44,
+     "z": 4.2,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 200,
+     "rounds": 40
+    },
+    "2F Armory Lockers, 2F Archives": {
+     "x": 93.55,
+     "y": -81.89,
+     "z": 4.2,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 365,
+     "rounds": 73
+    }
+   }
+  },
+  "355496559878": {
+   "map": "Bank",
+   "versions": [
+    "Y9S1",
+    "Y9S3"
+   ],
+   "sites": {
+    "1F Staff Room, 1F Open Area": {
+     "x": -60.18,
+     "y": 7.35,
+     "z": 1.96,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 315,
+     "rounds": 63
+    },
+    "1F Tellers' Office, 1F Archives": {
+     "x": -62.68,
+     "y": 7.79,
+     "z": 0.47,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 65,
+     "rounds": 13
+    },
+    "2F Executive Lounge, 2F CEO Office": {
+     "x": -64.0,
+     "y": 7.11,
+     "z": 4.0,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 300,
+     "rounds": 60
+    },
+    "B Lockers, B CCTV Room": {
+     "x": -58.88,
+     "y": 5.21,
+     "z": -0.02,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 460,
+     "rounds": 92
+    }
+   }
+  },
+  "378595635123": {
+   "map": "Nighthaven Labs",
+   "versions": [
+    "Y9S1",
+    "Y9S3"
+   ],
+   "sites": {
+    "1F Control Room, 1F Storage": {
+     "x": 38.18,
+     "y": -5.28,
+     "z": 36.68,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 235,
+     "rounds": 47
+    },
+    "1F Kitchen, 1F Cafeteria": {
+     "x": 52.8,
+     "y": 3.95,
+     "z": 36.68,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 80,
+     "rounds": 16
+    },
+    "2F Command Center, 2F Servers": {
+     "x": 37.04,
+     "y": -4.19,
+     "z": 36.7,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 475,
+     "rounds": 95
+    },
+    "B Tank, B Assembly": {
+     "x": 41.55,
+     "y": -5.82,
+     "z": 32.3,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 430,
+     "rounds": 86
+    }
+   }
+  },
+  "379218689149": {
+   "map": "Consulate",
+   "versions": [
+    "Y9S1",
+    "Y9S3"
+   ],
+   "sites": {
+    "1F Exposition Room, 1F Piano Room": {
+     "x": -2.44,
+     "y": 8.19,
+     "z": 7.78,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 305,
+     "rounds": 61
+    },
+    "2F Consul Office, 2F Meeting Room": {
+     "x": 6.21,
+     "y": 9.98,
+     "z": 7.78,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 395,
+     "rounds": 78
+    },
+    "B Cafeteria, B Garage": {
+     "x": 4.14,
+     "y": 10.63,
+     "z": 3.38,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 365,
+     "rounds": 73
+    },
+    "B Servers, 1F Tellers": {
+     "x": 5.91,
+     "y": 9.93,
+     "z": 3.38,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 130,
+     "rounds": 26
+    }
+   }
+  },
+  "388073319671": {
+   "map": "Lair",
+   "versions": [
+    "Y9S3"
+   ],
+   "sites": {
+    "1F Armory, 1F Weapon Maintenance": {
+     "x": 55.02,
+     "y": 0.34,
+     "z": 31.2,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 40,
+     "rounds": 8
+    },
+    "1F Bunks, 1F Briefing": {
+     "x": 68.96,
+     "y": 3.2,
+     "z": 35.2,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 125,
+     "rounds": 25
+    },
+    "2F Master Office, 2F R6 Room": {
+     "x": 65.61,
+     "y": -3.52,
+     "z": 35.2,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 220,
+     "rounds": 44
+    },
+    "B Lab, B Lab Support": {
+     "x": 57.23,
+     "y": 0.0,
+     "z": 31.18,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 145,
+     "rounds": 29
+    }
+   }
+  },
+  "398899676157": {
+   "map": "Fortress",
+   "versions": [
+    "Y10S4_01",
+    "Y11S1_Alpha03",
+    "Y11S2_Alpha03",
+    "Y11S2_Alpha04",
+    "Y11S3_Alpha04"
+   ],
+   "sites": {
+    "1F Waiting Room, 1F Cafeteria": {
+     "x": -72.48,
+     "y": 95.18,
+     "z": 22.6,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 600,
+     "rounds": 120
+    },
+    "2F Bathroom, 2F Commander's Office": {
+     "x": -66.11,
+     "y": 94.92,
+     "z": 27.0,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 840,
+     "rounds": 168
+    },
+    "2F Dormitory, 2F Games Room": {
+     "x": -68.66,
+     "y": 95.96,
+     "z": 27.0,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 695,
+     "rounds": 139
+    }
+   }
+  },
+  "407193663917": {
+   "map": "Clubhouse",
+   "versions": [
+    "Y10S4_01",
+    "Y11S1_Alpha03",
+    "Y11S2_Alpha03",
+    "Y11S2_Alpha04",
+    "Y11S3_Alpha04"
+   ],
+   "sites": {
+    "1F Bar, 1F Stage": {
+     "x": -73.91,
+     "y": 85.78,
+     "z": 0.4,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 30,
+     "rounds": 6
+    },
+    "2F CCTV Room, 2F Cash Room": {
+     "x": -61.32,
+     "y": 86.1,
+     "z": 4.3,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 775,
+     "rounds": 155
+    },
+    "2F Gym, 2F Bedroom": {
+     "x": -61.92,
+     "y": 88.27,
+     "z": 4.3,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 940,
+     "rounds": 188
+    },
+    "B Church, B Arsenal Room": {
+     "x": -65.13,
+     "y": 90.19,
+     "z": -0.5,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 1175,
+     "rounds": 235
+    }
+   }
+  },
+  "407558616688": {
+   "map": "Chalet",
+   "versions": [
+    "Y10S4_01",
+    "Y11S1_Alpha03",
+    "Y11S2_Alpha03",
+    "Y11S2_Alpha04",
+    "Y11S3_Alpha04"
+   ],
+   "sites": {
+    "1F Bar, 1F Gaming Room": {
+     "x": -1.72,
+     "y": -13.68,
+     "z": 4.4,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 685,
+     "rounds": 137
+    },
+    "1F Kitchen, 1F Dining Room": {
+     "x": 6.38,
+     "y": -2.57,
+     "z": 4.4,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 645,
+     "rounds": 129
+    },
+    "2F Master Bedroom, 2F Office": {
+     "x": 2.09,
+     "y": -8.84,
+     "z": 4.4,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 745,
+     "rounds": 149
+    },
+    "B Wine Cellar, B Snowmobile Garage": {
+     "x": 3.4,
+     "y": -10.66,
+     "z": 0.0,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 40,
+     "rounds": 8
+    }
+   }
+  },
+  "407987100456": {
+   "map": "Border",
+   "versions": [
+    "Y10S4_01",
+    "Y11S1_Alpha03",
+    "Y11S2_Alpha03",
+    "Y11S2_Alpha04",
+    "Y11S3_Alpha04"
+   ],
+   "sites": {
+    "1F Bathroom, 1F Tellers": {
+     "x": 91.96,
+     "y": -78.58,
+     "z": 4.2,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 375,
+     "rounds": 75
+    },
+    "1F Customs Inspections, 1F Supply Room": {
+     "x": 88.07,
+     "y": -81.6,
+     "z": 4.2,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 30,
+     "rounds": 6
+    },
+    "1F Ventilation Room, 1F Workshop": {
+     "x": 92.33,
+     "y": -76.59,
+     "z": 4.2,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 400,
+     "rounds": 80
+    },
+    "2F Armory Lockers, 2F Archives": {
+     "x": 94.45,
+     "y": -82.75,
+     "z": 4.2,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 610,
+     "rounds": 122
+    }
+   }
+  },
+  "409325881472": {
+   "map": "Villa",
+   "versions": [
+    "Y11S3_Alpha04"
+   ],
+   "sites": {
+    "1F Kitchen, 1F Dining Room": {
+     "x": 65.11,
+     "y": -2.14,
+     "z": 14.58,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 55,
+     "rounds": 11
+    },
+    "2F Aviator Room, 2F Games Room": {
+     "x": 60.59,
+     "y": -16.61,
+     "z": 14.6,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 105,
+     "rounds": 21
+    },
+    "2F Trophy Room, 2F Statuary Room": {
+     "x": 62.97,
+     "y": -2.05,
+     "z": 14.6,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 55,
+     "rounds": 11
+    },
+    "B Art Storage, B Old Office": {
+     "x": 66.72,
+     "y": 2.91,
+     "z": 6.0,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 60,
+     "rounds": 12
+    }
+   }
+  },
+  "413779563590": {
+   "map": "Bank",
+   "versions": [
+    "Y10S4_01",
+    "Y11S1_Alpha03",
+    "Y11S2_Alpha03",
+    "Y11S2_Alpha04",
+    "Y11S3_Alpha04"
+   ],
+   "sites": {
+    "1F Staff Room, 1F Open Area": {
+     "x": -60.56,
+     "y": 6.86,
+     "z": 3.98,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 535,
+     "rounds": 107
+    },
+    "1F Tellers' Office, 1F Archives": {
+     "x": -64.74,
+     "y": 6.3,
+     "z": 1.19,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 45,
+     "rounds": 9
+    },
+    "2F Executive Lounge, 2F CEO Office": {
+     "x": -65.06,
+     "y": 7.56,
+     "z": 4.0,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 625,
+     "rounds": 125
+    },
+    "B Lockers, B CCTV Room": {
+     "x": -59.61,
+     "y": 5.73,
+     "z": 0.0,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 840,
+     "rounds": 168
+    }
+   }
+  },
+  "413845419788": {
+   "map": "Kafe Dostoyevsky",
+   "versions": [
+    "Y10S4_01",
+    "Y11S1_Alpha03",
+    "Y11S2_Alpha03",
+    "Y11S2_Alpha04",
+    "Y11S3_Alpha04"
+   ],
+   "sites": {
+    "1F Kitchen Service, 1F Kitchen Cooking": {
+     "x": -9.28,
+     "y": -4.4,
+     "z": 0.0,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 385,
+     "rounds": 77
+    },
+    "2F Fireplace Hall, 2F Mining Room": {
+     "x": -6.56,
+     "y": -6.43,
+     "z": 8.8,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 380,
+     "rounds": 76
+    },
+    "2F Reading Room, 2F Fireplace Hall": {
+     "x": -7.15,
+     "y": -5.78,
+     "z": 8.8,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 305,
+     "rounds": 61
+    },
+    "3F Bar, 3F Cocktail Lounge": {
+     "x": -7.47,
+     "y": -5.84,
+     "z": 8.8,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 210,
+     "rounds": 42
+    }
+   }
+  },
+  "417890697769": {
+   "map": "Lair",
+   "versions": [
+    "Y11S1_Alpha03",
+    "Y11S2_Alpha03",
+    "Y11S2_Alpha04",
+    "Y11S3_Alpha04"
+   ],
+   "sites": {
+    "1F Bunks, 1F Briefing": {
+     "x": 69.16,
+     "y": 3.15,
+     "z": 35.2,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 605,
+     "rounds": 121
+    },
+    "1F Weapon Maintenance, 1F Armory": {
+     "x": 57.37,
+     "y": -0.56,
+     "z": 31.2,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 10,
+     "rounds": 2
+    },
+    "2F Master Office, 2F R6 Room": {
+     "x": 65.32,
+     "y": -1.6,
+     "z": 35.2,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 995,
+     "rounds": 199
+    },
+    "B Lab Support, B Lab": {
+     "x": 59.0,
+     "y": 1.18,
+     "z": 31.18,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 810,
+     "rounds": 162
+    }
+   }
+  },
+  "418119057546": {
+   "map": "Nighthaven Labs",
+   "versions": [
+    "Y10S4_01",
+    "Y11S1_Alpha03",
+    "Y11S2_Alpha03",
+    "Y11S2_Alpha04",
+    "Y11S3_Alpha04"
+   ],
+   "sites": {
+    "1F Kitchen, 1F Cafeteria": {
+     "x": 53.92,
+     "y": 5.47,
+     "z": 34.37,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 80,
+     "rounds": 16
+    },
+    "1F Storage, 1F Control Room": {
+     "x": 40.2,
+     "y": -4.48,
+     "z": 36.68,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 420,
+     "rounds": 84
+    },
+    "2F Command Center, 2F Servers": {
+     "x": 39.01,
+     "y": -5.12,
+     "z": 36.7,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 640,
+     "rounds": 128
+    },
+    "B Assembly, B Tank": {
+     "x": 41.67,
+     "y": -5.67,
+     "z": 32.3,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 490,
+     "rounds": 98
+    }
+   }
+  },
+  "418126004176": {
+   "map": "Consulate",
+   "versions": [
+    "Y10S4_01",
+    "Y11S1_Alpha03",
+    "Y11S2_Alpha03",
+    "Y11S2_Alpha04"
+   ],
+   "sites": {
+    "1F Exposition Room, 1F Piano Room": {
+     "x": 1.09,
+     "y": 8.1,
+     "z": 7.78,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 215,
+     "rounds": 43
+    },
+    "2F Consul Office, 2F Meeting Room": {
+     "x": 6.95,
+     "y": 10.04,
+     "z": 7.8,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 220,
+     "rounds": 44
+    },
+    "B Cafeteria, B Garage": {
+     "x": 4.47,
+     "y": 9.72,
+     "z": 3.38,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 200,
+     "rounds": 40
+    },
+    "B Servers, 1F Tellers": {
+     "x": 3.14,
+     "y": 11.9,
+     "z": 3.4,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 35,
+     "rounds": 7
+    }
+   }
+  },
+  "837214085": {
+   "map": "Clubhouse",
+   "versions": [
+    "Y9S1",
+    "Y9S3"
+   ],
+   "sites": {
+    "1F Bar, 1F Stage": {
+     "x": -70.88,
+     "y": 87.31,
+     "z": 4.3,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 25,
+     "rounds": 5
+    },
+    "2F Bedroom, 2F Gym": {
+     "x": -64.03,
+     "y": 87.67,
+     "z": 4.3,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 345,
+     "rounds": 69
+    },
+    "2F Cash Room, 2F CCTV Room": {
+     "x": -59.74,
+     "y": 84.87,
+     "z": 4.3,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 270,
+     "rounds": 54
+    },
+    "B Church, B Arsenal Room": {
+     "x": -64.99,
+     "y": 90.27,
+     "z": -0.5,
+     "r": 8.0,
+     "from": "defenders",
+     "points": 430,
+     "rounds": 86
+    }
+   }
+  }
+ }
+}
