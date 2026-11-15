@@ -75,6 +75,7 @@ class Rec:
     sections: list[Section] = field(default_factory=list)
     blocks: list[Block] = field(default_factory=list)
     snapshot_end: int = 0
+    packet_head: int = 12  # object stream packet head: 12 bytes (Y10 on), 10 (Y9)
     _starts: list[int] = field(default_factory=list, repr=False)
 
     def code(self) -> int:
@@ -191,16 +192,34 @@ def _walk_sections(body: bytes, start: int) -> tuple[list[Section], list[Block]]
     return sections, blocks
 
 
-def _first_section(body: bytes) -> int:
-    """The first section: a 33-byte head followed by blocks of the object stream (packets marked `?? 73 85 fe`)."""
+def _packets_fit(body: bytes, start: int, end: int, head: int) -> bool:
+    """Do one block's packets fill it exactly with `head`-byte packet heads?"""
+    count = struct.unpack_from("<H", body, start)[0]
+    q = start + 2
+    for _ in range(count):
+        if q + head > end:
+            return False
+        size = struct.unpack_from("<I" if head == 12 else "<H", body, q + 8)[0]
+        q += head + size
+    return q == end
+
+
+def _first_section(body: bytes) -> tuple[int, int]:
+    """
+    The first section: a 33-byte head followed by blocks of the object stream
+    (packets marked `?? 73 85 fe`). Returns its start and the packet head size:
+    12 bytes (object, aux, size:u32; Y10 on) or 10 (size:u16; Y9).
+    """
     p = body.find(b"\x73\x85\xfe")
     while p != -1:
-        # block head (12) + packet count (2) + packet head (12) + first data byte
-        s = p - 1 - 12 - 2 - 12 - 33
-        if s >= 0:
-            secs, _ = _walk_sections(body[s : s + 4_000_000], 0)
-            if secs and secs[0].blocks >= 3:
-                return s
+        for head in (12, 10):
+            # block head (12) + packet count (2) + packet head + first data byte
+            s = p - 1 - head - 2 - 12 - 33
+            if s >= 0:
+                secs, blocks = _walk_sections(body[s : s + 4_000_000], 0)
+                if secs and secs[0].blocks >= 3 and all(
+                        _packets_fit(body, s + k.start, s + k.end, head) for k in blocks[:3]):
+                    return s, head
         p = body.find(b"\x73\x85\xfe", p + 3)
     raise RecError("no object stream found")
 
@@ -226,7 +245,7 @@ def read(path: str | Path) -> Rec:
         raise RecError("not a dissect replay")
     rec = Rec(path, props, players, gm, body, chunked, frames)
     try:
-        start = _first_section(body)
+        start, rec.packet_head = _first_section(body)
     except RecError:
         return rec  # events can still be read; positions not
     rec.snapshot_end = start
@@ -241,12 +260,14 @@ def packets(rec: Rec, block: Block):
     if block.end - block.start < 2:
         return
     count = struct.unpack_from("<H", b, block.start)[0]
+    head = rec.packet_head
+    fmt = "<III" if head == 12 else "<IIH"
     q = block.start + 2
     for _ in range(count):
-        if q + 12 > block.end:
+        if q + head > block.end:
             return
-        obj, aux, size = struct.unpack_from("<III", b, q)
-        if q + 12 + size > block.end:
+        obj, aux, size = struct.unpack_from(fmt, b, q)
+        if q + head + size > block.end:
             return
-        yield obj, aux, q + 12, size
-        q += 12 + size
+        yield obj, aux, q + head, size
+        q += head + size
