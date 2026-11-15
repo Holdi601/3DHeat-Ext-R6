@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "heat3d-ext-r6"
-version = "0.1.0"
+version = "0.2.0"
 description = "Rainbow Six Siege Match Replays (.rec) into the tables the 3DHeat viewer reads"
 readme = "README.md"
 license = { text = "MIT" }
@@ -20,6 +20,9 @@ heat3d-r6-replay = "heat3d_ext_r6.cli:main"
 
 [tool.setuptools]
 packages = ["heat3d_ext_r6"]
+
+[tool.setuptools.package-data]
+heat3d_ext_r6 = ["catalog.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

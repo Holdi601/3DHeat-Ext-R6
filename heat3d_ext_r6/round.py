@@ -28,7 +28,7 @@ import re
 import struct
 from dataclasses import dataclass, field
 
-from . import game
+from . import game, loadout
 from .rec import Rec, packets
 
 NAME = b"\x22\x07\x94\x9b\xdc"
@@ -45,6 +45,7 @@ KILL = b"\x22\xd9\x13\x3c\xba"
 FEED_OLD = b"\x00\x00\x00\x22\xe3\x09\x00\x79"
 DEFUSER = b"\x22\xa9\xc8\x58\xd9"
 SITE_CURRENT = b"\xfc\xc6\xa8\x60\x01"
+WEAPON = b"\xf8\x6c\xdd\x65"  # the kill feed's item: the weapon or gadget the kill was made with
 POSITION_FLAG = 0x80
 
 
@@ -58,6 +59,8 @@ class Player:
     player_id: int | None = None
     spawn: str | None = None
     objects: dict[int, str] = field(default_factory=dict)  # object -> "operator" | "drone" | "linked"
+    items: list[loadout.Item] = field(default_factory=list)  # carried as the action phase starts
+    operator_changes: list[tuple[int | None, int]] = field(default_factory=list)  # (tick, operator id) as set
 
 
 @dataclass
@@ -69,6 +72,7 @@ class Event:
     other: str | None = None
     headshot: bool | None = None
     text: str | None = None
+    item: int | None = None  # a kill's weapon or gadget (the kill feed's item id)
 
 
 @dataclass
@@ -132,6 +136,17 @@ def _rate(ts: list[tuple[int, float]], i: int) -> float:
         return 1 / 30
     dt = ts[i + 1][0] - ts[i][0]
     return (ts[i + 1][1] - ts[i][1]) / dt if dt else 1 / 30
+
+
+def _fields(b: bytes, p: int, stop: int) -> dict[bytes, bytes]:
+    """The tagged fields `22 <field:u32> <len:u8> <value>` from `p` while they continue."""
+    out: dict[bytes, bytes] = {}
+    stop = min(stop, len(b))
+    while p + 6 <= stop and b[p] == 0x22:
+        n = b[p + 5]
+        out.setdefault(b[p + 1 : p + 5], b[p + 6 : p + 6 + n])
+        p += 6 + n
+    return out
 
 
 def _string(b: bytes, p: int) -> tuple[str, int]:
@@ -349,14 +364,17 @@ def _feed(rec: Rec, by_event_id: dict[bytes, Player]) -> tuple[list[Event], str 
             q += 1
             tick = rec.tick_at(p)
             if size == 0 and body[q : q + 5] == KILL:
+                fields = _fields(body, q, q + 600)
                 killer, q = _string(body, q + 5)
                 target, q = _string(body, q + 15)
+                item = struct.unpack("<Q", fields[WEAPON])[0] if len(fields.get(WEAPON, b"")) == 8 else None
                 if not killer and target:
-                    events.append(Event("death", tick, clock_at(p), player=target))
+                    events.append(Event("death", tick, clock_at(p), player=target, item=item or None))
                 elif killer and (killer, target) not in seen:
                     seen.add((killer, target))
                     hs = body[q + 56] == 1 if q + 56 < len(body) else None
-                    events.append(Event("kill", tick, clock_at(p), player=killer, other=target, headshot=hs))
+                    events.append(Event("kill", tick, clock_at(p), player=killer, other=target, headshot=hs,
+                                        item=item or None))
             elif size and code < game.Y9S1:
                 msg = body[q : q + size].decode("utf-8", "replace")
                 kind = "battleye" if "BattlEye" in msg else "leave" if "left" in msg else \
@@ -421,6 +439,19 @@ def read_round(rec: Rec) -> Round:
         else:
             names.append("end")
     action_tick = first_tick.get(action) if action is not None else None
+
+    # The operators and items as the action phase starts. The snapshot's are those of the recording's
+    # start; a pick in the preparation phase changes them (`loadout.py`).
+    picks = loadout.read(rec, action_tick)
+    for p in players:
+        lo = picks.get(p.name)
+        if lo is None:
+            continue
+        if lo.operator_id:
+            p.operator_id = lo.operator_id
+            p.operator = game.operator_name(lo.operator_id)
+        p.items = lo.items
+        p.operator_changes = lo.changes
 
     # Sides: by the operators each team picked (most of them).
     roles: dict[int, str] = {}

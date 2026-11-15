@@ -1,0 +1,4383 @@
+{
+ "format": "heat3d-r6-catalog",
+ "version": 1,
+ "sources": {
+  "loadouts": "ubisoft.com operator pages, fetched 2026-11-15",
+  "items": "item ids named from 193 rounds of official esports replays (2024-2026) by the operators carrying them; see tools/catalog_build.py"
+ },
+ "drone": "249219679725",
+ "operators": {
+  "Ace": {
+   "side": "attack",
+   "primary": [
+    "AK-12",
+    "M1014"
+   ],
+   "secondary": [
+    "P9"
+   ],
+   "gadgets": [
+    "Stun Grenade",
+    "Claymore"
+   ],
+   "ability": "S.E.L.M.A. Aqua Breacher"
+  },
+  "Alibi": {
+   "side": "defense",
+   "primary": [
+    "Mx4 Storm",
+    "ACS12"
+   ],
+   "secondary": [
+    "Keratos .357",
+    "Bailiff 410"
+   ],
+   "gadgets": [
+    "Proximity Alarm",
+    "Observation Blocker"
+   ],
+   "ability": "Prisma"
+  },
+  "Amaru": {
+   "side": "attack",
+   "primary": [
+    "G8A1",
+    "SuperNova"
+   ],
+   "secondary": [
+    "Gonne-6",
+    "SMG-11",
+    "ITA12S"
+   ],
+   "gadgets": [
+    "Stun Grenade",
+    "Hard Breach Charge"
+   ],
+   "ability": "Garra Hook"
+  },
+  "Aruni": {
+   "side": "defense",
+   "primary": [
+    "P10 RONI",
+    "Mk 14 EBR"
+   ],
+   "secondary": [
+    "PRB92"
+   ],
+   "gadgets": [
+    "Bulletproof Camera",
+    "Barbed Wire"
+   ],
+   "ability": "Surya Gate"
+  },
+  "Ash": {
+   "side": "attack",
+   "primary": [
+    "G36C",
+    "R4-C"
+   ],
+   "secondary": [
+    "5.7 USG",
+    "M45 MEUSOC"
+   ],
+   "gadgets": [
+    "Breach Charge",
+    "Claymore"
+   ],
+   "ability": "Breaching Round"
+  },
+  "Azami": {
+   "side": "defense",
+   "primary": [
+    "9X19SVN",
+    "ACS12"
+   ],
+   "secondary": [
+    "D-50"
+   ],
+   "gadgets": [
+    "Impact Grenade",
+    "Barbed Wire"
+   ],
+   "ability": "Kiba Barrier"
+  },
+  "Bandit": {
+   "side": "defense",
+   "primary": [
+    "MP7",
+    "M870"
+   ],
+   "secondary": [
+    "P12",
+    "Keratos .357"
+   ],
+   "gadgets": [
+    "Barbed Wire",
+    "Nitro Cell"
+   ],
+   "ability": "Shock Wire"
+  },
+  "Blackbeard": {
+   "side": "attack",
+   "primary": [
+    "Mk17 CQB",
+    "SR-25"
+   ],
+   "secondary": [],
+   "gadgets": [
+    "Claymore",
+    "Frag Grenade"
+   ],
+   "ability": "H.U.L.L. Adaptable Shield"
+  },
+  "Blitz": {
+   "side": "attack",
+   "primary": [
+    "G52-Tactical Shield"
+   ],
+   "secondary": [
+    "P12"
+   ],
+   "gadgets": [
+    "Smoke Grenade",
+    "Breach Charge"
+   ],
+   "ability": "G52-Tactical Shield"
+  },
+  "Brava": {
+   "side": "attack",
+   "primary": [
+    "PARA-308",
+    "CAMRS"
+   ],
+   "secondary": [
+    "USP40",
+    "Super Shorty"
+   ],
+   "gadgets": [
+    "Smoke Grenade",
+    "Claymore"
+   ],
+   "ability": "Kludge Drone"
+  },
+  "Buck": {
+   "side": "attack",
+   "primary": [
+    "C8-SFW",
+    "CAMRS"
+   ],
+   "secondary": [
+    "Mk1 9mm"
+   ],
+   "gadgets": [
+    "Stun Grenade",
+    "Claymore"
+   ],
+   "ability": "Skeleton Key"
+  },
+  "Capitão": {
+   "side": "attack",
+   "primary": [
+    "M249",
+    "PARA-308",
+    "PMR90A2"
+   ],
+   "secondary": [
+    "Gonne-6",
+    "PRB92"
+   ],
+   "gadgets": [
+    "Claymore",
+    "Hard Breach Charge",
+    "Impact EMP Grenade"
+   ],
+   "ability": "Tactical Crossbow"
+  },
+  "Castle": {
+   "side": "defense",
+   "primary": [
+    "UMP45",
+    "M1014"
+   ],
+   "secondary": [
+    "5.7 USG",
+    "Super Shorty",
+    "M45 MEUSOC"
+   ],
+   "gadgets": [
+    "Proximity Alarm",
+    "Bulletproof Camera"
+   ],
+   "ability": "Armor Panel"
+  },
+  "Caveira": {
+   "side": "defense",
+   "primary": [
+    "M12",
+    "SPAS-15"
+   ],
+   "secondary": [
+    "Luison"
+   ],
+   "gadgets": [
+    "Proximity Alarm",
+    "Impact Grenade",
+    "Observation Blocker"
+   ],
+   "ability": "Silent Step"
+  },
+  "Clash": {
+   "side": "defense",
+   "primary": [
+    "CCE Shield Mk2"
+   ],
+   "secondary": [
+    "P-10C",
+    "SPSMG9",
+    "Super Shorty"
+   ],
+   "gadgets": [
+    "Barbed Wire",
+    "Impact Grenade"
+   ],
+   "ability": "CCE Shield Mk2"
+  },
+  "Deimos": {
+   "side": "attack",
+   "primary": [
+    "AK-74M",
+    "M590A1"
+   ],
+   "secondary": [
+    ".44 Vendetta"
+   ],
+   "gadgets": [
+    "Frag Grenade",
+    "Hard Breach Charge"
+   ],
+   "ability": "Deathmark Tracker"
+  },
+  "Denari": {
+   "side": "defense",
+   "primary": [
+    "Scorpion EVO 3 A1",
+    "FMG-9"
+   ],
+   "secondary": [
+    "Glaive-12",
+    "P226 Mk 25"
+   ],
+   "gadgets": [
+    "Observation Blocker",
+    "Deployable Shield"
+   ],
+   "ability": "T.R.I.P. Connector"
+  },
+  "Doc": {
+   "side": "defense",
+   "primary": [
+    "MP5",
+    "P90",
+    "SG-CQB"
+   ],
+   "secondary": [
+    "P9",
+    "LFP586",
+    "Bailiff 410"
+   ],
+   "gadgets": [
+    "Bulletproof Camera",
+    "Barbed Wire"
+   ],
+   "ability": "E-Heal Monitor"
+  },
+  "Dokkaebi": {
+   "side": "attack",
+   "primary": [
+    "BOSG.12.2",
+    "Mk 14 EBR",
+    "XK23"
+   ],
+   "secondary": [
+    "C75 Auto",
+    "Gonne-6",
+    "SMG-12"
+   ],
+   "gadgets": [
+    "Smoke Grenade",
+    "Breach Charge"
+   ],
+   "ability": "Jegeo Payload"
+  },
+  "Echo": {
+   "side": "defense",
+   "primary": [
+    "MP5SD",
+    "SuperNova"
+   ],
+   "secondary": [
+    "Bearing 9",
+    "P229"
+   ],
+   "gadgets": [
+    "Impact Grenade",
+    "Deployable Shield"
+   ],
+   "ability": "Yokai"
+  },
+  "Ela": {
+   "side": "defense",
+   "primary": [
+    "Scorpion EVO 3 A1",
+    "FO-12"
+   ],
+   "secondary": [
+    "RG15"
+   ],
+   "gadgets": [
+    "Barbed Wire",
+    "Deployable Shield",
+    "Impact Grenade"
+   ],
+   "ability": "Grzmot Mine"
+  },
+  "Fenrir": {
+   "side": "defense",
+   "primary": [
+    "MP7",
+    "SASG-12"
+   ],
+   "secondary": [
+    "5.7 USG"
+   ],
+   "gadgets": [
+    "Bulletproof Camera",
+    "Observation Blocker"
+   ],
+   "ability": "F-NATT Dread Mine"
+  },
+  "Finka": {
+   "side": "attack",
+   "primary": [
+    "6P41",
+    "SASG-12",
+    "Spear .308"
+   ],
+   "secondary": [
+    "GSh-18",
+    "PMM"
+   ],
+   "gadgets": [
+    "Frag Grenade",
+    "Smoke Grenade",
+    "Stun Grenade"
+   ],
+   "ability": "Adrenal Surge"
+  },
+  "Flores": {
+   "side": "attack",
+   "primary": [
+    "AR33",
+    "SR-25",
+    "T-95 LSW"
+   ],
+   "secondary": [
+    "GSh-18"
+   ],
+   "gadgets": [
+    "Stun Grenade",
+    "Claymore"
+   ],
+   "ability": "RCE-Ratero Charge"
+  },
+  "Frost": {
+   "side": "defense",
+   "primary": [
+    "Super 90",
+    "9mm C1"
+   ],
+   "secondary": [
+    "Mk1 9mm",
+    "ITA12S"
+   ],
+   "gadgets": [
+    "Bulletproof Camera",
+    "Deployable Shield"
+   ],
+   "ability": "Welcome Mat"
+  },
+  "Fuze": {
+   "side": "attack",
+   "primary": [
+    "AK-12",
+    "6P41",
+    "Ballistic Shield"
+   ],
+   "secondary": [
+    "PMM",
+    "GSh-18"
+   ],
+   "gadgets": [
+    "Hard Breach Charge",
+    "Smoke Grenade"
+   ],
+   "ability": "Cluster Charge"
+  },
+  "Glaz": {
+   "side": "attack",
+   "primary": [
+    "OTs-03"
+   ],
+   "secondary": [
+    "PMM",
+    "Gonne-6",
+    "Bearing 9"
+   ],
+   "gadgets": [
+    "Smoke Grenade",
+    "Frag Grenade",
+    "Claymore"
+   ],
+   "ability": "Flip Sight"
+  },
+  "Goyo": {
+   "side": "defense",
+   "primary": [
+    "Vector .45 ACP",
+    "TCSG12"
+   ],
+   "secondary": [
+    "P229"
+   ],
+   "gadgets": [
+    "Proximity Alarm",
+    "Bulletproof Camera",
+    "Impact Grenade"
+   ],
+   "ability": "Volcán Canister"
+  },
+  "Gridlock": {
+   "side": "attack",
+   "primary": [
+    "F90",
+    "M249 SAW"
+   ],
+   "secondary": [
+    "Super Shorty",
+    "SDP 9mm"
+   ],
+   "gadgets": [
+    "Smoke Grenade",
+    "Frag Grenade",
+    "Impact EMP Grenade"
+   ],
+   "ability": "Trax Stingers"
+  },
+  "Grim": {
+   "side": "attack",
+   "primary": [
+    "552 Commando",
+    "SG-CQB"
+   ],
+   "secondary": [
+    "Bailiff 410",
+    "P229"
+   ],
+   "gadgets": [
+    "Claymore",
+    "Hard Breach Charge",
+    "Impact EMP Grenade"
+   ],
+   "ability": "Kawan Hive Launcher"
+  },
+  "Hibana": {
+   "side": "attack",
+   "primary": [
+    "SuperNova",
+    "Type-89",
+    "PMR90A2"
+   ],
+   "secondary": [
+    "Bearing 9",
+    "P229"
+   ],
+   "gadgets": [
+    "Breach Charge",
+    "Stun Grenade",
+    "Claymore"
+   ],
+   "ability": "X-Kairos"
+  },
+  "Iana": {
+   "side": "attack",
+   "primary": [
+    "ARX200",
+    "G36C"
+   ],
+   "secondary": [
+    "Gonne-6",
+    "Mk1 9mm"
+   ],
+   "gadgets": [
+    "Impact EMP Grenade",
+    "Smoke Grenade"
+   ],
+   "ability": "Gemini Replicator"
+  },
+  "Iq": {
+   "side": "attack",
+   "primary": [
+    "AUG A2",
+    "552 Commando",
+    "G8A1"
+   ],
+   "secondary": [
+    "P12"
+   ],
+   "gadgets": [
+    "Breach Charge",
+    "Frag Grenade",
+    "Claymore"
+   ],
+   "ability": "Electronics Detector"
+  },
+  "Jackal": {
+   "side": "attack",
+   "primary": [
+    "C7E",
+    "PDW9",
+    "ITA12L"
+   ],
+   "secondary": [
+    "USP40",
+    "ITA12S"
+   ],
+   "gadgets": [
+    "Claymore",
+    "Smoke Grenade",
+    "Frag Grenade"
+   ],
+   "ability": "Eyenox Model III"
+  },
+  "Jäger": {
+   "side": "defense",
+   "primary": [
+    "M870",
+    "416-C Carbine",
+    "MBZ-19"
+   ],
+   "secondary": [
+    "P12",
+    "P-10C"
+   ],
+   "gadgets": [
+    "Bulletproof Camera",
+    "Observation Blocker"
+   ],
+   "ability": "Active Defense System (ADS)"
+  },
+  "Kaid": {
+   "side": "defense",
+   "primary": [
+    "AUG A3",
+    "TCSG12"
+   ],
+   "secondary": [
+    ".44 Mag Semi-Auto",
+    "LFP586"
+   ],
+   "gadgets": [
+    "Barbed Wire",
+    "Nitro Cell",
+    "Observation Blocker"
+   ],
+   "ability": "\"Rtila\" Electroclaw"
+  },
+  "Kali": {
+   "side": "attack",
+   "primary": [
+    "CSRX 300"
+   ],
+   "secondary": [
+    "SPSMG9",
+    "C75 Auto",
+    "P226 Mk 25"
+   ],
+   "gadgets": [
+    "Breach Charge",
+    "Claymore",
+    "Smoke Grenade"
+   ],
+   "ability": "LV Explosive Lance"
+  },
+  "Kapkan": {
+   "side": "defense",
+   "primary": [
+    "9x19VSN",
+    "SASG-12"
+   ],
+   "secondary": [
+    "PMM",
+    "GSh-18"
+   ],
+   "gadgets": [
+    "Barbed Wire",
+    "Bulletproof Camera"
+   ],
+   "ability": "Entry Denial Device (EDD-MK II)"
+  },
+  "Lesion": {
+   "side": "defense",
+   "primary": [
+    "SIX12 SD",
+    "T-5 SMG"
+   ],
+   "secondary": [
+    "Q-929"
+   ],
+   "gadgets": [
+    "Observation Blocker",
+    "Bulletproof Camera"
+   ],
+   "ability": "Gu Mine"
+  },
+  "Lion": {
+   "side": "attack",
+   "primary": [
+    "417",
+    "SG-CQB",
+    "V308"
+   ],
+   "secondary": [
+    "LFP586",
+    "P9"
+   ],
+   "gadgets": [
+    "Claymore",
+    "Frag Grenade",
+    "Stun Grenade"
+   ],
+   "ability": "EE-ONE-D"
+  },
+  "Maestro": {
+   "side": "defense",
+   "primary": [
+    "ALDA 5.56",
+    "ACS12"
+   ],
+   "secondary": [
+    "Keratos .357",
+    "Bailiff 410"
+   ],
+   "gadgets": [
+    "Barbed Wire",
+    "Impact Grenade",
+    "Observation Blocker"
+   ],
+   "ability": "Evil Eye"
+  },
+  "Maverick": {
+   "side": "attack",
+   "primary": [
+    "AR-15.50",
+    "M4"
+   ],
+   "secondary": [
+    "1911 TACOPS",
+    "C75 Auto",
+    "Reaper MK2"
+   ],
+   "gadgets": [
+    "Claymore",
+    "Stun Grenade",
+    "Frag Grenade"
+   ],
+   "ability": "Breaching Torch"
+  },
+  "Melusi": {
+   "side": "defense",
+   "primary": [
+    "MP5",
+    "Super 90"
+   ],
+   "secondary": [
+    "ITA12S",
+    "RG15"
+   ],
+   "gadgets": [
+    "Bulletproof Camera",
+    "Impact Grenade"
+   ],
+   "ability": "Banshee Sonic Defense"
+  },
+  "Mira": {
+   "side": "defense",
+   "primary": [
+    "Vector .45 ACP",
+    "ITA12L"
+   ],
+   "secondary": [
+    "USP40",
+    "ITA12S"
+   ],
+   "gadgets": [
+    "Proximity Alarm",
+    "Nitro Cell"
+   ],
+   "ability": "Black Mirror"
+  },
+  "Montagne": {
+   "side": "attack",
+   "primary": [
+    "Le Roc Shield"
+   ],
+   "secondary": [
+    "P9",
+    "LFP586"
+   ],
+   "gadgets": [
+    "Hard Breach Charge",
+    "Smoke Grenade",
+    "Impact EMP Grenade"
+   ],
+   "ability": "Le Roc Shield"
+  },
+  "Mozzie": {
+   "side": "defense",
+   "primary": [
+    "Commando 9",
+    "P10 RONI"
+   ],
+   "secondary": [
+    "SDP 9mm",
+    "Super Shorty"
+   ],
+   "gadgets": [
+    "Barbed Wire",
+    "Nitro Cell",
+    "Impact Grenade"
+   ],
+   "ability": "Pest Launcher"
+  },
+  "Mute": {
+   "side": "defense",
+   "primary": [
+    "MP5K",
+    "M590A1"
+   ],
+   "secondary": [
+    "P226 Mk 25",
+    "SMG-11"
+   ],
+   "gadgets": [
+    "Bulletproof Camera",
+    "Nitro Cell"
+   ],
+   "ability": "Signal Disruptor"
+  },
+  "Nomad": {
+   "side": "attack",
+   "primary": [
+    "AK-74M",
+    "ARX200"
+   ],
+   "secondary": [
+    "PRB92"
+   ],
+   "gadgets": [
+    "Breach Charge",
+    "Stun Grenade"
+   ],
+   "ability": "Airjab Launcher"
+  },
+  "Noor": {
+   "side": "defense",
+   "primary": [
+    "Commando 9",
+    "ALDA 5.56"
+   ],
+   "secondary": [
+    "1911 TACOPS",
+    "Bailiff 410"
+   ],
+   "gadgets": [
+    "Deployable Shield",
+    "Barbed Wire"
+   ],
+   "ability": "Horus Lance Launcher"
+  },
+  "Nøkk": {
+   "side": "attack",
+   "primary": [
+    "FMG-9",
+    "SIX12 SD",
+    "PMR90A2"
+   ],
+   "secondary": [
+    "5.7 USG",
+    "D-50"
+   ],
+   "gadgets": [
+    "Hard Breach Charge",
+    "Frag Grenade",
+    "Impact EMP Grenade"
+   ],
+   "ability": "HEL Presence Reduction"
+  },
+  "Oryx": {
+   "side": "defense",
+   "primary": [
+    "SPAS-12",
+    "T-5 SMG"
+   ],
+   "secondary": [
+    "Bailiff 410",
+    "Reaper MK2",
+    "USP40"
+   ],
+   "gadgets": [
+    "Barbed Wire",
+    "Proximity Alarm"
+   ],
+   "ability": "Remah Dash"
+  },
+  "Osa": {
+   "side": "attack",
+   "primary": [
+    "556xi",
+    "PDW9"
+   ],
+   "secondary": [
+    "PMM"
+   ],
+   "gadgets": [
+    "Claymore",
+    "Frag Grenade",
+    "Impact EMP Grenade"
+   ],
+   "ability": "TALON-8 Clear Shield"
+  },
+  "Pulse": {
+   "side": "defense",
+   "primary": [
+    "UMP45",
+    "M1014"
+   ],
+   "secondary": [
+    "5.7 USG",
+    "M45 MEUSOC",
+    "Reaper MK2"
+   ],
+   "gadgets": [
+    "Nitro Cell",
+    "Deployable Shield",
+    "Observation Blocker"
+   ],
+   "ability": "Cardiac Sensor"
+  },
+  "Ram": {
+   "side": "attack",
+   "primary": [
+    "LMG-E",
+    "R4-C"
+   ],
+   "secondary": [
+    "Mk1 9mm"
+   ],
+   "gadgets": [
+    "Smoke Grenade",
+    "Stun Grenade"
+   ],
+   "ability": "BU-GI Auto Breacher"
+  },
+  "Rauora": {
+   "side": "attack",
+   "primary": [
+    "417",
+    "M249",
+    "XK23"
+   ],
+   "secondary": [
+    "Reaper MK2",
+    "GSh-18"
+   ],
+   "gadgets": [
+    "Smoke Grenade",
+    "Breach Charge"
+   ],
+   "ability": "D.O.M. Panel Launcher"
+  },
+  "Rook": {
+   "side": "defense",
+   "primary": [
+    "MP5",
+    "P90",
+    "SG-CQB"
+   ],
+   "secondary": [
+    "Reaper MK2",
+    "P9",
+    "LFP586"
+   ],
+   "gadgets": [
+    "Proximity Alarm",
+    "Impact Grenade",
+    "Nitro Cell"
+   ],
+   "ability": "Armor Pack"
+  },
+  "Sens": {
+   "side": "attack",
+   "primary": [
+    "417",
+    "POF9",
+    "XK23"
+   ],
+   "secondary": [
+    "SDP 9mm"
+   ],
+   "gadgets": [
+    "Claymore",
+    "Frag Grenade",
+    "Hard Breach Charge"
+   ],
+   "ability": "R.O.U. Projector System"
+  },
+  "Sentry": {
+   "side": "defense",
+   "primary": [
+    "Commando 9",
+    "M870",
+    "TCSG12"
+   ],
+   "secondary": [
+    "C75 Auto",
+    "Super Shorty"
+   ],
+   "gadgets": [
+    "Barbed Wire",
+    "Bulletproof Camera",
+    "Deployable Shield",
+    "Observation Blocker",
+    "Impact Grenade",
+    "Nitro Cell",
+    "Proximity Alarm"
+   ],
+   "ability": "Access to all Defense secondary gadgets"
+  },
+  "Skopós": {
+   "side": "defense",
+   "primary": [
+    "PCX-33"
+   ],
+   "secondary": [
+    "P229"
+   ],
+   "gadgets": [
+    "Impact Grenade",
+    "Proximity Alarm"
+   ],
+   "ability": "V10 Pantheon Shells"
+  },
+  "Sledge": {
+   "side": "attack",
+   "primary": [
+    "L85A2",
+    "M590A1"
+   ],
+   "secondary": [
+    "P226 Mk 25",
+    "Reaper MK2"
+   ],
+   "gadgets": [
+    "Frag Grenade",
+    "Stun Grenade",
+    "Impact EMP Grenade"
+   ],
+   "ability": "Breaching Hammer"
+  },
+  "Smoke": {
+   "side": "defense",
+   "primary": [
+    "M590A1",
+    "FMG-9"
+   ],
+   "secondary": [
+    "P226 Mk 25",
+    "SMG-11"
+   ],
+   "gadgets": [
+    "Barbed Wire",
+    "Proximity Alarm",
+    "Deployable Shield"
+   ],
+   "ability": "Remote Gas Grenade"
+  },
+  "Solid Snake": {
+   "side": "attack",
+   "primary": [
+    "F2",
+    "PMR90A2"
+   ],
+   "secondary": [
+    "TACIT .45"
+   ],
+   "gadgets": [
+    "Frag Grenade",
+    "Stun Grenade",
+    "Impact EMP Grenade",
+    "Smoke Grenade",
+    "Breach Charge"
+   ],
+   "ability": "Soliton Radar Mk. III"
+  },
+  "Solis": {
+   "side": "defense",
+   "primary": [
+    "ITA12L",
+    "P90"
+   ],
+   "secondary": [
+    "SMG-11"
+   ],
+   "gadgets": [
+    "Impact Grenade",
+    "Proximity Alarm"
+   ],
+   "ability": "Spec-IO Electro-Sensor"
+  },
+  "Striker": {
+   "side": "attack",
+   "primary": [
+    "M4",
+    "M249",
+    "SR-25"
+   ],
+   "secondary": [
+    "5.7 USG",
+    "ITA12S"
+   ],
+   "gadgets": [
+    "Breach Charge",
+    "Claymore",
+    "Frag Grenade",
+    "Hard Breach Charge",
+    "Smoke Grenade",
+    "Stun Grenade",
+    "Impact EMP Grenade"
+   ],
+   "ability": "Access to all Attack secondary gadgets"
+  },
+  "Tachanka": {
+   "side": "defense",
+   "primary": [
+    "DP27"
+   ],
+   "secondary": [
+    "PMM",
+    "GSh-18",
+    "Bearing 9"
+   ],
+   "gadgets": [
+    "Barbed Wire",
+    "Proximity Alarm",
+    "Deployable Shield"
+   ],
+   "ability": "Shumikha Launcher"
+  },
+  "Thatcher": {
+   "side": "attack",
+   "primary": [
+    "AR33",
+    "L85A2",
+    "M590A1",
+    "PMR90A2"
+   ],
+   "secondary": [
+    "P226 Mk 25"
+   ],
+   "gadgets": [
+    "Breach Charge",
+    "Claymore"
+   ],
+   "ability": "E.G.S. Disruptor"
+  },
+  "Thermite": {
+   "side": "attack",
+   "primary": [
+    "556xi",
+    "M1014"
+   ],
+   "secondary": [
+    "5.7 USG",
+    "M45 MEUSOC",
+    "ITA12S"
+   ],
+   "gadgets": [
+    "Smoke Grenade",
+    "Stun Grenade"
+   ],
+   "ability": "Exothermic Charge"
+  },
+  "Thorn": {
+   "side": "defense",
+   "primary": [
+    "UZK50Gi",
+    "M870"
+   ],
+   "secondary": [
+    "1911 TACOPS",
+    "C75 Auto"
+   ],
+   "gadgets": [
+    "Deployable Shield",
+    "Barbed Wire"
+   ],
+   "ability": "Razorbloom Shell"
+  },
+  "Thunderbird": {
+   "side": "defense",
+   "primary": [
+    "SPAS-15",
+    "Spear .308",
+    "MBZ-19"
+   ],
+   "secondary": [
+    "Bearing 9",
+    "Q-929",
+    "ITA12S"
+   ],
+   "gadgets": [
+    "Barbed Wire",
+    "Bulletproof Camera",
+    "Deployable Shield"
+   ],
+   "ability": "Kóna Station"
+  },
+  "Tubarão": {
+   "side": "defense",
+   "primary": [
+    "MPX",
+    "AR-15.50"
+   ],
+   "secondary": [
+    "P226 Mk 25"
+   ],
+   "gadgets": [
+    "Nitro Cell",
+    "Proximity Alarm"
+   ],
+   "ability": "Zoto Canister"
+  },
+  "Twitch": {
+   "side": "attack",
+   "primary": [
+    "F2",
+    "417",
+    "SG-CQB"
+   ],
+   "secondary": [
+    "P9",
+    "LFP586"
+   ],
+   "gadgets": [
+    "Smoke Grenade",
+    "Claymore"
+   ],
+   "ability": "Shock Drone"
+  },
+  "Valkyrie": {
+   "side": "defense",
+   "primary": [
+    "MPX",
+    "SPAS-12"
+   ],
+   "secondary": [
+    "D-50"
+   ],
+   "gadgets": [
+    "Impact Grenade",
+    "Nitro Cell"
+   ],
+   "ability": "Black Eye"
+  },
+  "Vigil": {
+   "side": "defense",
+   "primary": [
+    "K1A",
+    "BOSG.12.2"
+   ],
+   "secondary": [
+    "C75 Auto",
+    "SMG-12"
+   ],
+   "gadgets": [
+    "Bulletproof Camera",
+    "Impact Grenade"
+   ],
+   "ability": "ERC-7"
+  },
+  "Wamai": {
+   "side": "defense",
+   "primary": [
+    "AUG A2",
+    "MP5K"
+   ],
+   "secondary": [
+    "Super Shorty",
+    "P12",
+    "Keratos .357"
+   ],
+   "gadgets": [
+    "Deployable Shield",
+    "Proximity Alarm",
+    "Nitro Cell"
+   ],
+   "ability": "Mag-NET System"
+  },
+  "Warden": {
+   "side": "defense",
+   "primary": [
+    "M590A1",
+    "MPX",
+    "MBZ-19"
+   ],
+   "secondary": [
+    "P-10C",
+    "SMG-12"
+   ],
+   "gadgets": [
+    "Deployable Shield",
+    "Nitro Cell",
+    "Observation Blocker"
+   ],
+   "ability": "Glance Smart Glasses"
+  },
+  "Ying": {
+   "side": "attack",
+   "primary": [
+    "T-95 LSW",
+    "SIX12"
+   ],
+   "secondary": [
+    "Q-929",
+    "Reaper MK2"
+   ],
+   "gadgets": [
+    "Hard Breach Charge",
+    "Smoke Grenade"
+   ],
+   "ability": "Candela"
+  },
+  "Zero": {
+   "side": "attack",
+   "primary": [
+    "MP7",
+    "SC3000K"
+   ],
+   "secondary": [
+    "5.7 USG",
+    "Gonne-6"
+   ],
+   "gadgets": [
+    "Hard Breach Charge",
+    "Claymore"
+   ],
+   "ability": "Argus Launcher"
+  },
+  "Zofia": {
+   "side": "attack",
+   "primary": [
+    "LMG-E",
+    "M762"
+   ],
+   "secondary": [
+    "RG15"
+   ],
+   "gadgets": [
+    "Hard Breach Charge",
+    "Claymore"
+   ],
+   "ability": "KS79 Lifeline"
+  }
+ },
+ "weapons": {
+  ".44 Mag Semi-Auto": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  ".44 Vendetta": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "1911 TACOPS": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "416-C Carbine": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "417": {
+   "type": "Marksman Rifle",
+   "class": "dmr"
+  },
+  "5.7 USG": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "552 Commando": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "556xi": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "6P41": {
+   "type": "Light Machine Gun",
+   "class": "lmg"
+  },
+  "9mm C1": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  },
+  "9x19VSN": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  },
+  "ACS12": {
+   "type": "Shotgun",
+   "class": "shotgun"
+  },
+  "AK-12": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "AK-74M": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "ALDA 5.56": {
+   "type": "Light Machine Gun",
+   "class": "lmg"
+  },
+  "AR-15.50": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "AR33": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "ARX200": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "AUG A2": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "AUG A3": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  },
+  "BOSG.12.2": {
+   "type": "Shotgun",
+   "class": "shotgun"
+  },
+  "Bailiff 410": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "Bearing 9": {
+   "type": "Machine Pistol",
+   "class": "machine pistol"
+  },
+  "C75 Auto": {
+   "type": "Machine Pistol",
+   "class": "machine pistol"
+  },
+  "C7E": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "C8-SFW": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "CAMRS": {
+   "type": "Marksman Rifle",
+   "class": "dmr"
+  },
+  "CSRX 300": {
+   "type": "Marksman Rifle",
+   "class": "dmr"
+  },
+  "Commando 9": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "D-50": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "DP27": {
+   "type": "Light Machine Gun",
+   "class": "lmg"
+  },
+  "F2": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "F90": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "FMG-9": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  },
+  "FO-12": {
+   "type": "Shotgun",
+   "class": "shotgun"
+  },
+  "G36C": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "G8A1": {
+   "type": "Light Machine Gun",
+   "class": "lmg"
+  },
+  "GSh-18": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "Gonne-6": {
+   "type": "Hand Cannon",
+   "class": "hand cannon"
+  },
+  "ITA12L": {
+   "type": "Shotgun",
+   "class": "shotgun"
+  },
+  "ITA12S": {
+   "type": "Shotgun",
+   "class": "shotgun"
+  },
+  "K1A": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  },
+  "Keratos .357": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "L85A2": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "LFP586": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "LMG-E": {
+   "type": "Light Machine Gun",
+   "class": "lmg"
+  },
+  "M1014": {
+   "type": "Shotgun",
+   "class": "shotgun"
+  },
+  "M12": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  },
+  "M249": {
+   "type": "Light Machine Gun",
+   "class": "lmg"
+  },
+  "M249 SAW": {
+   "type": "Light Machine Gun",
+   "class": "lmg"
+  },
+  "M4": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "M45 MEUSOC": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "M590A1": {
+   "type": "Shotgun",
+   "class": "shotgun"
+  },
+  "M762": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "M870": {
+   "type": "Shotgun",
+   "class": "shotgun"
+  },
+  "MP5": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  },
+  "MP5K": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  },
+  "MP5SD": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  },
+  "MP7": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  },
+  "MPX": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  },
+  "Mk 14 EBR": {
+   "type": "Marksman Rifle",
+   "class": "dmr"
+  },
+  "Mk1 9mm": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "Mk17 CQB": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "Mx4 Storm": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  },
+  "OTs-03": {
+   "type": "Marksman Rifle",
+   "class": "dmr"
+  },
+  "P-10C": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "P10 RONI": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  },
+  "P12": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "P226 Mk 25": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "P229": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "P9": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "P90": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  },
+  "PARA-308": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "PCX-33": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "PDW9": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  },
+  "PMM": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "PMR90A2": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "POF9": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "PRB92": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "Q-929": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "R4-C": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "RG15": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "SASG-12": {
+   "type": "Shotgun",
+   "class": "shotgun"
+  },
+  "SC3000K": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "SDP 9mm": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "SG-CQB": {
+   "type": "Shotgun",
+   "class": "shotgun"
+  },
+  "SIX12": {
+   "type": "Shotgun",
+   "class": "shotgun"
+  },
+  "SIX12 SD": {
+   "type": "Shotgun",
+   "class": "shotgun"
+  },
+  "SMG-11": {
+   "type": "Machine Pistol",
+   "class": "machine pistol"
+  },
+  "SMG-12": {
+   "type": "Machine Pistol",
+   "class": "machine pistol"
+  },
+  "SPAS-12": {
+   "type": "Shotgun",
+   "class": "shotgun"
+  },
+  "SPAS-15": {
+   "type": "Shotgun",
+   "class": "shotgun"
+  },
+  "SPSMG9": {
+   "type": "Machine Pistol",
+   "class": "machine pistol"
+  },
+  "SR-25": {
+   "type": "Marksman Rifle",
+   "class": "dmr"
+  },
+  "Scorpion EVO 3 A1": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  },
+  "Spear .308": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "Super 90": {
+   "type": "Shotgun",
+   "class": "shotgun"
+  },
+  "Super Shorty": {
+   "type": "Shotgun",
+   "class": "shotgun"
+  },
+  "SuperNova": {
+   "type": "Shotgun",
+   "class": "shotgun"
+  },
+  "T-5 SMG": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  },
+  "T-95 LSW": {
+   "type": "Light Machine Gun",
+   "class": "lmg"
+  },
+  "TCSG12": {
+   "type": "Shotgun",
+   "class": "shotgun"
+  },
+  "Type-89": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "UMP45": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  },
+  "USP40": {
+   "type": "Handgun",
+   "class": "handgun"
+  },
+  "V308": {
+   "type": "Assault Rifle",
+   "class": "assault rifle"
+  },
+  "Vector .45 ACP": {
+   "type": "Submachine Gun",
+   "class": "smg"
+  }
+ },
+ "items": {
+  "1366019208": {
+   "name": null,
+   "kind": "primary",
+   "sure": false,
+   "rounds": 13,
+   "kills": 12,
+   "fit": 1.0,
+   "operators": [
+    "Jäger"
+   ],
+   "candidates": [
+    "416-C Carbine",
+    "M870",
+    "MBZ-19"
+   ]
+  },
+  "1366019220": {
+   "name": "AK-12",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 73,
+   "kills": 188,
+   "fit": 1.0,
+   "operators": [
+    "Ace",
+    "Fuze"
+   ]
+  },
+  "1366019232": {
+   "name": null,
+   "kind": "primary",
+   "sure": false,
+   "rounds": 5,
+   "kills": 9,
+   "fit": 1.0,
+   "operators": [
+    "Wamai"
+   ],
+   "candidates": [
+    "AUG A2",
+    "MP5K"
+   ]
+  },
+  "1366019244": {
+   "name": "F2",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 40,
+   "kills": 111,
+   "fit": 1.0,
+   "operators": [
+    "Solid Snake",
+    "Twitch"
+   ]
+  },
+  "1366019256": {
+   "name": "G36C",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 1,
+   "kills": 1,
+   "fit": 1.0,
+   "operators": [
+    "Iana"
+   ]
+  },
+  "1366019268": {
+   "name": "AR33",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 25,
+   "kills": 59,
+   "fit": 1.0,
+   "operators": [
+    "Flores",
+    "Thatcher"
+   ]
+  },
+  "1366019292": {
+   "name": "417",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 89,
+   "kills": 185,
+   "fit": 1.0,
+   "operators": [
+    "Lion",
+    "Rauora",
+    "Sens",
+    "Twitch"
+   ]
+  },
+  "1366019304": {
+   "name": "L85A2",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 23,
+   "kills": 53,
+   "fit": 1.0,
+   "operators": [
+    "Sledge",
+    "Thatcher"
+   ]
+  },
+  "1366019316": {
+   "name": "R4-C",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 65,
+   "kills": 124,
+   "fit": 1.0,
+   "operators": [
+    "Ash",
+    "Ram"
+   ]
+  },
+  "1366019328": {
+   "name": "552 Commando",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 84,
+   "kills": 139,
+   "fit": 1.0,
+   "operators": [
+    "Grim",
+    "Iq"
+   ]
+  },
+  "1366019340": {
+   "name": "556xi",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 30,
+   "kills": 50,
+   "fit": 1.0,
+   "operators": [
+    "Osa",
+    "Thermite"
+   ]
+  },
+  "1366019352": {
+   "name": "G8A1",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 2,
+   "kills": 1,
+   "fit": 1.0,
+   "operators": [
+    "Amaru"
+   ]
+  },
+  "1366019364": {
+   "name": "6P41",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 7,
+   "kills": 29,
+   "fit": 1.0,
+   "operators": [
+    "Finka",
+    "Fuze"
+   ]
+  },
+  "1366019400": {
+   "name": "SMG-11",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 192,
+   "kills": 292,
+   "fit": 1.0,
+   "operators": [
+    "Amaru",
+    "Mute",
+    "Smoke",
+    "Solis"
+   ]
+  },
+  "1366019412": {
+   "name": "5.7 USG",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 28,
+   "kills": 4,
+   "fit": 1.0,
+   "operators": [
+    "Ash",
+    "Fenrir",
+    "Nøkk",
+    "Pulse",
+    "Striker",
+    "Thermite"
+   ]
+  },
+  "1366019424": {
+   "name": "LFP586",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 18,
+   "kills": 2,
+   "fit": 1.0,
+   "operators": [
+    "Kaid",
+    "Lion",
+    "Montagne"
+   ]
+  },
+  "1366019436": {
+   "name": "GSh-18",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 27,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Finka",
+    "Flores",
+    "Fuze",
+    "Kapkan"
+   ]
+  },
+  "1366019448": {
+   "name": "M45 MEUSOC",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 52,
+   "kills": 1,
+   "fit": 1.0,
+   "operators": [
+    "Ash",
+    "Pulse",
+    "Thermite"
+   ]
+  },
+  "1366019460": {
+   "name": "PMM",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 28,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Finka",
+    "Fuze",
+    "Glaz",
+    "Kapkan",
+    "Osa"
+   ]
+  },
+  "1366019472": {
+   "name": "P9",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 187,
+   "kills": 36,
+   "fit": 1.0,
+   "operators": [
+    "Ace",
+    "Lion",
+    "Montagne",
+    "Twitch"
+   ]
+  },
+  "1366019484": {
+   "name": "P226 Mk 25",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 47,
+   "kills": 2,
+   "fit": 1.0,
+   "operators": [
+    "Sledge",
+    "Thatcher",
+    "Tubarão"
+   ]
+  },
+  "1366019496": {
+   "name": "P12",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 90,
+   "kills": 40,
+   "fit": 1.0,
+   "operators": [
+    "Bandit",
+    "Blitz",
+    "Iq",
+    "Jäger",
+    "Wamai"
+   ]
+  },
+  "1366019508": {
+   "name": "M590A1",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 192,
+   "kills": 106,
+   "fit": 1.0,
+   "operators": [
+    "Deimos",
+    "Mute",
+    "Sledge",
+    "Smoke",
+    "Warden"
+   ]
+  },
+  "1366019520": {
+   "name": "M1014",
+   "kind": "primary",
+   "sure": false,
+   "rounds": 4,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Pulse"
+   ],
+   "candidates": [
+    "M1014",
+    "UMP45"
+   ],
+   "by": "headshot share of its kills"
+  },
+  "1366019532": {
+   "name": "M870",
+   "kind": "primary",
+   "sure": false,
+   "rounds": 5,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Thorn"
+   ],
+   "candidates": [
+    "M870",
+    "UZK50Gi"
+   ],
+   "by": "headshot share of its kills"
+  },
+  "1366019592": {
+   "name": null,
+   "kind": "primary",
+   "sure": false,
+   "rounds": 37,
+   "kills": 64,
+   "fit": 1.0,
+   "operators": [
+    "Wamai"
+   ],
+   "candidates": [
+    "AUG A2",
+    "MP5K"
+   ]
+  },
+  "1366019604": {
+   "name": "MP5",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 44,
+   "kills": 69,
+   "fit": 1.0,
+   "operators": [
+    "Doc",
+    "Melusi"
+   ]
+  },
+  "1366019616": {
+   "name": "MP7",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 63,
+   "kills": 132,
+   "fit": 1.0,
+   "operators": [
+    "Bandit",
+    "Fenrir",
+    "Zero"
+   ]
+  },
+  "1366019628": {
+   "name": "P90",
+   "kind": "primary",
+   "sure": false,
+   "rounds": 17,
+   "kills": 26,
+   "fit": 1.0,
+   "operators": [
+    "Solis"
+   ],
+   "candidates": [
+    "ITA12L",
+    "P90"
+   ],
+   "by": "headshot share of its kills"
+  },
+  "1366019640": {
+   "name": "UMP45",
+   "kind": "primary",
+   "sure": false,
+   "rounds": 34,
+   "kills": 93,
+   "fit": 1.0,
+   "operators": [
+    "Castle",
+    "Pulse"
+   ],
+   "candidates": [
+    "M1014",
+    "UMP45"
+   ],
+   "by": "headshot share of its kills"
+  },
+  "1366019652": {
+   "name": "9X19SVN",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 91,
+   "kills": 198,
+   "fit": 0.99,
+   "operators": [
+    "Azami",
+    "Kapkan",
+    "Tachanka"
+   ]
+  },
+  "1366019988": {
+   "name": "FMG-9",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 7,
+   "kills": 7,
+   "fit": 1.0,
+   "operators": [
+    "Denari",
+    "Nøkk",
+    "Smoke"
+   ]
+  },
+  "9817293379": {
+   "name": "OTs-03",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 14,
+   "kills": 33,
+   "fit": 1.0,
+   "operators": [
+    "Glaz"
+   ]
+  },
+  "10929932395": {
+   "name": null,
+   "kind": "primary",
+   "sure": false,
+   "rounds": 32,
+   "kills": 65,
+   "fit": 1.0,
+   "operators": [
+    "Blackbeard"
+   ],
+   "candidates": [
+    "Mk17 CQB",
+    "SR-25"
+   ]
+  },
+  "13333480638": {
+   "name": "C8-SFW",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 3,
+   "kills": 4,
+   "fit": 1.0,
+   "operators": [
+    "Buck"
+   ]
+  },
+  "13333481354": {
+   "name": "Super 90",
+   "kind": "primary",
+   "sure": false,
+   "rounds": 13,
+   "kills": 21,
+   "fit": 1.0,
+   "operators": [
+    "Frost"
+   ],
+   "candidates": [
+    "9mm C1",
+    "Super 90"
+   ],
+   "by": "headshot share of its kills"
+  },
+  "13333481726": {
+   "name": null,
+   "kind": "primary",
+   "sure": false,
+   "rounds": 34,
+   "kills": 56,
+   "fit": 1.0,
+   "operators": [
+    "Buck"
+   ]
+  },
+  "13333481774": {
+   "name": "Mk1 9mm",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 43,
+   "kills": 4,
+   "fit": 1.0,
+   "operators": [
+    "Buck",
+    "Ram"
+   ]
+  },
+  "34160268720": {
+   "name": "D-50",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 112,
+   "kills": 8,
+   "fit": 1.0,
+   "operators": [
+    "Azami",
+    "Nøkk",
+    "Valkyrie"
+   ]
+  },
+  "34160268747": {
+   "name": "MPX",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 74,
+   "kills": 170,
+   "fit": 1.0,
+   "operators": [
+    "Tubarão",
+    "Valkyrie",
+    "Warden"
+   ]
+  },
+  "38581443640": {
+   "name": "PARA-308",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 30,
+   "kills": 67,
+   "fit": 1.0,
+   "operators": [
+    "Brava",
+    "Capitão"
+   ]
+  },
+  "38581443658": {
+   "name": "M249",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 4,
+   "kills": 3,
+   "fit": 1.0,
+   "operators": [
+    "Capitão",
+    "Rauora"
+   ]
+  },
+  "38581443676": {
+   "name": "PRB92",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 88,
+   "kills": 4,
+   "fit": 1.0,
+   "operators": [
+    "Aruni",
+    "Capitão",
+    "Nomad"
+   ]
+  },
+  "38581443694": {
+   "name": null,
+   "kind": "primary",
+   "sure": false,
+   "rounds": 2,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Caveira"
+   ],
+   "candidates": [
+    "M12",
+    "SPAS-15"
+   ]
+  },
+  "39149214650": {
+   "name": "MP5SD",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 8,
+   "kills": 18,
+   "fit": 1.0,
+   "operators": [
+    "Echo"
+   ]
+  },
+  "39149214668": {
+   "name": "Bearing 9",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 79,
+   "kills": 25,
+   "fit": 1.0,
+   "operators": [
+    "Echo",
+    "Glaz",
+    "Hibana",
+    "Tachanka"
+   ]
+  },
+  "39149214686": {
+   "name": "SuperNova",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 8,
+   "kills": 7,
+   "fit": 1.0,
+   "operators": [
+    "Amaru",
+    "Echo"
+   ]
+  },
+  "39149214704": {
+   "name": "Type-89",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 29,
+   "kills": 18,
+   "fit": 1.0,
+   "operators": [
+    "Hibana"
+   ]
+  },
+  "39149214734": {
+   "name": "P229",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 63,
+   "kills": 3,
+   "fit": 1.0,
+   "operators": [
+    "Goyo",
+    "Grim",
+    "Skopós"
+   ]
+  },
+  "39149216440": {
+   "name": "ITA12S",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 132,
+   "kills": 4,
+   "fit": 0.97,
+   "operators": [
+    "Frost",
+    "Jackal",
+    "Melusi",
+    "Mira",
+    "Ram",
+    "Striker",
+    "Thermite"
+   ]
+  },
+  "39149216458": {
+   "name": null,
+   "kind": "primary",
+   "sure": false,
+   "rounds": 2,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Jackal"
+   ],
+   "candidates": [
+    "C7E",
+    "ITA12L",
+    "PDW9"
+   ]
+  },
+  "39404979943": {
+   "name": "Luison",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 2,
+   "kills": 1,
+   "fit": 1.0,
+   "operators": [
+    "Caveira"
+   ]
+  },
+  "44316587774": {
+   "name": "ITA12L",
+   "kind": "primary",
+   "sure": false,
+   "rounds": 14,
+   "kills": 1,
+   "fit": 1.0,
+   "operators": [
+    "Solis"
+   ],
+   "candidates": [
+    "ITA12L",
+    "P90"
+   ],
+   "by": "headshot share of its kills"
+  },
+  "44316587819": {
+   "name": "Vector .45 ACP",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 82,
+   "kills": 160,
+   "fit": 1.0,
+   "operators": [
+    "Goyo",
+    "Mira"
+   ]
+  },
+  "44316587837": {
+   "name": null,
+   "kind": "primary",
+   "sure": false,
+   "rounds": 1,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Jackal"
+   ],
+   "candidates": [
+    "C7E",
+    "ITA12L",
+    "PDW9"
+   ]
+  },
+  "53995319813": {
+   "name": null,
+   "kind": "primary",
+   "sure": false,
+   "rounds": 9,
+   "kills": 23,
+   "fit": 1.0,
+   "operators": [
+    "Ying"
+   ],
+   "candidates": [
+    "SIX12",
+    "T-95 LSW"
+   ]
+  },
+  "53995319846": {
+   "name": null,
+   "kind": "primary",
+   "sure": false,
+   "rounds": 10,
+   "kills": 12,
+   "fit": 1.0,
+   "operators": [
+    "Ying"
+   ],
+   "candidates": [
+    "SIX12",
+    "T-95 LSW"
+   ]
+  },
+  "53995319912": {
+   "name": "T-5 SMG",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 36,
+   "kills": 78,
+   "fit": 1.0,
+   "operators": [
+    "Lesion",
+    "Oryx"
+   ]
+  },
+  "53995319945": {
+   "name": "Q-929",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 13,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Lesion",
+    "Ying"
+   ]
+  },
+  "55586802030": {
+   "name": null,
+   "kind": "primary",
+   "sure": false,
+   "rounds": 3,
+   "kills": 11,
+   "fit": 1.0,
+   "operators": [
+    "Lion"
+   ],
+   "candidates": [
+    "SG-CQB",
+    "V308"
+   ]
+  },
+  "55586802095": {
+   "name": "ACS12",
+   "kind": "primary",
+   "sure": false,
+   "rounds": 1,
+   "kills": 1,
+   "fit": 1.0,
+   "operators": [
+    "Maestro"
+   ],
+   "candidates": [
+    "ACS12",
+    "ALDA 5.56"
+   ],
+   "by": "headshot share of its kills"
+  },
+  "55586802503": {
+   "name": "Spear .308",
+   "kind": "primary",
+   "sure": false,
+   "rounds": 8,
+   "kills": 16,
+   "fit": 1.0,
+   "operators": [
+    "Finka"
+   ],
+   "candidates": [
+    "SASG-12",
+    "Spear .308"
+   ],
+   "by": "headshot share of its kills"
+  },
+  "68967567352": {
+   "name": null,
+   "kind": "primary",
+   "sure": false,
+   "rounds": 18,
+   "kills": 21,
+   "fit": 1.0,
+   "operators": [
+    "Zofia"
+   ],
+   "candidates": [
+    "LMG-E",
+    "M762"
+   ]
+  },
+  "68967567391": {
+   "name": null,
+   "kind": "primary",
+   "sure": false,
+   "rounds": 1,
+   "kills": 1,
+   "fit": 1.0,
+   "operators": [
+    "Zofia"
+   ],
+   "candidates": [
+    "LMG-E",
+    "M762"
+   ]
+  },
+  "68967567430": {
+   "name": "RG15",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 53,
+   "kills": 3,
+   "fit": 1.0,
+   "operators": [
+    "Ela",
+    "Melusi",
+    "Zofia"
+   ]
+  },
+  "68967567469": {
+   "name": "FO-12",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 2,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Ela"
+   ]
+  },
+  "68967567508": {
+   "name": "Scorpion EVO 3 A1",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 42,
+   "kills": 69,
+   "fit": 1.0,
+   "operators": [
+    "Denari",
+    "Ela"
+   ]
+  },
+  "78526932091": {
+   "name": "Mk 14 EBR",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 64,
+   "kills": 71,
+   "fit": 1.0,
+   "operators": [
+    "Aruni",
+    "Dokkaebi"
+   ]
+  },
+  "78526932130": {
+   "name": "SMG-12",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 115,
+   "kills": 139,
+   "fit": 1.0,
+   "operators": [
+    "Dokkaebi",
+    "Vigil",
+    "Warden"
+   ]
+  },
+  "78526932169": {
+   "name": null,
+   "kind": "secondary",
+   "sure": false,
+   "rounds": 39,
+   "kills": 5,
+   "fit": 1.0,
+   "operators": [
+    "Sentry",
+    "Thorn"
+   ],
+   "candidates": [
+    "1911 TACOPS",
+    "C75 Auto"
+   ]
+  },
+  "78526932208": {
+   "name": null,
+   "kind": "primary",
+   "sure": false,
+   "rounds": 4,
+   "kills": 8,
+   "fit": 1.0,
+   "operators": [
+    "Vigil"
+   ],
+   "candidates": [
+    "BOSG.12.2",
+    "K1A"
+   ]
+  },
+  "78526932247": {
+   "name": null,
+   "kind": "primary",
+   "sure": false,
+   "rounds": 3,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Vigil"
+   ],
+   "candidates": [
+    "BOSG.12.2",
+    "K1A"
+   ]
+  },
+  "127174503954": {
+   "name": "ALDA 5.56",
+   "kind": "primary",
+   "sure": false,
+   "rounds": 3,
+   "kills": 15,
+   "fit": 1.0,
+   "operators": [
+    "Maestro"
+   ],
+   "candidates": [
+    "ACS12",
+    "ALDA 5.56"
+   ],
+   "by": "headshot share of its kills"
+  },
+  "127174503972": {
+   "name": "Bailiff 410",
+   "kind": "secondary",
+   "sure": false,
+   "rounds": 98,
+   "kills": 4,
+   "fit": 0.64,
+   "operators": [
+    "Alibi",
+    "Doc",
+    "Fenrir",
+    "Grim",
+    "Maestro",
+    "Oryx"
+   ],
+   "candidates": [
+    "Bailiff 410"
+   ]
+  },
+  "127174503990": {
+   "name": "Keratos .357",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 28,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Bandit",
+    "Maestro",
+    "Wamai"
+   ]
+  },
+  "127174504008": {
+   "name": "Mx4 Storm",
+   "kind": "primary",
+   "sure": false,
+   "rounds": 1,
+   "kills": 3,
+   "fit": 1.0,
+   "operators": [
+    "Alibi"
+   ],
+   "candidates": [
+    "ACS12",
+    "Mx4 Storm"
+   ],
+   "by": "headshot share of its kills"
+  },
+  "127363389074": {
+   "name": "Proximity Alarm",
+   "kind": "gadget",
+   "sure": true,
+   "rounds": 33,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Alibi",
+    "Castle",
+    "Goyo",
+    "Solis",
+    "Wamai"
+   ]
+  },
+  "133651069174": {
+   "name": "Prisma",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 1,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Alibi"
+   ]
+  },
+  "133651069180": {
+   "name": "Breaching Round",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 43,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Ash"
+   ]
+  },
+  "133651069186": {
+   "name": "Shock Wire",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 19,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Bandit"
+   ]
+  },
+  "133651069198": {
+   "name": "G52-Tactical Shield",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 30,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Blitz"
+   ]
+  },
+  "133651069204": {
+   "name": "Skeleton Key",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 37,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Buck"
+   ]
+  },
+  "133651069210": {
+   "name": "Tactical Crossbow",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 34,
+   "kills": 1,
+   "fit": 1.0,
+   "operators": [
+    "Capitão"
+   ]
+  },
+  "133651069216": {
+   "name": "Armor Panel",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 29,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Castle"
+   ]
+  },
+  "133651069222": {
+   "name": "Silent Step",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 2,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Caveira"
+   ]
+  },
+  "133651069228": {
+   "name": "E-Heal Monitor",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 7,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Doc"
+   ]
+  },
+  "133651069234": {
+   "name": "Jegeo Payload",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 32,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Dokkaebi"
+   ]
+  },
+  "133651069240": {
+   "name": "Yokai",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 14,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Echo"
+   ]
+  },
+  "133651069252": {
+   "name": "Adrenal Surge",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 14,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Finka"
+   ]
+  },
+  "133651069258": {
+   "name": "Welcome Mat",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 13,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Frost"
+   ]
+  },
+  "133651069264": {
+   "name": "Cluster Charge",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 5,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Fuze"
+   ]
+  },
+  "133651069270": {
+   "name": "Flip Sight",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 14,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Glaz"
+   ]
+  },
+  "133651069276": {
+   "name": "X-Kairos",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 38,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Hibana"
+   ]
+  },
+  "133651069282": {
+   "name": "Electronics Detector",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 31,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Iq"
+   ]
+  },
+  "133651069288": {
+   "name": "Eyenox Model III",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 3,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Jackal"
+   ]
+  },
+  "133651069294": {
+   "name": "Active Defense System (ADS)",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 13,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Jäger"
+   ]
+  },
+  "133651069300": {
+   "name": "Entry Denial Device (EDD-MK II)",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 11,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Kapkan"
+   ]
+  },
+  "133651069306": {
+   "name": "Gu Mine",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 35,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Lesion"
+   ]
+  },
+  "133651069312": {
+   "name": "EE-ONE-D",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 40,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Lion"
+   ]
+  },
+  "133651069318": {
+   "name": "Evil Eye",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 4,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Maestro"
+   ]
+  },
+  "133651069324": {
+   "name": "Black Mirror",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 48,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Mira"
+   ]
+  },
+  "133651069330": {
+   "name": "Le Roc Shield",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 30,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Montagne"
+   ]
+  },
+  "133651069336": {
+   "name": "Signal Disruptor",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 78,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Mute"
+   ]
+  },
+  "133651069342": {
+   "name": "Cardiac Sensor",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 9,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Pulse"
+   ]
+  },
+  "133651069354": {
+   "name": "Breaching Hammer",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 24,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Sledge"
+   ]
+  },
+  "133651069360": {
+   "name": "Remote Gas Grenade",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 79,
+   "kills": 7,
+   "fit": 1.0,
+   "operators": [
+    "Smoke"
+   ]
+  },
+  "133651069372": {
+   "name": "E.G.S. Disruptor",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 7,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Thatcher"
+   ]
+  },
+  "133651069378": {
+   "name": "Exothermic Charge",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 28,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Thermite"
+   ]
+  },
+  "133651069384": {
+   "name": "Shock Drone",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 49,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Twitch"
+   ]
+  },
+  "133651069390": {
+   "name": "Black Eye",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 29,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Valkyrie"
+   ]
+  },
+  "133651069396": {
+   "name": "ERC-7",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 7,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Vigil"
+   ]
+  },
+  "133651069402": {
+   "name": "Candela",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 19,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Ying"
+   ]
+  },
+  "133651069408": {
+   "name": "KS79 Lifeline",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 19,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Zofia"
+   ]
+  },
+  "133651070240": {
+   "name": "Claymore",
+   "kind": "gadget",
+   "sure": true,
+   "rounds": 155,
+   "kills": 3,
+   "fit": 1.0,
+   "operators": [
+    "Ace",
+    "Ash",
+    "Brava",
+    "Capitão",
+    "Flores",
+    "Grim",
+    "Iq",
+    "Jackal",
+    "Kali",
+    "Maverick",
+    "Striker",
+    "Thatcher",
+    "Twitch",
+    "Zofia"
+   ]
+  },
+  "133651070252": {
+   "name": "Grzmot Mine",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 26,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Ela"
+   ]
+  },
+  "133651070258": {
+   "name": "Barbed Wire",
+   "kind": "gadget",
+   "sure": true,
+   "rounds": 224,
+   "kills": 0,
+   "fit": 0.98,
+   "operators": [
+    "Aruni",
+    "Azami",
+    "Bandit",
+    "Clash",
+    "Doc",
+    "Ela",
+    "Fenrir",
+    "Kapkan",
+    "Maestro",
+    "Oryx",
+    "Sentry",
+    "Smoke",
+    "Tachanka",
+    "Thorn"
+   ]
+  },
+  "133651070282": {
+   "name": "Deployable Shield",
+   "kind": "gadget",
+   "sure": true,
+   "rounds": 83,
+   "kills": 0,
+   "fit": 0.98,
+   "operators": [
+    "Clash",
+    "Denari",
+    "Echo",
+    "Ela",
+    "Frost",
+    "Sentry",
+    "Smoke",
+    "Tachanka",
+    "Thorn",
+    "Warden"
+   ]
+  },
+  "133651070288": {
+   "name": "Stun Grenade",
+   "kind": "gadget",
+   "sure": true,
+   "rounds": 204,
+   "kills": 0,
+   "fit": 0.89,
+   "operators": [
+    "Ace",
+    "Amaru",
+    "Buck",
+    "Dokkaebi",
+    "Finka",
+    "Flores",
+    "Hibana",
+    "Iana",
+    "Lion",
+    "Maverick",
+    "Nomad",
+    "Ram",
+    "Striker",
+    "Thermite"
+   ]
+  },
+  "133651070294": {
+   "name": "Nitro Cell",
+   "kind": "gadget",
+   "sure": true,
+   "rounds": 299,
+   "kills": 104,
+   "fit": 0.98,
+   "operators": [
+    "Bandit",
+    "Kaid",
+    "Kapkan",
+    "Mira",
+    "Mozzie",
+    "Mute",
+    "Pulse",
+    "Sentry",
+    "Tubarão",
+    "Valkyrie",
+    "Wamai",
+    "Warden"
+   ]
+  },
+  "133651070300": {
+   "name": "Bulletproof Camera",
+   "kind": "gadget",
+   "sure": false,
+   "rounds": 200,
+   "kills": 0,
+   "fit": 0.47,
+   "operators": [
+    "Alibi",
+    "Aruni",
+    "Azami",
+    "Castle",
+    "Doc",
+    "Fenrir",
+    "Frost",
+    "Goyo",
+    "Jäger",
+    "Kaid",
+    "Kapkan",
+    "Lesion",
+    "Maestro",
+    "Melusi",
+    "Mira",
+    "Mozzie",
+    "Mute",
+    "Pulse",
+    "Smoke",
+    "Solis",
+    "Thorn",
+    "Tubarão",
+    "Valkyrie",
+    "Vigil",
+    "Wamai",
+    "Warden"
+   ],
+   "candidates": [
+    "Bulletproof Camera"
+   ]
+  },
+  "133651070306": {
+   "name": "Breach Charge",
+   "kind": "gadget",
+   "sure": true,
+   "rounds": 105,
+   "kills": 0,
+   "fit": 0.81,
+   "operators": [
+    "Ace",
+    "Ash",
+    "Fuze",
+    "Hibana",
+    "Iq",
+    "Nomad",
+    "Striker",
+    "Thatcher",
+    "Zofia"
+   ]
+  },
+  "133651070312": {
+   "name": "Smoke Grenade",
+   "kind": "gadget",
+   "sure": true,
+   "rounds": 144,
+   "kills": 0,
+   "fit": 0.99,
+   "operators": [
+    "Blitz",
+    "Brava",
+    "Dokkaebi",
+    "Finka",
+    "Glaz",
+    "Gridlock",
+    "Jackal",
+    "Kali",
+    "Montagne",
+    "Rauora",
+    "Sens",
+    "Striker",
+    "Thermite",
+    "Twitch",
+    "Ying"
+   ]
+  },
+  "133651070318": {
+   "name": "Impact Grenade",
+   "kind": "gadget",
+   "sure": true,
+   "rounds": 208,
+   "kills": 3,
+   "fit": 0.79,
+   "operators": [
+    "Azami",
+    "Caveira",
+    "Clash",
+    "Echo",
+    "Ela",
+    "Goyo",
+    "Lesion",
+    "Maestro",
+    "Melusi",
+    "Skopós",
+    "Solis",
+    "Valkyrie",
+    "Vigil",
+    "Wamai"
+   ]
+  },
+  "133651070436": {
+   "name": "Frag Grenade",
+   "kind": "gadget",
+   "sure": true,
+   "rounds": 241,
+   "kills": 13,
+   "fit": 1.0,
+   "operators": [
+    "Blackbeard",
+    "Deimos",
+    "Finka",
+    "Gridlock",
+    "Iq",
+    "Lion",
+    "Maverick",
+    "Nøkk",
+    "Osa",
+    "Sens",
+    "Sledge",
+    "Solid Snake",
+    "Striker"
+   ]
+  },
+  "139558931653": {
+   "name": "AR-15.50",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 23,
+   "kills": 66,
+   "fit": 1.0,
+   "operators": [
+    "Maverick",
+    "Tubarão"
+   ]
+  },
+  "139558931671": {
+   "name": "M4",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 40,
+   "kills": 133,
+   "fit": 1.0,
+   "operators": [
+    "Maverick",
+    "Striker"
+   ]
+  },
+  "139558931689": {
+   "name": "P-10C",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 3,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Jäger"
+   ]
+  },
+  "139558931707": {
+   "name": null,
+   "kind": "secondary",
+   "sure": false,
+   "rounds": 6,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Maverick"
+   ],
+   "candidates": [
+    "1911 TACOPS",
+    "C75 Auto"
+   ]
+  },
+  "139558931725": {
+   "name": "Super Shorty",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 125,
+   "kills": 2,
+   "fit": 0.74,
+   "operators": [
+    "Brava",
+    "Castle",
+    "Gridlock",
+    "Lesion",
+    "Mozzie",
+    "Sentry",
+    "Wamai"
+   ]
+  },
+  "139558932060": {
+   "name": "CCE Shield Mk2",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 19,
+   "kills": 29,
+   "fit": 1.0,
+   "operators": [
+    "Clash",
+    "Kali"
+   ]
+  },
+  "145723339848": {
+   "name": "CCE Shield Mk2",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 2,
+   "kills": 2,
+   "fit": 1.0,
+   "operators": [
+    "Clash"
+   ]
+  },
+  "145723339854": {
+   "name": "Breaching Torch",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 9,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Maverick"
+   ]
+  },
+  "161289666128": {
+   "name": "\"Rtila\" Electroclaw",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 15,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Kaid"
+   ]
+  },
+  "161289666146": {
+   "name": "Airjab Launcher",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 55,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Nomad"
+   ]
+  },
+  "161289761740": {
+   "name": "AK-74M",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 62,
+   "kills": 82,
+   "fit": 1.0,
+   "operators": [
+    "Deimos",
+    "Nomad"
+   ]
+  },
+  "161289761758": {
+   "name": "ARX200",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 40,
+   "kills": 106,
+   "fit": 1.0,
+   "operators": [
+    "Iana",
+    "Nomad"
+   ]
+  },
+  "161289761776": {
+   "name": ".44 Mag Semi-Auto",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 1,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Kaid"
+   ]
+  },
+  "161289761794": {
+   "name": "TCSG12",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 46,
+   "kills": 66,
+   "fit": 1.0,
+   "operators": [
+    "Goyo",
+    "Kaid",
+    "Sentry"
+   ]
+  },
+  "161289761812": {
+   "name": "AUG A3",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 1,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Kaid"
+   ]
+  },
+  "168013421923": {
+   "name": null,
+   "kind": "primary",
+   "sure": false,
+   "rounds": 20,
+   "kills": 39,
+   "fit": 1.0,
+   "operators": [
+    "Gridlock"
+   ],
+   "candidates": [
+    "F90",
+    "M249 SAW"
+   ]
+  },
+  "168013421941": {
+   "name": "Commando 9",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 8,
+   "kills": 17,
+   "fit": 1.0,
+   "operators": [
+    "Mozzie",
+    "Sentry"
+   ]
+  },
+  "168013421959": {
+   "name": null,
+   "kind": "primary",
+   "sure": false,
+   "rounds": 1,
+   "kills": 1,
+   "fit": 1.0,
+   "operators": [
+    "Gridlock"
+   ],
+   "candidates": [
+    "F90",
+    "M249 SAW"
+   ]
+  },
+  "168013421977": {
+   "name": "SDP 9mm",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 22,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Mozzie",
+    "Sens"
+   ]
+  },
+  "168013421995": {
+   "name": "P10 RONI",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 12,
+   "kills": 11,
+   "fit": 1.0,
+   "operators": [
+    "Mozzie"
+   ]
+  },
+  "184227273319": {
+   "name": "Pest Launcher",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 15,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Mozzie"
+   ]
+  },
+  "188410281800": {
+   "name": "Trax Stingers",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 21,
+   "kills": 3,
+   "fit": 1.0,
+   "operators": [
+    "Gridlock"
+   ]
+  },
+  "201523838434": {
+   "name": "HEL Presence Reduction",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 5,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Nøkk"
+   ]
+  },
+  "201523838440": {
+   "name": "Glance Smart Glasses",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 65,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Warden"
+   ]
+  },
+  "201523838446": {
+   "name": "Garra Hook",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 4,
+   "kills": 6,
+   "fit": 1.0,
+   "operators": [
+    "Amaru"
+   ]
+  },
+  "201523838452": {
+   "name": "Volcán Canister",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 58,
+   "kills": 4,
+   "fit": 1.0,
+   "operators": [
+    "Goyo"
+   ]
+  },
+  "201523838458": {
+   "name": "LV Explosive Lance",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 7,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Kali"
+   ]
+  },
+  "201523838464": {
+   "name": "Mag-NET System",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 42,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Wamai"
+   ]
+  },
+  "201523838470": {
+   "name": "Gemini Replicator",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 5,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Iana"
+   ]
+  },
+  "201523838476": {
+   "name": "Remah Dash",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 1,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Oryx"
+   ]
+  },
+  "201523838482": {
+   "name": "S.E.L.M.A. Aqua Breacher",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 72,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Ace"
+   ]
+  },
+  "201523838488": {
+   "name": "Banshee Sonic Defense",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 37,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Melusi"
+   ]
+  },
+  "201523838512": {
+   "name": "Surya Gate",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 23,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Aruni"
+   ]
+  },
+  "202492079847": {
+   "name": "CSRX 300",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 7,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Kali"
+   ]
+  },
+  "243267468233": {
+   "name": "Bulletproof Camera",
+   "kind": "gadget",
+   "sure": true,
+   "rounds": 123,
+   "kills": 0,
+   "fit": 0.99,
+   "operators": [
+    "Aruni",
+    "Castle",
+    "Doc",
+    "Fenrir",
+    "Frost",
+    "Goyo",
+    "Jäger",
+    "Kapkan",
+    "Lesion",
+    "Melusi",
+    "Sentry",
+    "Solis"
+   ]
+  },
+  "249219679725": {
+   "name": "Drone",
+   "kind": "drone",
+   "sure": true,
+   "rounds": 960,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Ace",
+    "Amaru",
+    "Ash",
+    "Blackbeard",
+    "Blitz",
+    "Brava",
+    "Buck",
+    "Capitão",
+    "Deimos",
+    "Dokkaebi",
+    "Finka",
+    "Flores",
+    "Fuze",
+    "Glaz",
+    "Gridlock",
+    "Grim",
+    "Hibana",
+    "Iana",
+    "Iq",
+    "Jackal",
+    "Kali",
+    "Lion",
+    "Maverick",
+    "Montagne",
+    "Nomad",
+    "Nøkk",
+    "Osa",
+    "Ram",
+    "Rauora",
+    "Sens",
+    "Sledge",
+    "Solid Snake",
+    "Striker",
+    "Thatcher",
+    "Thermite",
+    "Twitch",
+    "Ying",
+    "Zero",
+    "Zofia"
+   ]
+  },
+  "263047965420": {
+   "name": "Hard Breach Charge",
+   "kind": "gadget",
+   "sure": true,
+   "rounds": 99,
+   "kills": 0,
+   "fit": 0.98,
+   "operators": [
+    "Amaru",
+    "Buck",
+    "Capitão",
+    "Fuze",
+    "Grim",
+    "Montagne",
+    "Sens",
+    "Striker",
+    "Ying",
+    "Zero",
+    "Zofia"
+   ]
+  },
+  "263048049828": {
+   "name": "Gonne-6",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 2,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Zero"
+   ]
+  },
+  "282404990418": {
+   "name": "DP27",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 14,
+   "kills": 12,
+   "fit": 1.0,
+   "operators": [
+    "Tachanka"
+   ]
+  },
+  "288200866756": {
+   "name": "Kludge Drone",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 9,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Brava"
+   ]
+  },
+  "288200867379": {
+   "name": "TALON-8 Clear Shield",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 2,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Osa"
+   ]
+  },
+  "288200867496": {
+   "name": "Zoto Canister",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 27,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Tubarão"
+   ]
+  },
+  "291191140237": {
+   "name": "Argus Launcher",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 4,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Zero"
+   ]
+  },
+  "291191166795": {
+   "name": "SC3000K",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 2,
+   "kills": 2,
+   "fit": 1.0,
+   "operators": [
+    "Zero"
+   ]
+  },
+  "291437347555": {
+   "name": "Shumikha Launcher",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 15,
+   "kills": 7,
+   "fit": 1.0,
+   "operators": [
+    "Tachanka"
+   ]
+  },
+  "328397387054": {
+   "name": "RCE-Ratero Charge",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 22,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Flores"
+   ]
+  },
+  "350658628377": {
+   "name": null,
+   "kind": "secondary",
+   "sure": false,
+   "rounds": 47,
+   "kills": 0,
+   "fit": 0.72,
+   "operators": [
+    "Buck",
+    "Capitão",
+    "Dokkaebi",
+    "Glaz",
+    "Iana",
+    "Zero"
+   ]
+  },
+  "359135665211": {
+   "name": "Active Defense System (ADS)",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 3,
+   "kills": 0,
+   "fit": 0.67,
+   "operators": [
+    "Jäger",
+    "Warden"
+   ]
+  },
+  "371820933471": {
+   "name": "Razorbloom Shell",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 38,
+   "kills": 5,
+   "fit": 1.0,
+   "operators": [
+    "Thorn"
+   ]
+  },
+  "372271879863": {
+   "name": "UZK50Gi",
+   "kind": "primary",
+   "sure": false,
+   "rounds": 33,
+   "kills": 58,
+   "fit": 1.0,
+   "operators": [
+    "Thorn"
+   ],
+   "candidates": [
+    "M870",
+    "UZK50Gi"
+   ],
+   "by": "headshot share of its kills"
+  },
+  "374667787924": {
+   "name": "T.R.I.P. Connector",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 19,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Denari"
+   ]
+  },
+  "374667788026": {
+   "name": "Kawan Hive Launcher",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 53,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Grim"
+   ]
+  },
+  "374708016933": {
+   "name": "Cluster Charge",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 3,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Fuze"
+   ]
+  },
+  "375628878643": {
+   "name": "Kiba Barrier",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 79,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Azami"
+   ]
+  },
+  "384797789248": {
+   "name": "R.O.U. Projector System",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 16,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Sens"
+   ]
+  },
+  "386098331518": {
+   "name": "V10 Pantheon Shells",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 4,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Skopós"
+   ]
+  },
+  "387197346354": {
+   "name": "Impact EMP Grenade",
+   "kind": "gadget",
+   "sure": true,
+   "rounds": 45,
+   "kills": 0,
+   "fit": 0.82,
+   "operators": [
+    "Capitão",
+    "Dokkaebi",
+    "Grim",
+    "Iana",
+    "Montagne",
+    "Nøkk",
+    "Solid Snake"
+   ]
+  },
+  "387336878940": {
+   "name": "CAMRS",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 1,
+   "kills": 2,
+   "fit": 1.0,
+   "operators": [
+    "Brava"
+   ]
+  },
+  "391752121072": {
+   "name": "Spec-IO Electro-Sensor",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 31,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Solis"
+   ]
+  },
+  "395943091097": {
+   "name": "BU-GI Auto Breacher",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 22,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Ram"
+   ]
+  },
+  "395972905309": {
+   "name": "H.U.L.L. Adaptable Shield",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 32,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Blackbeard"
+   ]
+  },
+  "396493597839": {
+   "name": "F-NATT Dread Mine",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 42,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Fenrir"
+   ]
+  },
+  "401511231600": {
+   "name": "Deathmark Tracker",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 50,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Deimos"
+   ]
+  },
+  "405866692215": {
+   "name": ".44 Vendetta",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 50,
+   "kills": 16,
+   "fit": 1.0,
+   "operators": [
+    "Deimos"
+   ]
+  },
+  "409707105529": {
+   "name": "PCX-33",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 4,
+   "kills": 9,
+   "fit": 1.0,
+   "operators": [
+    "Skopós"
+   ]
+  },
+  "410903041523": {
+   "name": "Reaper MK2",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 36,
+   "kills": 14,
+   "fit": 1.0,
+   "operators": [
+    "Maverick",
+    "Pulse",
+    "Rauora",
+    "Sledge",
+    "Ying"
+   ]
+  },
+  "419258819322": {
+   "name": "CCE Shield Mk2",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 10,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Clash"
+   ]
+  },
+  "420075303436": {
+   "name": "D.O.M. Panel Launcher",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 5,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Rauora"
+   ]
+  },
+  "424122423516": {
+   "name": "Glaive-12",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 19,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Denari"
+   ]
+  },
+  "428908289098": {
+   "name": "E.G.S. Disruptor",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 1,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Thatcher"
+   ]
+  },
+  "431308949290": {
+   "name": "PMR90A2",
+   "kind": "primary",
+   "sure": true,
+   "rounds": 21,
+   "kills": 38,
+   "fit": 1.0,
+   "operators": [
+    "Capitão",
+    "Hibana",
+    "Nøkk",
+    "Solid Snake",
+    "Thatcher"
+   ]
+  },
+  "437464101745": {
+   "name": null,
+   "kind": "primary",
+   "sure": false,
+   "rounds": 4,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Dokkaebi"
+   ],
+   "candidates": [
+    "BOSG.12.2",
+    "XK23"
+   ]
+  },
+  "440916839951": {
+   "name": "Soliton Radar Mk. III",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 24,
+   "kills": 0,
+   "fit": 1.0,
+   "operators": [
+    "Solid Snake"
+   ]
+  },
+  "441691679238": {
+   "name": "TACIT .45",
+   "kind": "secondary",
+   "sure": true,
+   "rounds": 24,
+   "kills": 4,
+   "fit": 1.0,
+   "operators": [
+    "Solid Snake"
+   ]
+  },
+  "445433447876": {
+   "name": "Jegeo Payload",
+   "kind": "ability",
+   "sure": true,
+   "rounds": 13,
+   "kills": 2,
+   "fit": 1.0,
+   "operators": [
+    "Dokkaebi"
+   ]
+  }
+ }
+}

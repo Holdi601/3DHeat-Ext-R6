@@ -1,4 +1,4 @@
-"""
+﻿"""
 Rainbow Six Siege's identifiers: maps (`worldid`), operators, game modes and
 match types. Facts of the game, gathered from the values r6-dissect
 (github.com/redraskal/r6-dissect, MIT) lists; a value not listed is kept as
@@ -121,6 +121,7 @@ OPERATORS = {
     386098331713: "Skopos",
     386098331923: "Rauora",
     374667787937: "Denari",
+    444310693746: "Solid Snake",  # named by its loadout (F2, PMR90A2, its own secondary and ability), Y11
 }
 
 MODES = {
@@ -171,7 +172,7 @@ ATTACKERS = {
     "Sledge", "Thatcher", "Ash", "Thermite", "Twitch", "Montagne", "Glaz", "Fuze", "Blitz", "IQ", "Buck",
     "Blackbeard", "Capitão", "Hibana", "Jackal", "Ying", "Zofia", "Dokkaebi", "Lion", "Finka", "Maverick",
     "Nomad", "Gridlock", "Nøkk", "Amaru", "Kali", "Iana", "Ace", "Zero", "Flores", "Osa", "Sens", "Grim",
-    "Brava", "Ram", "Deimos", "Striker",
+    "Brava", "Ram", "Deimos", "Striker", "Rauora", "Solid Snake",
 }
 
 
