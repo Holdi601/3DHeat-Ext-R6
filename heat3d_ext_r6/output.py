@@ -20,7 +20,7 @@ import numpy as np
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from . import __version__, callouts, catalog, game, impacts, sites
+from . import __version__, callouts, catalog, game, impacts, items, sites
 from .round import Round
 
 #: Columns from the catalogue on every row of a player (what they play and carry in the round).
@@ -28,6 +28,10 @@ GEAR = ("operatorRole", "primary", "primaryClass", "secondary", "secondaryClass"
         "abilityRole", "loadout")
 #: Columns of a kill or death row: the weapon or gadget the kill was made with.
 WEAPON = ("weapon", "weaponClass", "weaponSlot")
+#: What a use row is about (`items.py`): the item and its class, how many shots or charges, what was left, and
+#: where a thrown or placed gadget came to rest.
+USE = ("item", "itemClass")
+USE_NUM = ("count", "left", "placedX", "placedY", "placedZ")
 #: Who made a mark on the level, as worked out (`impacts.attribute`): player, operator, weapon, weapon class.
 BY = ("byPlayer", "byOperator", "byItem", "byItemClass")
 #: Round outcome words (`roundEndReason`) by the reader's win condition.
@@ -48,26 +52,29 @@ HINTS = {
         "lookMode": "vector", "dirX": "dirX", "dirY": "dirY", "dirZ": "dirZ",
         "extra": ["event", "round", "roundTime", "clock", "phase", "side", "operator", *GEAR, *WEAPON, "pawn",
                   "track", "gadgetType", "other", "otherOperator", "headshot", "won", "matchWon", "roundEndReason", "site", "callout",
-                  "teamAlive", "enemyAlive", "state_planted", "surface", "markKind", *BY, "inferred", "detail",
-                  "entity"],
+                  "teamAlive", "enemyAlive", "state_planted", "surface", "markKind", *BY, *USE, *USE_NUM, "inferred",
+                  "detail", "entity"],
     },
 }
 
 FLOAT32 = ("x", "y", "z", "yaw", "dirX", "dirY", "dirZ", "roundTime", "clock", "headshot", "won", "matchWon",
-           "teamAlive", "enemyAlive", "state_planted", "inferred")
+           "teamAlive", "enemyAlive", "state_planted", "inferred", *USE_NUM)
 INT16 = ("team", "round")
 STRINGS = ("match", "player", "track", "teamName", "side", "operator", *GEAR, *WEAPON, "event", "pawn", "gadgetType", "other",
-           "otherOperator", "phase", "site", "callout", "roundEndReason", "surface", "markKind", *BY, "detail")
+           "otherOperator", "phase", "site", "callout", "roundEndReason", "surface", "markKind", *BY, *USE, "detail")
 
 #: How a kind of object's samples are named in `event`: only the body is the player's position.
 EVENT_OF = {"operator": "position", "drone": "drone", "gadget": "gadget"}
 
 NOT_READ = [
     "attachments (sights, barrels, grips): the weapon's record holds small numbers, not named ids",
-    "health, damage and the shots fired: not found in the object updates yet",
-    "what each placed or thrown gadget object is: not written; `gadgetType` names it from the owner's loadout and "
-    "whether it flew (thrown) or stayed (placed), `inferred` the confidence, both names where that cannot tell",
-    "stance (standing, crouching, prone): not found in the body's updates",
+    "health and damage: not found in the object updates yet",
+    "what each placed or thrown gadget object is: not written; a gadget object that appears as its owner uses a "
+    "gadget or ability (`items.py`) is named after it (`inferred` 0.9), otherwise `gadgetType` names it from the "
+    "owner's loadout and whether it flew (thrown) or stayed (placed), `inferred` the confidence, both names where "
+    "that cannot tell",
+    "a shot's direction and what it hit: the shots are counted from the ammunition (`shot` rows), not traced",
+    "stance (standing, crouching, prone) and leaning: not found in the body's updates",
     "who made a mark on the level: worked out from who faced it as it appeared (`byPlayer`, `inferred` the "
     "confidence); the weapon only where that player's kill in the same moment names it; the size of the opening",
     "who planted or disabled the defuser in Y11 files: the player who stood still through it (`inferred` = 1)",
@@ -145,6 +152,55 @@ def gadget_type(kit: dict[str, str], track: list) -> tuple[str, float]:
     return f"{g} / {a}", float("nan")
 
 
+#: A gadget's object appears up to ~4 s before its use is counted (it is in hand, primed or being placed)
+#: and up to ~1 s after: ticks.
+APPEAR_BEFORE, APPEAR_AFTER = 150, 40
+
+
+def match_uses(r: Round) -> tuple[dict[int, items.Use], dict[int, int], list[items.Use]]:
+    """
+    The round's uses (`r.uses`, plus a deploy for each drone as its object
+    appears) and which gadget object each one put out: the owner's gadget
+    object that appeared nearest in time to the use (`APPEAR_BEFORE`,
+    `APPEAR_AFTER`), each object once. Returns (object -> use, id(use) ->
+    object, the uses in tick order). A destruction or pick-up of the same
+    charge goes with its deploy's object.
+    """
+    uses = list(r.uses)
+    drone_id = int(catalog.data().get("drone") or 0) or None
+    by_name = {p.name: p for p in r.players}
+    used_by: dict[int, items.Use] = {}
+    use_track: dict[int, int] = {}
+    for pl in r.players:
+        for obj, kind in pl.objects.items():
+            track = r.tracks.get(obj)
+            if kind == "drone" and track and drone_id:
+                u = items.Use("gadget_deploy", track[0][0], pl.name, drone_id, 1, None, None, True)
+                uses.append(u)
+                used_by[obj], use_track[id(u)] = u, obj
+    uses.sort(key=lambda u: (u.tick, u.player, u.kind))
+    by_charge: dict[int, int] = {}
+    for u in uses:
+        if u.charge is not None and u.charge in by_charge and u.kind in ("gadget_destroyed", "gadget_pickup"):
+            use_track[id(u)] = by_charge[u.charge]
+            continue
+        if not u.placed or id(u) in use_track or u.player not in by_name:
+            continue
+        best = None
+        for obj, kind in by_name[u.player].objects.items():
+            track = r.tracks.get(obj)
+            if kind != "gadget" or not track or obj in used_by:
+                continue
+            dt = track[0][0] - u.tick
+            if -APPEAR_BEFORE <= dt <= APPEAR_AFTER and (best is None or abs(dt) < best[0]):
+                best = (abs(dt), obj)
+        if best is not None:
+            used_by[best[1]], use_track[id(u)] = u, best[1]
+            if u.charge is not None:
+                by_charge[u.charge] = best[1]
+    return used_by, use_track, uses
+
+
 def match_name(rounds: list[Round]) -> str:
     r = rounds[0]
     stamp = r.rec.header.get("datetime", "") or "unknown"
@@ -193,7 +249,8 @@ def _rows(r: Round, number: int, offset: float, match: str,
             other: str = "", headshot: float = float("nan"), detail: str = "", weapon: int | None = None,
             normal: tuple[float, float, float] | None = None, mark=None, callout: str = "",
             inferred: float = float("nan"), by: tuple[str, str, str, str] | None = None, track: str = "",
-            gadget: str = "") -> None:
+            gadget: str = "", use: items.Use | None = None,
+            placed: tuple[float, float, float] | None = None) -> None:
         sec = r.seconds(tick) or 0.0
         h = math.radians(yaw) if math.isfinite(yaw) else float("nan")
         cols["time"].append(offset + sec)
@@ -246,6 +303,13 @@ def _rows(r: Round, number: int, offset: float, match: str,
         cols["gadgetType"].append(gadget)
         for k, v in zip(BY, by or ("", "", "", "")):
             cols[k].append(v)
+        iname, idata = label(use.item) if use is not None else ("", {})
+        cols["item"].append(iname)
+        cols["itemClass"].append(idata.get("class") or idata.get("kind") or "")
+        cols["count"].append(float(use.count) if use is not None else float("nan"))
+        cols["left"].append(float(use.left) if use is not None and use.left is not None else float("nan"))
+        for k, v in zip(("placedX", "placedY", "placedZ"), placed or (float("nan"),) * 3):
+            cols[k].append(v)
         cols["detail"].append(detail)
         cols["entity"].append(entity)
 
@@ -257,19 +321,28 @@ def _rows(r: Round, number: int, offset: float, match: str,
     cells: dict[tuple[int, int, int], dict[str, int]] = {}
     shooters: list[impacts.Shooter] = []
     drone_name = label(int(catalog.data().get("drone") or 0))[0] or "Drone"
+    # Each object its own track: the body is the player's; drones and gadgets are numbered in the order they
+    # appear.
+    track_name: dict[int, str] = {}
     for pl in r.players:
         count: dict[str, int] = {}
+        for obj, kind in sorted(pl.objects.items(), key=lambda kv: (r.tracks.get(kv[0]) or [(1 << 40,)])[0][0]):
+            count[kind] = count.get(kind, 0) + 1
+            track_name[obj] = pl.name if kind == "operator" else f"{pl.name} {kind} {number}.{count[kind]}"
+    used_by, use_track, uses = match_uses(r)
+    for pl in r.players:
         for obj, kind in sorted(pl.objects.items(), key=lambda kv: (r.tracks.get(kv[0]) or [(1 << 40,)])[0][0]):
             track = r.tracks.get(obj, [])
             yaw = float("nan")
             line = tl.get(obj)
             heads: list[tuple[int, float, float, float, float]] = []
-            # Each object its own track: the body is the player's; drones and gadgets are numbered in the order
-            # they appear, and named where the loadout and the way they move tell (`gadget_type`).
-            count[kind] = count.get(kind, 0) + 1
-            name = pl.name if kind == "operator" else f"{pl.name} {kind} {number}.{count[kind]}"
+            # A gadget object is named after the gadget or ability its owner used as it appeared (`match_uses`),
+            # else from the loadout and the way it moves (`gadget_type`).
+            name = track_name[obj]
             gtype, gconf = ("", float("nan")) if kind == "operator" else \
-                (drone_name, 1.0) if kind == "drone" else gadget_type(kit.get(pl.name, none_kit), track)
+                (drone_name, 1.0) if kind == "drone" else \
+                (label(used_by[obj].item)[0], 0.9) if obj in used_by else \
+                gadget_type(kit.get(pl.name, none_kit), track)
             for tick, x, y, z, raw, _flags, _size in track:
                 if math.isfinite(raw):
                     yaw = (raw + 90.0 + 180.0) % 360.0 - 180.0
@@ -349,6 +422,25 @@ def _rows(r: Round, number: int, offset: float, match: str,
                     detail=detail, callout=callout_of(e.player, e.tick),
                     inferred=e.confidence if e.confidence is not None else
                     (1.0 if e.inferred else 0.0) if e.of is not None else float("nan"))
+
+    # Shots, reloads, ability and gadget uses (`items.py`), each at the user's position; a gadget's object, where
+    # one goes with the use, gives where it came to rest (`placedX/Y/Z`, its last sample) and its track's name
+    # (`detail` {"object": ...}).
+    for u in uses:
+        s = at(u.player, u.tick)
+        if not s or u.player not in by_name:
+            continue
+        obj = use_track.get(id(u))
+        rest = None
+        if obj is not None and r.tracks.get(obj) and by_name[u.player].objects.get(obj) == "gadget":
+            # Its last place in the world; an object stuck to another one (a camera on a wall) can end in
+            # updates relative to that, near the origin: those are passed over (more than 60 m from the user).
+            near = [p for p in r.tracks[obj] if math.dist(p[1:4], s[1:4]) < 60]
+            if near:
+                rest = (near[-1][1], near[-1][2], near[-1][3])
+        add(u.tick, s[1], s[2], s[3], raw_yaw(s), by_name[u.player], u.kind, "operator", body[u.player][0],
+            callout=callout_of(u.player, u.tick), use=u, placed=rest,
+            detail=json.dumps({"object": track_name[obj]}) if obj in track_name else "")
 
     end_tick = max((b.tick for b in r.rec.blocks), default=0)
     # The round ends at its last kill, defuse or plant's detonation, else when the clock runs out.
@@ -440,6 +532,8 @@ def _round_doc(r: Round, number: int, offset: float) -> dict[str, Any]:
                        "sure": catalog.item(it.id).get("sure"), "weapon_slot": it.weapon} for it in p.items],
             "objects": {k: sum(1 for v in p.objects.values() if v == k) for k in ("operator", "drone", "gadget")},
             "samples": sum(len(r.tracks.get(o, [])) for o, k in p.objects.items() if k == "operator"),
+            "uses": {k: sum(u.count for u in r.uses if u.player == p.name and u.kind == k)
+                     for k in sorted({u.kind for u in r.uses if u.player == p.name})},
         } for p in r.players],
         "events": [{"kind": e.kind, "time_s": round(r.seconds(e.tick) or 0, 2) if e.tick is not None else None,
                     "clock": e.clock, "player": e.player, "other": e.other, "headshot": e.headshot, "text": e.text,

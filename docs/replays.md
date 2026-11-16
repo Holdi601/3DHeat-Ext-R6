@@ -50,5 +50,25 @@ player is in, the marks bullets leave on walls (with the level object they sit
 on), and each round's result. The full list of columns is in the
 [README](https://github.com/Holdi601/3DHeat-Ext-R6#columns).
 
+## Shots, abilities and gadgets
+
+Each player's use of what they carry is an event of its own, at the player's
+position and with the item's name (`item`) and class (`itemClass`):
+
+| Event | When |
+|---|---|
+| `shot` | rounds were fired; `count` how many in that moment, `left` the rounds left in all |
+| `reload` | a reload starts |
+| `ability_use` | the operator's ability is used; `count` charges used, `left` charges left |
+| `gadget_deploy` | a gadget is thrown or placed, or a drone goes out |
+| `gadget_destroyed` | a placed or thrown gadget is used up, set off or destroyed |
+| `gadget_pickup` | a placed gadget is picked up again |
+
+Where the thrown or placed object can be followed, `placedX`, `placedY`,
+`placedZ` give where it came to rest, and the gadget's own track is named
+after it.
+
+Stance (crouching, prone) and leaning are not in the tables yet.
+
 A recording made by a player (not a spectator) may only hold what that
 player's game was told: enemies out of sight can be missing.

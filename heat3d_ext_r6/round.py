@@ -28,7 +28,7 @@ import re
 import struct
 from dataclasses import dataclass, field
 
-from . import callouts as callout_mod, game, loadout
+from . import callouts as callout_mod, catalog, game, items, loadout
 from .rec import Rec, packets
 
 NAME = b"\x22\x07\x94\x9b\xdc"
@@ -61,6 +61,7 @@ class Player:
     objects: dict[int, str] = field(default_factory=dict)  # object -> "operator" | "drone" | "linked"
     items: list[loadout.Item] = field(default_factory=list)  # carried as the action phase starts
     operator_changes: list[tuple[int | None, int]] = field(default_factory=list)  # (tick, operator id) as set
+    item_objects: list[tuple[int, int]] = field(default_factory=list)  # (item object, item id) of every item held
 
 
 @dataclass
@@ -106,6 +107,7 @@ class Round:
     tick_seconds: list[tuple[int, float]] = field(default_factory=list)
     phase_names: list[str] = field(default_factory=list)
     callouts: dict = field(default_factory=dict)  # track object -> callouts.Timeline (`callouts.py`)
+    uses: list = field(default_factory=list)  # shots, reloads, ability and gadget uses (`items.py`)
 
     def owner(self, obj: int) -> Player | None:
         for p in self.players:
@@ -455,6 +457,7 @@ def read_round(rec: Rec) -> Round:
             p.operator = game.operator_name(lo.operator_id)
         p.items = lo.items
         p.operator_changes = lo.changes
+        p.item_objects = [(it.obj, it.id) for it in lo.held if it.obj]
 
     # Sides: by the operators each team picked (most of them).
     roles: dict[int, str] = {}
@@ -540,6 +543,8 @@ def read_round(rec: Rec) -> Round:
     r.tick_seconds = _tick_seconds(anchors)
     r.phase_names = names
     r.callouts = timelines
+    records = {struct.unpack("<Q", o)[0]: n for _p, o, n in loadout._records(rec.body, rec.snapshot_end)}
+    r.uses = items.read(rec, loadout._event_section(rec), players, lambda i: catalog.item(i).get("kind"), records)
     return r
 
 

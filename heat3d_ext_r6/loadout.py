@@ -50,6 +50,7 @@ class Item:
     id: int
     skin: int | None
     weapon: bool | None  # by the slot's class; None where no slot was found
+    obj: int | None = None  # the item object (`items.py` follows its slot)
 
 
 @dataclass
@@ -59,6 +60,7 @@ class Loadout:
     operator_id: int | None = None
     items: list[Item] = field(default_factory=list)
     changes: list[tuple[int | None, int]] = field(default_factory=list)  # (tick, operator id) as set
+    held: list[Item] = field(default_factory=list)  # every item set held before the action phase, in order
 
 
 def _item_at(b: bytes, p: int) -> tuple[bytes | None, Item]:
@@ -72,7 +74,7 @@ def _item_at(b: bytes, p: int) -> tuple[bytes | None, Item]:
         if k >= 0:
             cls = b[k + 12 : k + 16]
             weapon = True if cls == WEAPON_SLOT else False if cls == GADGET_SLOT else None
-    return obj, Item(v, skin or None, weapon)
+    return obj, Item(v, skin or None, weapon, struct.unpack("<Q", obj)[0] if obj is not None else None)
 
 
 def _records(b: bytes, end: int) -> list[tuple[int, bytes, str]]:
@@ -108,6 +110,7 @@ def read(rec: Rec, action_tick: int | None) -> dict[str, Loadout]:
             continue
         lo = Loadout(name, obj)
         lo.items = [it for q, _o, it in items if prev < q < pos and it.id]
+        lo.held = list(lo.items)
         k = b.find(OPERATOR, pos, pos + 400)
         if k >= 0:
             lo.operator_id = struct.unpack_from("<Q", b, k + 5)[0] or None
@@ -143,6 +146,7 @@ def read(rec: Rec, action_tick: int | None) -> dict[str, Loadout]:
                     owner.changes.append((blk.tick, op))
                 if mine:
                     owner.items = mine
+                    owner.held += mine
                 last = q
             q = b.find(OPERATOR, q + 5, blk.end)
     return out

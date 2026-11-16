@@ -1,7 +1,10 @@
 # Changelog
 
-## Unreleased
+## 0.4.0
 
+- Shots, reloads, ability and gadget uses (`items.py`): `shot` (rounds fired in that tick, `count`; rounds left in all, `left`), `reload`, `ability_use` (charges used and left), `gadget_deploy` (thrown, placed, a drone going out), `gadget_destroyed`, `gadget_pickup`, each at the player's position with the item (`item`, `itemClass`). They come from each carried item's own objects (ammunition, charges left, one object per charge of a deployable), tied to the player through the inventory under the player's record.
+- Where a thrown or placed gadget came to rest: `placedX`, `placedY`, `placedZ` and its track in `detail`; a gadget object that appears as its owner uses a gadget or ability is named after it (`gadgetType`, `inferred` 0.9).
+- The match document's players list each player's uses (`uses`).
 - The maps as 3D levels moved to their own tool and repository, [3DHeat-Ext-R6-Maps](https://github.com/Holdi601/3DHeat-Ext-R6-Maps) (`heat3d-r6-maps`), with their history; this reader keeps the replays.
 - With no replays named, the game's `MatchReplay` folder is found and read.
 - World ids of the current map versions (read from the game's map archives).

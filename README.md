@@ -4,8 +4,10 @@ Rainbow Six Siege **Match Replays** (`.rec`, the game's "dissect" files, one a
 round) into the tables the [3DHeat](https://github.com/Holdi601/3DHeat) viewer
 reads: one `.3dheat` per match with every player's position tick by tick and
 the room they are in, their operator and loadout, their drones and gadgets,
-the kill feed with the weapon or gadget of each kill, every plant and defuse
-attempt (interrupted ones too), the reinforcements, the marks left on the
+the kill feed with the weapon or gadget of each kill, every shot fired and
+reload, every use of an ability and every gadget thrown, placed, picked up or
+destroyed, every plant and defuse attempt (interrupted ones too), the
+reinforcements, the marks left on the
 level with who most likely made them, the bomb sites as the match's
 objectives and each round's result.
 
@@ -60,6 +62,7 @@ under the match by itself.
 | winner, how, match result | header scores and the events | `won`, `roundEndReason`, `matchWon` on every row |
 | site | site packets | on every row of the round |
 | bomb sites | the rooms' callouts and where players stood in them (`sites.py`), the table `sites.json` | the match document's `objectives`: each played site's two rooms as floor outlines, the map's other sites from the table, with the rounds and times each was played |
+| shots, reloads, ability and gadget uses | the item tree of the snapshot and the event section (`items.py`): each carried item's slot holds its ammunition (rounds in the magazine, in all, reloading), its charges left, and one object per charge of a deployable (carried, out, gone) | `shot` (rounds fired in that tick), `reload`, `ability_use`, `gadget_deploy`, `gadget_destroyed`, `gadget_pickup`, at the user's position; a thrown or placed gadget's object, where one appears as it is used, gives where it came to rest |
 | marks on the level (bullet holes and the like) | a tick-indexed section of records (`impacts.py`) | exact position, the level object it sits on, the mark's kind; the shooter where one player faced the mark as it appeared (`byPlayer`, with a confidence) |
 
 Every other moving object (doors, debris...) goes to the `entities` sidecar
@@ -116,9 +119,42 @@ Attempt rows (`plant_start`, `plant`, `plant_interrupted`, `defuse_start`,
 as it stopped (`{"of": 7.0, "left": 2.05}`). Reinforcement rows (`reinforce`):
 `detail` holds the team's reinforcements left.
 
+Use rows (`shot`, `reload`, `ability_use`, `gadget_deploy`,
+`gadget_destroyed`, `gadget_pickup`; `items.py`): `item` (the weapon, gadget,
+ability or drone, named by the catalogue), `itemClass` (the weapon's class,
+else gadget / ability / drone), `count` (rounds fired, or charges used, in
+that tick), `left` (rounds left in all after a shot, charges left after an
+ability use counted from the charges), `placedX/Y/Z` (where the thrown or
+placed object came to rest: its last place) and `detail` `{"object": <its
+track>}` where the object is in the stream. A gadget object that appears
+(up to about 4 s before, 1 s after) as its owner uses a gadget or ability is
+named after it on its own rows (`gadgetType`, `inferred` 0.9); a drone's
+`gadget_deploy` is the moment its object appears.
+
 Events: `position`, `drone`, `gadget`, `kill`, `death`, `plant_start`,
 `plant`, `plant_interrupted`, `defuse_start`, `defuse`, `defuse_interrupted`,
-`reinforce`, `round_end`, `impact`.
+`reinforce`, `round_end`, `impact`, `shot`, `reload`, `ability_use`,
+`gadget_deploy`, `gadget_destroyed`, `gadget_pickup`.
+
+## Shots, abilities and gadgets
+
+Each carried item is a small tree of objects in the snapshot and the event
+section (`items.py`): the slot, a holder with the item object (its item id),
+the ammunition object (rounds in the magazine, rounds in all, reloading) and,
+for a deployable, one object per charge whose state is carried, out (placed,
+thrown, deployed) or gone (used up, set off, destroyed). The slots hang under
+the player's inventory, which hangs under the player's record, so each use is
+tied to its player by the file itself. A drop of the rounds in all is that many shots; a
+charge going out is a deploy, coming back a pick-up, gone after being out a
+destruction. Items without per-charge objects (most abilities) count their
+charges left, written only once they change: the first value written is one
+use when the item was in hand just before.
+
+Checked on a pro match (8 rounds): 3,652 shots, 343 reloads, 223 ability
+charges and 166 deploys (82 of them drones); the per-player gadget deploys
+agree with each team's count of that gadget left in 46 of 53 cases; in the
+others the team's count also drops when a carrier dies. Shots have no
+direction or target here: what a shot hit is not read.
 
 ## Bomb sites
 
@@ -184,14 +220,15 @@ and damage, the size of a hole's opening, walls and floors opened, which wall
 or hatch a reinforcement went on and whether it was breached later,
 barricades on doors and windows (a section of level objects with health
 values and positions holds them, not decoded yet), stance (standing,
-crouching, prone: not found in the body's updates), camera use. Online
+crouching, prone) and leaning (not found yet: the body's updates, the
+per-body state values of another section and the event section's
+per-player toggles were checked against the players' speeds, none
+separates), camera use. Online
 profile ids are read but kept out of the output on purpose.
 
-Found but not used yet: the event section counts each item's charges and
-ammunition (fields `66 6b 18 44`, `34 bc 4b aa`: deployables left;
-`77 ca 96 de`: rounds in the magazine; `40 0a c8 29`: rounds in reserve) on
-the item objects; tying those objects to their players would give every
-deployment and every shot fired.
+Found but not used: each team's count of each secondary gadget left
+(`66 6b 18 44`, with the item id under `e5 86 a6 c5`): it also drops when a
+carrier dies, so the uses come from each player's own slot instead.
 
 The marks' `surface` ids are the map's own: they keep their value across the
 matches of one version of a map (a rework gives the map a new `worldid` and
