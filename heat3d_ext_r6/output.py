@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import json
 import math
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -329,7 +330,11 @@ def _rows(r: Round, number: int, offset: float, match: str,
         for obj, kind in sorted(pl.objects.items(), key=lambda kv: (r.tracks.get(kv[0]) or [(1 << 40,)])[0][0]):
             count[kind] = count.get(kind, 0) + 1
             track_name[obj] = pl.name if kind == "operator" else f"{pl.name} {kind} {number}.{count[kind]}"
-    used_by, use_track, uses = match_uses(r)
+    try:
+        used_by, use_track, uses = match_uses(r)
+    except Exception as e:  # noqa: BLE001  (a gadget not matched to its object never costs the round)
+        print(f"  round {number}: gadget objects not matched to uses ({type(e).__name__}: {e})", file=sys.stderr)
+        used_by, use_track, uses = {}, {}, list(r.uses)
     for pl in r.players:
         for obj, kind in sorted(pl.objects.items(), key=lambda kv: (r.tracks.get(kv[0]) or [(1 << 40,)])[0][0]):
             track = r.tracks.get(obj, [])

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.1
+
+- A zip inside a bundle's zip is read too (some 2025 league bundles hold their match as one): those bundles gave no match before.
+- One round the reader cannot follow is skipped with its reason, whatever the error; the match keeps its other rounds. An item tree that cannot be followed costs only that round's use rows (`items.py`), never the round.
+
 ## 0.4.0
 
 - Shots, reloads, ability and gadget uses (`items.py`): `shot` (rounds fired in that tick, `count`; rounds left in all, `left`), `reload`, `ability_use` (charges used and left), `gadget_deploy` (thrown, placed, a drone going out), `gadget_destroyed`, `gadget_pickup`, each at the player's position with the item (`item`, `itemClass`). They come from each carried item's own objects (ammunition, charges left, one object per charge of a deployable), tied to the player through the inventory under the player's record.

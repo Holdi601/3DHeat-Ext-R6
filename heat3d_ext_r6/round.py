@@ -26,7 +26,9 @@ from __future__ import annotations
 import math
 import re
 import struct
+import sys
 from dataclasses import dataclass, field
+from pathlib import Path
 
 from . import callouts as callout_mod, catalog, game, items, loadout
 from .rec import Rec, packets
@@ -428,6 +430,20 @@ def _feed(rec: Rec, by_event_id: dict[bytes, Player]) -> tuple[list[Event], str 
     return events, site
 
 
+def uses(rec: Rec, players: list[Player]) -> list:
+    """
+    The players' shots, reloads, ability and gadget uses (`items.py`). An
+    item tree the reader cannot follow costs only these rows, never the round:
+    the reason goes to stderr and the round has no use rows.
+    """
+    try:
+        records = {struct.unpack("<Q", o)[0]: n for _p, o, n in loadout._records(rec.body, rec.snapshot_end)}
+        return items.read(rec, loadout._event_section(rec), players, lambda i: catalog.item(i).get("kind"), records)
+    except Exception as e:  # noqa: BLE001
+        print(f"  {Path(str(rec.path)).name}: item uses not read ({type(e).__name__}: {e})", file=sys.stderr)
+        return []
+
+
 def read_round(rec: Rec) -> Round:
     h = rec.header
     tracks = _tracks(rec)
@@ -543,8 +559,7 @@ def read_round(rec: Rec) -> Round:
     r.tick_seconds = _tick_seconds(anchors)
     r.phase_names = names
     r.callouts = timelines
-    records = {struct.unpack("<Q", o)[0]: n for _p, o, n in loadout._records(rec.body, rec.snapshot_end)}
-    r.uses = items.read(rec, loadout._event_section(rec), players, lambda i: catalog.item(i).get("kind"), records)
+    r.uses = uses(rec, players)
     return r
 
 

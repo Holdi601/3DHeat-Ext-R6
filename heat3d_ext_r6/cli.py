@@ -26,7 +26,7 @@ import zipfile
 from pathlib import Path
 
 from . import __version__, container, output
-from .rec import RecError, read
+from .rec import read
 from .round import read_round
 
 
@@ -40,13 +40,46 @@ def _matches(paths: list[str]) -> dict[str, list[Path]]:
     return out
 
 
+def _zip_matches(zf: zipfile.ZipFile, out: Path, loose: bool, depth: int = 0):
+    """Each match (folder of rounds) in a zip, read in place; zips inside it too (some bundles hold one)."""
+    names = zf.namelist()
+    by: dict[str, list[str]] = {}
+    for n in names:
+        if n.lower().endswith(".rec"):
+            by.setdefault(n.rsplit("/", 1)[0] if "/" in n else "", []).append(n)
+    with tempfile.TemporaryDirectory() as tmp:
+        for members in by.values():
+            files = []
+            for n in members:
+                target = Path(tmp) / Path(n).name
+                target.write_bytes(zf.read(n))
+                files.append(target)
+            res = convert(files, out, loose)
+            for f in files:
+                f.unlink()
+            if res:
+                yield res
+        for n in names:
+            if n.lower().endswith(".zip") and depth < 3:
+                inner = Path(tmp) / f"inner{depth}.zip"
+                with zf.open(n) as src, open(inner, "wb") as dst:
+                    while chunk := src.read(1 << 20):
+                        dst.write(chunk)
+                try:
+                    with zipfile.ZipFile(inner) as z2:
+                        yield from _zip_matches(z2, out, loose, depth + 1)
+                except zipfile.BadZipFile as e:
+                    print(f"  skipped {n}: {e}", file=sys.stderr)
+                inner.unlink()
+
+
 def convert(files: list[Path], out: Path, loose: bool = False) -> Path | None:
     rounds = []
     for f in sorted(files):
         try:
             rounds.append(read_round(read(f)))
-        except (RecError, OSError, ValueError, IndexError) as e:
-            print(f"  skipped {f.name}: {e}", file=sys.stderr)
+        except Exception as e:  # noqa: BLE001  (one unreadable round never costs the match)
+            print(f"  skipped {f.name}: {type(e).__name__}: {e}", file=sys.stderr)
     if not rounds:
         return None
     data = output.write(rounds, out)
@@ -100,23 +133,10 @@ def main(argv: list[str] | None = None) -> int:
     groups = _matches(plain)
     done = 0
     for z in (p for p in args.paths if p.lower().endswith(".zip")):
-        with zipfile.ZipFile(z) as zf, tempfile.TemporaryDirectory() as tmp:
-            names = [n for n in zf.namelist() if n.lower().endswith(".rec")]
-            by: dict[str, list[str]] = {}
-            for n in names:
-                by.setdefault(n.rsplit("/", 1)[0], []).append(n)
-            for folder, members in by.items():
-                files = []
-                for n in members:
-                    target = Path(tmp) / Path(n).name
-                    target.write_bytes(zf.read(n))
-                    files.append(target)
-                res = convert(files, out, args.loose)
-                for f in files:
-                    f.unlink()
-                if res:
-                    done += 1
-                    print(res)
+        with zipfile.ZipFile(z) as zf:
+            for res in _zip_matches(zf, out, args.loose):
+                done += 1
+                print(res)
     for folder, files in groups.items():
         res = convert(files, out, args.loose)
         if res:
