@@ -14,6 +14,11 @@ its memory or its anti-cheat.
 
 ## Notice
 
+Each game reader is its own small project with its own licence file,
+releases and issue tracker, so it can be installed, updated, maintained - or
+withdrawn on a rights holder's request - on its own, without affecting the
+viewer or the other tools.
+
 Not affiliated with or endorsed by Ubisoft; Rainbow Six Siege and all other
 trademarks belong to their owners. Meant for non-commercial, personal
 analysis. Rights holders: open an issue or get in touch through the GitHub

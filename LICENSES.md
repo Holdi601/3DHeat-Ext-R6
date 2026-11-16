@@ -39,8 +39,16 @@ and event markers; its code is not used.
 The maps as 3D levels are a separate tool with its own licence notes:
 [3DHeat-Ext-R6-Maps](https://github.com/Holdi601/3DHeat-Ext-R6-Maps).
 
-## Takedown
+## Notice and contact
 
-Rainbow Six Siege is a trademark of Ubisoft. This project is not affiliated
-with or endorsed by Ubisoft. If Ubisoft asks for this tool to be taken down,
-it will be.
+Nothing from the game is shipped: no game assets, no game code, no DLLs.
+
+Each game reader is its own small project with its own licence file,
+releases and issue tracker, so it can be installed, updated, maintained - or
+withdrawn on a rights holder's request - on its own, without affecting the
+viewer or the other tools.
+
+This project is not affiliated with or endorsed by Ubisoft. Rainbow Six Siege
+and related names and trademarks belong to their owners. Rights holders: open an issue at
+[github.com/Holdi601/3DHeat-Ext-R6/issues](https://github.com/Holdi601/3DHeat-Ext-R6/issues) -
+we respond quickly and remove anything on request.
