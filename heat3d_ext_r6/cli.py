@@ -102,6 +102,10 @@ def main(argv: list[str] | None = None) -> int:
     except Exception:  # an update check never stops a conversion
         pass
     if argv[:1] == ["info"]:
+        if not argv[1:] or argv[1] in ("-h", "--help"):
+            print("usage: heat3d-r6-replay info <replay.rec> [...]")
+            print("Each round's header, map, site, players and events as JSON.")
+            return 0 if argv[1:] else 2
         for a in argv[1:]:
             r = read_round(read(a))
             print(json.dumps({"header": r.rec.header, "map": r.map, "site": r.site, "roles": r.roles,

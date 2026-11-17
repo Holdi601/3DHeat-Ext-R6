@@ -26,6 +26,43 @@ trademarks belong to their owners. Meant for non-commercial, personal
 analysis. Rights holders: open an issue or get in touch through the GitHub
 profile; we respond within 48 hours and remove on request.
 
+## Quick start for new users
+
+You need: Windows, [Python](https://www.python.org/downloads/) 3.10 or later
+("Add python.exe to PATH" ticked in its installer), and Match Replays: Siege
+keeps your last matches in the `MatchReplay` folder inside its game folder
+(for example `C:\Program Files (x86)\Ubisoft\Ubisoft Game Launcher\games\Tom Clancy's Rainbow Six Siege`
+or `...\steamapps\common\Tom Clancy's Rainbow Six Siege`). The tool does not
+search for it: you give the game folder. No Git is needed.
+
+1. Install the tool (one line, in PowerShell or a command prompt):
+
+   ```bash
+   python -m pip install https://github.com/Holdi601/3DHeat-Ext-R6/archive/refs/tags/v0.4.1.zip
+   ```
+
+2. Convert your recent matches (or name match folders, `.rec` files or zips
+   yourself instead of `--game`; `HEAT3D_R6_GAME` can hold the game folder):
+
+   ```bash
+   heat3d-r6-replay --game "<your game folder>" -o matches
+   ```
+
+3. The output is one `.3dheat` per match in the `-o` folder, e.g.
+   `matches\r6_Clubhouse_2026-01-02-20-15-00.3dheat` (5 to 20 MB).
+4. Open it in the [3DHeat viewer](https://github.com/Holdi601/3DHeat#quick-start):
+   download the viewer (**Code -> Download ZIP**, unpack) and double-click
+   `start.bat`; it offers to install [Node.js](https://nodejs.org/) when it is
+   missing and opens Chrome or Edge at `http://127.0.0.1:5273`. There,
+   **Source -> Files...**, pick the `.3dheat` (or drop it on the Source panel)
+   and click **Load file**. The **Match** tab has the rounds, kills and
+   scoreboard. For the real building under it, build the map with
+   [3DHeat-Ext-R6-Maps](https://github.com/Holdi601/3DHeat-Ext-R6-Maps) and
+   load its level once.
+
+When a new release is out, the tool says so when it starts and offers to
+update itself (`python -m heat3d_ext_r6.update` does the same).
+
 ## Use
 
 ```

@@ -2,8 +2,12 @@
 
 ## 0.4.1
 
+- `info --help` prints its usage instead of trying to open a file named `--help`.
 - A zip inside a bundle's zip is read too (some 2025 league bundles hold their match as one): those bundles gave no match before.
 - One round the reader cannot follow is skipped with its reason, whatever the error; the match keeps its other rounds. An item tree that cannot be followed costs only that round's use rows (`items.py`), never the round.
+- Installs with one pip line from the release zip, no Git needed; a pip install knows its version and updates itself with pip when a newer release is out.
+- The version comes from the package's metadata when there is no VERSION file (a pip install).
+- README: a quick start for new users.
 
 ## 0.4.0
 

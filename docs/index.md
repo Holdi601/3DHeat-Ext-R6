@@ -42,6 +42,39 @@ related names and trademarks belong to their owners. Rights holders: open an iss
 [github.com/Holdi601/3DHeat-Ext-R6/issues](https://github.com/Holdi601/3DHeat-Ext-R6/issues) -
 we respond quickly and remove anything on request.
 
+## Quick start
+
+You need Windows, Python 3.10 or later ("Add python.exe to PATH" ticked in its
+installer) and Match Replays: Siege keeps your last matches in the
+`MatchReplay` folder inside its game folder (for example
+`C:\Program Files (x86)\Ubisoft\Ubisoft Game Launcher\games\Tom Clancy's Rainbow Six Siege`
+or `...\steamapps\common\Tom Clancy's Rainbow Six Siege`), which you give; no
+Git. More in [Before you start](before-you-start.md).
+
+```bash
+python -m pip install https://github.com/Holdi601/3DHeat-Ext-R6/archive/refs/tags/v0.4.1.zip
+heat3d-r6-replay --game "<your game folder>" -o matches   # your recent matches
+```
+
+`HEAT3D_R6_GAME` can hold the game folder instead; match folders, `.rec` files
+and zips can be named instead of `--game` ([Replays](replays.md)). The output
+is one `.3dheat` per match in the `-o` folder, e.g.
+`matches\r6_Clubhouse_2026-01-02-20-15-00.3dheat` (5 to 20 MB).
+
+Then open it in the [3DHeat viewer](https://github.com/Holdi601/3DHeat#quick-start):
+download it (**Code -> Download ZIP**, unpack), double-click `start.bat` (it
+offers to install Node.js when it is missing and opens `http://127.0.0.1:5273`),
+then **Source -> Files...**, pick the `.3dheat` (or drop it on the Source
+panel) and click **Load file** ([In the viewer](replays.md#in-the-viewer)).
+For the real building under it, build the map with
+[3DHeat R6 Maps](https://github.com/Holdi601/3DHeat-Ext-R6-Maps) and load its
+level once.
+
+When a new release is out, the tool says so when it starts and offers to
+update itself (`python -m heat3d_ext_r6.update` does the same).
+
+## Pages
+
 | Page | What it covers |
 |---|---|
 | [Before you start](before-you-start.md) | installing, where the replays are, where the files go |
