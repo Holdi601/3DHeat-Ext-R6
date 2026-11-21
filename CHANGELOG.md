@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.0
+
+- `layouts <levels folder>`: each map's bomb sites as `<level>.layouts.json` beside the levels the R6 maps tool
+  wrote, every site also a stage of its own. Docs: [Replays](docs/replays.md#bomb-sites-on-the-maps).
+
 ## 0.4.1
 
 - `info --help` prints its usage instead of trying to open a file named `--help`.

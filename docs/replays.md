@@ -41,6 +41,14 @@ heat3d-r6-replay info "D:\Replays\Match-...\Match-...-R01.rec"              # wh
 3. The **Match** tab has the rounds, kills and scoreboard; the replay plays
    the players as figures.
 
+## Bomb sites on the maps
+
+`heat3d-r6-replay layouts <levels folder>` writes `<level>.layouts.json`
+beside each map the R6 maps tool wrote there: the map's bomb sites from the
+sites table (derived coordinates only), all together and each site as a stage
+of its own. The viewer draws them on the map without a match loaded (Objectives
+panel, Tactics board). A map the table holds no site of is listed and skipped.
+
 ## What is in a match
 
 Every player's position and facing (30-40 times a second), operator and

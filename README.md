@@ -38,7 +38,7 @@ search for it: you give the game folder. No Git is needed.
 1. Install the tool (one line, in PowerShell or a command prompt):
 
    ```bash
-   python -m pip install https://github.com/Holdi601/3DHeat-Ext-R6/archive/refs/tags/v0.4.1.zip
+   python -m pip install https://github.com/Holdi601/3DHeat-Ext-R6/archive/refs/tags/v0.5.0.zip
    ```
 
 2. Convert your recent matches (or name match folders, `.rec` files or zips

@@ -52,7 +52,7 @@ or `...\steamapps\common\Tom Clancy's Rainbow Six Siege`), which you give; no
 Git. More in [Before you start](before-you-start.md).
 
 ```bash
-python -m pip install https://github.com/Holdi601/3DHeat-Ext-R6/archive/refs/tags/v0.4.1.zip
+python -m pip install https://github.com/Holdi601/3DHeat-Ext-R6/archive/refs/tags/v0.5.0.zip
 heat3d-r6-replay --game "<your game folder>" -o matches   # your recent matches
 ```
 

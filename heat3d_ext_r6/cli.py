@@ -114,6 +114,17 @@ def main(argv: list[str] | None = None) -> int:
                               "events": [(e.kind, e.tick, e.clock, e.player, e.other) for e in r.events]},
                              indent=1, ensure_ascii=False))
         return 0
+    if argv[:1] == ["layouts"]:
+        if not argv[1:] or argv[1] in ("-h", "--help"):
+            print("usage: heat3d-r6-replay layouts <levels folder>")
+            print("Each map's bomb sites as <level>.layouts.json beside the levels the R6 maps tool wrote there.")
+            return 0 if argv[1:] else 2
+        from .layouts import write_all
+
+        lines = write_all(Path(argv[1]), f"heat3d-r6-replay {__version__}")
+        for line in lines:
+            print(line)
+        return 0 if any(line.startswith("ok ") for line in lines) else 1
     ap = argparse.ArgumentParser(prog="heat3d-r6-replay", description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("paths", nargs="*", help="replays (files, match folders, folders of matches, zips)")

@@ -27,7 +27,8 @@ def build():
     out = ["---", "title: Command reference", "nav_order: 90", "---", "", "# Command reference", "",
            "Generated from the code by `tools/gen_docs_reference.py`: do not edit by hand.",
            "The other pages explain each command step by step; the README lists every column of a match.", "",
-           f"## `{COMMAND}`", "", "```text", run(["--help"]), "```", ""]
+           f"## `{COMMAND}`", "", "```text", run(["--help"]), "```", "",
+           f"## `{COMMAND} layouts`", "", "```text", run(["layouts", "--help"]), "```", ""]
     return "\n".join(out)
 
 

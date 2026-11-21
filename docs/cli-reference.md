@@ -39,3 +39,10 @@ options:
   --loose        keep the separate files instead of a .3dheat
   --version      show program's version number and exit
 ```
+
+## `heat3d-r6-replay layouts`
+
+```text
+usage: heat3d-r6-replay layouts <levels folder>
+Each map's bomb sites as <level>.layouts.json beside the levels the R6 maps tool wrote there.
+```
