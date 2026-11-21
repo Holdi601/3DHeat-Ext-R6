@@ -5,6 +5,30 @@ nav_order: 2
 
 # Before you start
 
+## The standalone program (no Python needed)
+
+Each [release](https://github.com/Holdi601/3DHeat-Ext-R6/releases/latest)
+has a ready-to-run program for Windows (`heat3d-r6-<version>-windows-x64.zip`)
+with a `SHA256SUMS` file to check the download. Unpack it anywhere and start
+`heat3d-r6.exe`.
+
+Started without arguments it opens a window that:
+
+- asks for your game folder (*Choose folder...*, the one holding
+  `MatchReplay`); nothing is searched for;
+- says what is missing (the game folder, free disk space);
+- converts the matches in that `MatchReplay` folder, or any folder you pick,
+  into `.3dheat` files (by default into `%LOCALAPPDATA%\3DHeat\matches\r6siege`);
+- checks for updates and asks before installing one, unless you tick
+  *Update automatically*.
+
+The same program runs every command below:
+`heat3d-r6 heat3d-r6-replay --game "<your game folder>" -o matches`.
+For scripts: `heat3d-r6 --check --json` says what is found and missing, and
+`heat3d-r6 status --json` the game folder found (a replay reader has no maps;
+`extract` has nothing to do). The 3DHeat app's Extractors panel installs,
+updates and starts it for you.
+
 ## 1. Python
 
 Install Python 3.10 or newer from [python.org](https://www.python.org/downloads/)

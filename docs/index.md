@@ -46,9 +46,7 @@ we respond quickly and remove anything on request.
 
 You need Windows, Python 3.10 or later ("Add python.exe to PATH" ticked in its
 installer) and Match Replays: Siege keeps your last matches in the
-`MatchReplay` folder inside its game folder (for example
-`C:\Program Files (x86)\Ubisoft\Ubisoft Game Launcher\games\Tom Clancy's Rainbow Six Siege`
-or `...\steamapps\common\Tom Clancy's Rainbow Six Siege`), which you give; no
+`MatchReplay` folder inside its game folder, which you give; no
 Git. More in [Before you start](before-you-start.md).
 
 ```bash

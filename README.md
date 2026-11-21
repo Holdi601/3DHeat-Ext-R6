@@ -26,13 +26,22 @@ trademarks belong to their owners. Meant for non-commercial, personal
 analysis. Rights holders: open an issue or get in touch through the GitHub
 profile; we respond within 48 hours and remove on request.
 
-## Quick start for new users
+## The standalone program
+
+No Python needed: download `heat3d-r6-<version>-windows-x64.zip` from the
+[latest release](https://github.com/Holdi601/3DHeat-Ext-R6/releases/latest), check it against
+`SHA256SUMS`, unpack it and start `heat3d-r6.exe`. Its window asks for your game folder
+(*Choose folder...*; nothing is searched for), converts the matches in its `MatchReplay` folder (or any
+folder you pick) into `.3dheat` files, and asks before it updates itself. `heat3d-r6 --help` lists its
+commands (`heat3d-r6 heat3d-r6-replay ...` runs every command below). The 3DHeat app's Extractors panel
+can install and update it for you. See
+[Before you start](https://holdi601.github.io/3DHeat-Ext-R6/before-you-start.html).
+
+## Quick start for new users (Python)
 
 You need: Windows, [Python](https://www.python.org/downloads/) 3.10 or later
 ("Add python.exe to PATH" ticked in its installer), and Match Replays: Siege
-keeps your last matches in the `MatchReplay` folder inside its game folder
-(for example `C:\Program Files (x86)\Ubisoft\Ubisoft Game Launcher\games\Tom Clancy's Rainbow Six Siege`
-or `...\steamapps\common\Tom Clancy's Rainbow Six Siege`). The tool does not
+keeps your last matches in the `MatchReplay` folder inside its game folder. The tool does not
 search for it: you give the game folder. No Git is needed.
 
 1. Install the tool (one line, in PowerShell or a command prompt):

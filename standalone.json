@@ -1,0 +1,7 @@
+{
+  "spec": "heat3d_ext_r6.standalone_spec",
+  "collect_submodules": ["numpy", "pyarrow", "zstandard"],
+  "platforms": {
+    "windows-x64": {"build": true, "tested": false, "note": "the game runs on Windows; CI builds, tests and smoke-runs; you choose the game folder, its MatchReplay folder is read"}
+  }
+}

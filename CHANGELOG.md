@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.6.0
+
+- A standalone program for Windows (no Python needed), built by CI with a `SHA256SUMS` file. Without
+  arguments it opens a window: the game folder you choose (nothing is searched for), what is missing, and the
+  conversion of its `MatchReplay` folder (or any folder) into `.3dheat` matches.
+- `status --json` and `--check --json` for the 3DHeat app's Extractors panel; a replay reader has no maps, so
+  `extract` has nothing to do.
+- Updates ask first (update now / later / skip this version) unless automatic updates were chosen
+  (`--auto-update`, the window's checkbox, or `HEAT3D_AUTO_UPDATE=1`).
+- The version is written in the package (`__version__`), so the built program knows it too.
+- Docs: no example install paths; you give your own folder.
+
 ## 0.5.0
 
 - `layouts <levels folder>`: each map's bomb sites as `<level>.layouts.json` beside the levels the R6 maps tool
