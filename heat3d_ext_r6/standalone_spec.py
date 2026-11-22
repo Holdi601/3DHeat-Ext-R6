@@ -13,7 +13,7 @@ from pathlib import Path
 
 from . import __version__
 from .app import paths
-from .app.spec import GameSpec, Input, Spec, Task, load_settings
+from .app.spec import GameSpec, Input, Replays, Spec, Task, load_settings
 
 TOOL_ID = "heat3d-r6"
 
@@ -38,6 +38,12 @@ def _replays(levels: Path) -> str:
     folder = replay_folder(_chosen())
     return str(folder) if folder else ""
 
+def _replay_info(path: Path) -> dict:
+    """`info <replay> --json`: the header only (replay_info.py)."""
+    from .replay_info import info
+
+    return info(path)
+
 
 SPEC = Spec(
     id=TOOL_ID,
@@ -58,6 +64,7 @@ SPEC = Spec(
         help="each match becomes one .3dheat file the viewer opens; the maps come from heat3d-r6-maps",
     )],
     min_free_gb=1.0,
+    replays=Replays("r6", (".rec",), lambda r, out: ["heat3d-r6-replay", str(r), "-o", str(out)], info=_replay_info),
     notice="Not affiliated with or endorsed by Ubisoft.",
 )
 
